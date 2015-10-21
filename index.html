@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Simple Todo List</title>
+        <!-- CSS -->
+        <link rel="stylesheet" href="styles.css">
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+        <!-- Addition for Sortable JQuery and Punch for mobile devices -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+        <script src="assets/jquery.ui.touch-punch.min.js"></script>
+
+
+        <script src="index.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Things I've Gotta Get Done</h1>
+            This list of items is also sortable ;-)<br>
+
+            <ul id="list-items">
+            <!-- Here's where out todo list items will go! -->
+            </ul>
+            <form class="add-items">
+                <input type="text" class="form-control" id="todo-list-item" placeholder="What do you need to do today?">
+                <button class="add" type="submit">Add to List</button>
+            </form>
+        </div>
+    </body>
+</html>
