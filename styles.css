@@ -18,7 +18,7 @@ form {
 input[type="text"] {
     outline: 0;
     width: 55%;
-    height: 32px;
+    height: 32px; /* 32px before */
     border: none;
     font-size: 18px;
     font-weight: normal;
@@ -43,9 +43,16 @@ ul {
     list-style: none;
 }
 
+
+/* li added*/
+li {
+    height: 32px;
+}
+
+
 hr {
     border-bottom: 0;
-    margin: 15px 0;
+    margin: 5px 0; /* 15px before */
 }
 
 input[type="checkbox"] {
@@ -66,8 +73,8 @@ input[type="checkbox"] {
 }
 
 .ui-state-highlight {
-    height: 2em; line-height: 1.2em;
-    margin: 15px 0;
+    height: 20px; line-height: 20px;
+    margin: 5px 0;
     border: 1px solid #FCEFA1;
     background: #FBF9EE repeat-x scroll 50% 50%;
     color: #363636;
