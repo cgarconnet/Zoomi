@@ -8,6 +8,13 @@
     font-family: 'Helvetica', 'Arial', sans-serif;
 }
 
+
+.comment {
+    font-weight: normal;
+    font-size:12px;
+}
+
+
 form {
     outline: 0;
     height: 36px;
