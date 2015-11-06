@@ -86,3 +86,8 @@ input[type="checkbox"] {
     background: #FBF9EE repeat-x scroll 50% 50%;
     color: #363636;
 }
+
+.ui-widget-header {
+    color: #222;
+    font-weight: bold;
+}

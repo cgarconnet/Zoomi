@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery UI Tabs - Default functionality</title>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+        <!-- Addition for Sortable JQuery and Punch for mobile devices -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+        <script src="assets/jquery.ui.touch-punch.min.js"></script>
+
+  <link rel="stylesheet" href="/style.css">
+        <!-- CSS -->
+        <link rel="stylesheet" href="styles.css">
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+        <!-- Addition for Sortable JQuery and Punch for mobile devices -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+        <script src="assets/jquery.ui.touch-punch.min.js"></script>
+
+
+        <script src="index.js"></script>
+
+  <script>
+  $(function() {
+    $( "#tabs" ).tabs();
+  });
+  </script>
+</head>
+<body>
+ 
+<div id="tabs">
+  <ul>
+    <li><a href="#tabs-1">Nunc tincidunt <span class="badge">10</span></a></li>
+    <li><a href="#tabs-2">Proin dolor <span class="badge">5</span></a></li>
+    <li><a href="#tabs-3">Aenean lacinia <span class="badge">2</span></a></li>
+  </ul>
+  <div id="tabs-1">
+        <div class="container">
+            <h1>Zoom your kanban</h1>
+            This list of items is sortable (drag and drop). So sort it and start from the top.<p>
+            <div class="comment">Why this product? to transform your activities (themes) in tasks thru usage of 3 dynamic views. <a href='assets/vision.jpg'>Here is our product vision</a>. Only View #1 is in place today. Please <a href='mailto:cgarconnet@gmail.com?subject=zoomi'>email me</a> to influence this roadmap and share your voice. This is a personal project based on <a href="https://onemonth.com/courses/jquery">JQuery OneMonth training (yes nice teacher ;-)</a></div>
+            <ul id="list-items">
+            <!-- Here's where out todo list items will go! -->
+            </ul>
+            <form class="add-items">
+                <input type="text" class="form-control" id="todo-list-item" placeholder="What do you need to do today?">
+                <button class="add" type="submit">Add to List</button>
+            </form>
+                <p><div class="comment">Please note that data is stored on your computer (<a href="http://www.w3schools.com/html/html5_webstorage.asp">HTML 5 Local Storage for the techs</a>)</div>
+        </div>
+  </div>
+  <div id="tabs-2">
+        <div class="container">
+            <ul id="list-items-week">
+            <!-- Here's where out todo list items will go! -->
+            </ul>
+            <form class="add-items-week">
+                <input type="text" class="form-control" id="todo-list-item-week" placeholder="What do you need to do today?">
+                <button class="add" type="submit">Add to List</button>
+            </form>
+        </div>
+  </div>
+  <div id="tabs-3">
+    <p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
+    <p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
+  </div>
+</div>
+ 
+ 
+</body>
+</html>
