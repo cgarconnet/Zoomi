@@ -9,6 +9,25 @@ $(function() {
     $( "#list-items" ).disableSelection();
 });
 
+$(function() {
+    $( "#list-items-week" ).sortable({
+      placeholder: "ui-state-highlight",
+      stop: function (event, ui) {
+ 		localStorage.setItem("list-items-week", $("#list-items-week").html());
+      }
+    });
+    $( "#list-items-week" ).disableSelection();
+});
+
+$(function() {
+    $( "#list-items-future" ).sortable({
+      placeholder: "ui-state-highlight",
+      stop: function (event, ui) {
+ 		localStorage.setItem("list-items-future", $("#list-items-future").html());
+      }
+    });
+    $( "#list-items-future" ).disableSelection();
+});
 
 $(document).ready(function () {
     // YOUR CODE HERE!
@@ -19,7 +38,7 @@ $(document).ready(function () {
     // Then we show them on the page
 	$("#list-items").html(localStorage.getItem("list-items"));
 	$("#list-items-week").html(localStorage.getItem("list-items-week"));
-
+	$("#list-items-future").html(localStorage.getItem("list-items-future"));
 
 
     $(".add-items").submit(function(event){
@@ -49,6 +68,21 @@ $(document).ready(function () {
 		}
 
     });
+
+    $(".add-items-future").submit(function(event){
+		event.preventDefault(); // submit will submit the form and load again the page, this is why without this code, the Hi will only falsh and desiappear because a new page is loaded
+		var item = $("#todo-list-item-future").val();
+
+		if (item) {
+			// Now let's save it local storage
+			$("#list-items-future").append("<li class='todo'><input class='checkbox' type='checkbox'/>" + item + "<a class='remove'>x</a><hr></li>");
+			//Now we can save the updated list in LocalStorage
+			localStorage.setItem("list-items-future", $("#list-items-future").html());	
+			$("#todo-list-item-future").val("");
+		}
+
+    });
+
 		$(document).on("change", ".checkbox", function(){
 			// this is the checkbox as input. So it's parent is required to be checked
 			// completed css will put a line-through as text-decoration
@@ -72,6 +106,7 @@ $(document).ready(function () {
 			//Now we can save the updated list in LocalStorage
 			localStorage.setItem("list-items", $("#list-items").html());	
 			localStorage.setItem("list-items-week", $("#list-items-week").html());	
+			localStorage.setItem("list-items-future", $("#list-items-future").html());	
 		});
 
 
@@ -79,6 +114,7 @@ $(document).ready(function () {
 			$(this).parent().slideUp("slow", function(){
 				localStorage.setItem("list-items", $("#list-items").html());
 				localStorage.setItem("list-items-week", $("#list-items-week").html());
+				localStorage.setItem("list-items-future", $("#list-items-future").html());	
 			});
 
 		});
