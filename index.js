@@ -61,7 +61,7 @@ $(document).ready(function () {
 
 		if (item) {
 			// Now let's save it local storage
-			$("#list-items-week").append("<li class='todo'><input class='checkbox' type='checkbox'/>" + item + "<a class='impediment off'>(B)</a><a class='remove'>x</a><hr></li>");
+			$("#list-items-week").append("<li class='todo'><input class='checkbox' type='checkbox'/>" + item + "<a class='impediment off'>(B)</a><a class='remove'>xx</a><hr></li>");
 			//Now we can save the updated list in LocalStorage
 			localStorage.setItem("list-items-week", $("#list-items-week").html());	
 			$("#todo-list-item-week").val("");
