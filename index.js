@@ -109,7 +109,7 @@ $(document).ready(function () {
 			localStorage.setItem("list-items-future", $("#list-items-future").html());	
 		});
 
-		$(document).on("change", ".impediment", function(){
+		$(document).on("click", ".impediment", function(){
 			$(this).toggleClass("off");
 			$(this).toggleClass("on");
 

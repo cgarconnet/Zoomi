@@ -92,10 +92,15 @@ input[type="checkbox"] {
     font-weight: bold;
 }
 
-.impediment off {
+.impediment {
+    float: right;
+    cursor: pointer;
+}
+
+.off {
 font-color: black;
 }
 
-.impediment on {
+.on {
 font-color: red ;
 }
