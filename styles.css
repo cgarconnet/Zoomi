@@ -91,3 +91,11 @@ input[type="checkbox"] {
     color: #222;
     font-weight: bold;
 }
+
+.off {
+font-color: black;
+}
+
+.on {
+font-color: red ;
+}

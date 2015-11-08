@@ -61,7 +61,7 @@ $(document).ready(function () {
 
 		if (item) {
 			// Now let's save it local storage
-			$("#list-items-week").append("<li class='todo'><input class='checkbox' type='checkbox'/>" + item + "<a class='remove'>x</a><hr></li>");
+			$("#list-items-week").append("<li class='todo'><input class='checkbox' type='checkbox'/>" + item + "<a class='impediment off'>(B)</a><a class='remove'>x</a><hr></li>");
 			//Now we can save the updated list in LocalStorage
 			localStorage.setItem("list-items-week", $("#list-items-week").html());	
 			$("#todo-list-item-week").val("");
@@ -107,6 +107,16 @@ $(document).ready(function () {
 			localStorage.setItem("list-items", $("#list-items").html());	
 			localStorage.setItem("list-items-week", $("#list-items-week").html());	
 			localStorage.setItem("list-items-future", $("#list-items-future").html());	
+		});
+
+		$(document).on("change", ".impediment", function(){
+			$(this).toggleClass("off");
+			$(this).toggleClass("on");
+
+			//Now we can save the updated list in LocalStorage
+			localStorage.setItem("list-items", $("#list-items").html());
+			localStorage.setItem("list-items-week", $("#list-items-week").html());
+			localStorage.setItem("list-items-future", $("#list-items-future").html());
 		});
 
 
