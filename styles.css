@@ -1,9 +1,6 @@
-button {
-
-}
 .container {
     margin: 0 auto;
-    min-width: 500p;
+    min-width: 500px;
     width: 45%;
     text-align: left;
     color: #3b3b3b;
@@ -27,7 +24,7 @@ form {
 
 input[type="text"] {
     outline: 0;
-    width: 60%;
+    width: 55%;
     height: 32px; /* 32px before */
     border: none;
     font-size: 18px;
@@ -70,8 +67,8 @@ input[type="checkbox"] {
 }
 
 .remove {
-    cursor: pointer;
     float: right;
+    cursor: pointer;
 }
 
 .completed {
@@ -82,44 +79,10 @@ input[type="checkbox"] {
     background: red;
 }
 
-
 .ui-state-highlight {
     height: 20px; line-height: 20px;
     margin: 5px 0;
     border: 1px solid #FCEFA1;
     background: #FBF9EE repeat-x scroll 50% 50%;
     color: #363636;
-}
-
-.ui-widget-header {
-    color: #222;
-    font-weight: bold;
-}
-
-
-.impediment {
-    cursor: pointer;
-}
-
-a.state_off {
-    color: #D8D7D7;
-}
-
-a.state_on {
-    color: #E91C55 ;
-}
-
-.badge {
-    display: inline-block;
-    min-width: 10px;
-    padding: 3px 7px;
-    font-size: 12px;
-    font-weight: bold;
-    color: #FFF;
-    line-height: 1;
-    vertical-align: middle;
-    white-space: nowrap;
-    text-align: center;
-    background-color: #777;
-    border-radius: 10px;
 }
