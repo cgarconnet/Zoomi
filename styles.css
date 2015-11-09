@@ -70,8 +70,8 @@ input[type="checkbox"] {
 }
 
 .remove {
-    float: right;
     cursor: pointer;
+    float: right;
 }
 
 .completed {
@@ -81,6 +81,7 @@ input[type="checkbox"] {
 .before {
     background: red;
 }
+
 
 .ui-state-highlight {
     height: 20px; line-height: 20px;
@@ -95,8 +96,8 @@ input[type="checkbox"] {
     font-weight: bold;
 }
 
+
 .impediment {
-    float: left;
     cursor: pointer;
 }
 

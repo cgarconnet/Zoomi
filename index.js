@@ -62,7 +62,7 @@ $(document).ready(function () {
 
 		if (item) {
 			// Now let's save it local storage
-			$("#list-items").append("<li class='todo'><input class='checkbox' type='checkbox'/>" + item + "<a class='remove'>x</a><hr></li>");
+			$("#list-items").append("<li class='todo'><input class='checkbox' type='checkbox'/><a class='impediment state_off'>(B)</a> - " + item + "<a class='remove'>x</a><hr></li>");
 			//Now we can save the updated list in LocalStorage
 			localStorage.setItem("list-items", $("#list-items").html());	
 			$("#todo-list-item").val("");
@@ -76,7 +76,7 @@ $(document).ready(function () {
 
 		if (item) {
 			// Now let's save it local storage
-			$("#list-items-week").append("<li class='todo'><input class='checkbox' type='checkbox'/>" + item + "<a class='impediment state_off'>(B)</a><a class='remove'>xx</a><hr></li>");
+			$("#list-items-week").append("<li class='todo'><input class='checkbox' type='checkbox'/><a class='impediment state_off'>(B)</a>" + item + "<a class='remove'>xx</a><hr></li>");
 			//Now we can save the updated list in LocalStorage
 			localStorage.setItem("list-items-week", $("#list-items-week").html());	
 			$("#todo-list-item-week").val("");
@@ -113,6 +113,7 @@ $(document).ready(function () {
 			} else {
 				$(this).attr("checked","checked");
 			// This code to highlight in red works but should  flash in the future
+			// Would need also to do not hightlight in red the (B) items, so only select the item that have ".state_off"
 		    $(this).parent().prevAll(".todo").addClass('before');
 		    setTimeout(function(){
 		      $('.before').removeClass('before');}, 1000);
