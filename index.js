@@ -1,3 +1,16 @@
+    $( "#list-items" ).draggable();
+    $( "#ui-tabs-panel" ).droppable({
+    	drop: function( event, ui ) {
+			// Remove the item from first list
+			// Add the item to the second list
+			
+			// $( this )
+         	//	.addClass( "ui-state-highlight" )
+          	//	.find( "p" )
+            //	.html( "Dropped!" );
+      }
+    });
+
 
 $(function() {
     $( "#list-items" ).sortable({
