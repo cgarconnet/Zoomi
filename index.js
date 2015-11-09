@@ -1,9 +1,11 @@
-    $( "#list-items" ).draggable();
-    $( "#ui-tabs-panel" ).droppable({
+    $( ".todo" ).draggable();
+    $( ".ui-tabs-panel" ).droppable({
     	drop: function( event, ui ) {
+    		// http://jsfiddle.net/tilwinjoy/6PL8H/
+    		// http://stackoverflow.com/questions/3816636/example-combing-jquery-drag-and-drop-and-tabs
 			// Remove the item from first list
 			// Add the item to the second list
-			
+			alert($(this))
 			// $( this )
          	//	.addClass( "ui-state-highlight" )
           	//	.find( "p" )
