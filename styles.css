@@ -1,6 +1,9 @@
+button {
+
+}
 .container {
     margin: 0 auto;
-    min-width: 500px;
+    min-width: 500p;
     width: 45%;
     text-align: left;
     color: #3b3b3b;
@@ -24,7 +27,7 @@ form {
 
 input[type="text"] {
     outline: 0;
-    width: 55%;
+    width: 60%;
     height: 32px; /* 32px before */
     border: none;
     font-size: 18px;
@@ -93,14 +96,29 @@ input[type="checkbox"] {
 }
 
 .impediment {
-    float: right;
+    float: left;
     cursor: pointer;
 }
 
-.off {
-font-color: black;
+a.state_off {
+    color: #D8D7D7;
 }
 
-.on {
-font-color: red ;
+a.state_on {
+    color: #E91C55 ;
+}
+
+.badge {
+    display: inline-block;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #FFF;
+    line-height: 1;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-align: center;
+    background-color: #777;
+    border-radius: 10px;
 }
