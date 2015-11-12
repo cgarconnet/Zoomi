@@ -1,3 +1,5 @@
+{% load staticfiles %}
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -6,17 +8,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Zoomi - Zoom your kanban</title>
         <!-- CSS superseeding the Bootstrap ones -->
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="{% static "css/styles.css" %}">
 
         <!-- jQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
         <!-- Addition for Sortable JQuery and Punch for mobile devices -->
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-        <script src="assets/jquery.ui.touch-punch.min.js"></script>
+        <script src="{% static "js/jquery.ui.touch-punch.min.js" %}"></script>
 
 
-        <script src="index.js"></script>
+        <script src="{% static "js/index.js" %}"></script>
     </head>
     <body>
         <div class="container">

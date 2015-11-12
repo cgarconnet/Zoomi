@@ -1,0 +1,1 @@
+web: gunicorn zoomi.wsgi --log-file -
