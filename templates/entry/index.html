@@ -14,6 +14,7 @@
       connectWith: ".connectedSortable",
       update: function(event, ui) {
         var serial = $('#sortable1').sortable('serialize');
+        console.log(serial);
         $.ajax({
           url: "{% url 'index' %}",
           type: "post",
@@ -23,6 +24,15 @@
     }).disableSelection();
     $("#sortable2").sortable({
       connectWith: ".connectedSortable",
+      update: function(event, ui) {
+        var serial = $('#sortable2').sortable('serialize');
+        console.log(serial);
+        $.ajax({
+          url: "{% url 'index' %}",
+          type: "post",
+          data: { 'content': serial, 'csrfmiddlewaretoken' : '{{ csrf_token }}' } 
+        });
+      },
     }).disableSelection();
   });
 </script>

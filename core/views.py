@@ -33,6 +33,7 @@ def index(request):
 			# save index of entry_id as it's new order value
 			entry = coremodels.Entry.objects.get(id=entry_id)
 			entry.order = index
+			print(index)
 			entry.save()
 
     # split our entries arbitrarily, so we can have two lists on the page...
