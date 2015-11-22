@@ -1,0 +1,53 @@
+{% load url from future %}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>sortable demo</title>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/overcast/jquery-ui.css">
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+
+<script type="text/javascript" language="javascript">
+  $(document).ready(function() {
+    $("#sortable1").sortable({
+      connectWith: ".connectedSortable",
+      update: function(event, ui) {
+        var serial = $('#sortable1').sortable('serialize');
+        $.ajax({
+          url: "{% url 'index' %}",
+          type: "post",
+          data: { 'content': serial, 'csrfmiddlewaretoken' : '{{ csrf_token }}' } 
+        });
+      },
+    }).disableSelection();
+    $("#sortable2").sortable({
+      connectWith: ".connectedSortable",
+    }).disableSelection();
+  });
+</script>
+
+</head>
+<body>
+
+    <h3>Top two:</h3>
+    <ul id="sortable1" class="connectedSortable">
+    {% for entry in entry_list1 %}
+      <li id="entry_{{ entry.id }}" class="ui-state-default">
+        <a href="{{ entry.update_entry_url }}">{{ entry }}</a>
+
+      </li>
+    {% endfor %}
+    </ul>
+
+    <h3>The rest:</h3>
+    <ul id="sortable2" class="connectedSortable">
+    {% for entry in entry_list2 %}
+      <li id="entry_{{ entry.id }}" class="ui-state-default">
+        <a href="{{ entry.update_entry_url }}">{{ entry }}</a>
+      </li>
+    {% endfor %}
+    </ul>
+
+</body>
+</html>

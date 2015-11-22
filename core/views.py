@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render, render_to_response
+from django.http import HttpResponse, Http404, QueryDict
+from django.template import RequestContext
+from django.contrib import messages
 
 # Create your views here.
 
@@ -18,3 +20,39 @@ import core.models as coremodels # we import our models
 class LandingView(TemplateView):
 		template_name = "index.html"
 
+
+def index(request):
+
+	if request.method == 'POST':
+
+		# request.POST['content'] is a query string like 'entry[]=3&entry[]=2&entry[]=1'
+		# convert to a QueryDict so we can do things with it
+		entries = QueryDict(request.POST['content'])
+
+		for index, entry_id in enumerate(entries.getlist('entry[]')):
+			# save index of entry_id as it's new order value
+			entry = coremodels.Entry.objects.get(id=entry_id)
+			entry.order = index
+			entry.save()
+
+    # split our entries arbitrarily, so we can have two lists on the page...
+	entry_list1 = coremodels.Entry.objects.order_by('order')[:2]
+	entry_list2 = coremodels.Entry.objects.order_by('order')[2:]
+
+	context = {'entry_list1': entry_list1, 'entry_list2': entry_list2}
+
+	return render_to_response('entry/index.html', context, context_instance=RequestContext(request))
+
+def detail(request, entry_id):
+	try:
+		entry = coremodels.Entry.objects.get(pk=entry_id)
+	except Entry.DoesNotExist:
+		raise Http404
+	return render_to_response('entry/detail.html', {'entry': entry})
+
+class EntryUpdateView(UpdateView):
+	model = coremodels.Entry
+#	model = coremodels.Event # by just changing the model here, I can have access to the right form edit template
+	template_name = 'base/form.html'
+	# # fields ="__all__" this is when we want all fields, but in this case, we don't want the user nor the Location Id
+	fields = "__all__"
