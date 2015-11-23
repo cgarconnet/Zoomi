@@ -1,5 +1,4 @@
 # coding: utf8
-from __future__ import unicode_literals # pour l'encoding facon Python 3
 from django.db import models
 from django.forms import ModelForm
 from django.core.urlresolvers import reverse

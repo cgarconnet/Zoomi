@@ -1,4 +1,3 @@
-{% load url from future %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -16,7 +15,7 @@
         var serial = $('#sortable1').sortable('serialize');
         console.log(serial);
         $.ajax({
-          url: "{% url 'index' %}",
+          url: "{{ index.get_absolute_url }}",
           type: "post",
           data: { 'content': serial, 'csrfmiddlewaretoken' : '{{ csrf_token }}' } 
         });
@@ -28,7 +27,7 @@
         var serial = $('#sortable2').sortable('serialize');
         console.log(serial);
         $.ajax({
-          url: "{% url 'index' %}",
+          url: "{{ index.get_absolute_url }}",
           type: "post",
           data: { 'content': serial, 'csrfmiddlewaretoken' : '{{ csrf_token }}' } 
         });
