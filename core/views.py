@@ -37,8 +37,8 @@ def index(request):
 			entry.save()
 
     # split our entries arbitrarily, so we can have two lists on the page...
-	entry_list1 = coremodels.Entry.objects.order_by('order')[:2]
-	entry_list2 = coremodels.Entry.objects.order_by('order')[2:]
+	entry_list1 = coremodels.Entry.objects.order_by('order')[:20]
+	entry_list2 = coremodels.Entry.objects.order_by('order')[20:]
 
 	context = {'entry_list1': entry_list1, 'entry_list2': entry_list2}
 
