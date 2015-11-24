@@ -1,3 +1,6 @@
+Installation
+- Upgrade Wheel en 0.26 sur le mac
+
 Reste faire
 
 - Résoudre le problème de design moche des listes
