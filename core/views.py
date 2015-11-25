@@ -14,6 +14,7 @@ from django.views.generic.detail import DetailView # to show details of my selec
 from django.views.generic.edit import CreateView, UpdateView # to enable the edit form (create and then edit)
 
 import core.models as coremodels # we import our models
+from core.models import ListAppendView
 	
 # Create your views here.
 
@@ -56,4 +57,19 @@ class EntryUpdateView(UpdateView):
 #	model = coremodels.Event # by just changing the model here, I can have access to the right form edit template
 	template_name = 'base/form.html'
 	# # fields ="__all__" this is when we want all fields, but in this case, we don't want the user nor the Location Id
+	fields = "__all__"
+
+class ListAndCreate(CreateView):
+	model = coremodels.Entry
+	template_name = 'entry/listcreate.html'
+	fields = "__all__"
+
+	def get_context_data(self, **kwargs):
+		context = super(ListAndCreate, self).get_context_data(**kwargs)
+		context["objects"] = self.model.objects.all()
+		return context
+
+class ListAppend(ListAppendView):
+	model = coremodels.Entry
+	template_name = 'entry/listcreate.html'
 	fields = "__all__"
