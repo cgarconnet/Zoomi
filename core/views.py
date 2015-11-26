@@ -72,4 +72,4 @@ class ListAndCreate(CreateView):
 class ListAppend(ListAppendView):
 	model = coremodels.Entry
 	template_name = 'entry/listcreate.html'
-	fields = "__all__"
+#	fields = ['name'] # "__all__" no longer required as defined in the models

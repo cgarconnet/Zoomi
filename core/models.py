@@ -11,8 +11,6 @@ from django.views.generic.edit import ModelFormMixin, ProcessFormView
 import os
 import uuid
 
-# Create your models here.
-
 
 # Create your models here.
 class Entry(models.Model):
@@ -41,6 +39,24 @@ class Entry(models.Model):
 		# instead use the core.urlresolvers
 		return reverse (viewname="listappend") #, args=[self.id]) 3 before index, now listappend because after adding we want to load again that page
 
+
+class EntryCreateForm(ModelForm):
+
+	class Meta:
+		model = Entry
+		fields = ['name']
+
+
+	def __init__(self, *args, **kwargs): # current_business, as parameter (cf Creeam)
+#		self.request = kwargs.pop('request', None)
+#		current_user = kwargs.pop('user')
+#		current_business = kwargs['pk']
+		super(EntryCreateForm, self).__init__(*args, **kwargs)
+		self.fields['name'].label = "What do you need to do today?"
+		#self.fields['customer'].queryset = 
+#		self.fields['customer'].queryset = coremodels.Customer.objects.filter(user=current_user,business=current_business)
+#		self.fields['customer'].queryset = coremodels.Customer.objects.filter(user=current_user)
+#		self.fields['business'].queryset = coremodels.Business.objects.filter(user=current_user)
 
 class EntryForm(ModelForm):
 	class Meta:
@@ -73,6 +89,7 @@ class ListAppendView(MultipleObjectMixin,MultipleObjectTemplateResponseMixin,Mod
 	""" A View that displays a list of objects and a form to create a new object.
 	The View processes this form. """
 	template_name_suffix = '_append'
+	form_class = EntryCreateForm
 	allow_empty = True
 
 	def get(self, request, *args, **kwargs):
@@ -94,3 +111,5 @@ class ListAppendView(MultipleObjectMixin,MultipleObjectTemplateResponseMixin,Mod
 	def form_invalid(self, form):
 		self.object_list = self.get_queryset()
 		return self.render_to_response(self.get_context_data(object_list=self.object_list, form=form))
+
+

@@ -1,12 +1,23 @@
 {% load widget_tweaks %}
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+<ul data-role="listview" data-filter="true"  data-split-icon="gear" data-split-theme="a" data-filter-placeholder="Search an action ..." data-inset="true">
 
     {% for objects in object_list %}
       <li id="entry_{{ entry.id }}" class="ui-state-default">
         <a href="{{ entry.update_entry_url }}">{{ objects }}</a>
-
+<a href="#details" data-rel="popup" data-position-to="window" data-transition="pop">Details</a>
       </li>
     {% endfor %}
 
+</ul>
+
+
+{% include 'entry/popup.html' %}
+
+<p>
 <div class="header-buffer">
 </div>
 <section id="services">
@@ -14,7 +25,7 @@
 <div class="row">
 {% if form %}
 <div class="col-md-12">
-<form action="" method="post" enctype="multipart/form-data">{% csrf_token %}{{ form.media }}
+<form action="" method="post" data-ajax="false" enctype="multipart/form-data">{% csrf_token %}{{ form.media }}
 {% for field in form %}
 <div class="form-group warning">
 <label for="exampleInputFile">{{ field.label }}</label>
@@ -27,7 +38,7 @@
 {% endfor %}
 {% endif %}
 {% endfor %}
-<input type="submit" class="btn btn-success" role="button" value="{{ verb|default:"Submit" }}" />
+<input type="submit" class="btn btn-success" role="button" value="{{ verb|default:"Add to the list" }}" />
 </form>
 </div>
 {% endif %}
