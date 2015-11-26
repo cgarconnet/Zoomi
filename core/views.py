@@ -73,3 +73,12 @@ class ListAppend(ListAppendView):
 	model = coremodels.Entry
 	template_name = 'entry/listcreate.html'
 #	fields = ['name'] # "__all__" no longer required as defined in the models
+
+	def get_queryset(self):
+		# return the review object for the current user and the current location
+		return coremodels.Entry.objects.filter(user=self.request.user).order_by('order')
+
+	def form_valid(self, form):
+	# this feature is used between submission of the user and sending these data to the database
+		form.instance.user = self.request.user
+		return super(ListAppend, self).form_valid(form)

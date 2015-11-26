@@ -15,6 +15,7 @@ import uuid
 # Create your models here.
 class Entry(models.Model):
 
+	user = models.ForeignKey(User)
 	name = models.CharField(max_length=50)
 	data = models.CharField(max_length=200, blank=True)
 	order = models.IntegerField(default=0)
