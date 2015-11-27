@@ -51,7 +51,7 @@ class EntryCreateForm(ModelForm):
 
 	class Meta:
 		model = Entry
-		fields = ['name']
+		fields = ['name','duedate'] # the form on the homepage
 
 
 	def __init__(self, *args, **kwargs): # current_business, as parameter (cf Creeam)
