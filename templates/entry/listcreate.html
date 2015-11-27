@@ -1,13 +1,15 @@
 {% load widget_tweaks %}
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<!-- <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css" /> -->
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
 
 <ul data-role="listview" data-filter="true"  data-split-icon="gear" data-split-theme="a" data-filter-placeholder="Search an action ..." data-inset="true">
 
     {% for objects in object_list %}
-      <li id="entry_{{ entry.id }}" class="ui-state-default">
-        <a href="{{ entry.update_entry_url }}">{{ objects }}</a>
+      <li id="entry_{{ objects.id }}" class="ui-state-default">
+        <a href="{{ objects.update_entry_url }}" data-ajax="false">{{ objects }}</a>
 <a href="#details" data-rel="popup" data-position-to="window" data-transition="pop">Details</a>
       </li>
     {% endfor %}

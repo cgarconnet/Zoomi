@@ -19,6 +19,12 @@ class Entry(models.Model):
 	name = models.CharField(max_length=50)
 	data = models.CharField(max_length=200, blank=True)
 	order = models.IntegerField(default=0)
+	duedate = models.DateTimeField(null=True, blank=True)
+	done = models.IntegerField(default=0) # 0 = to do / 1 = completed
+	impediment = models.IntegerField(default=0) # 0 = No / 1 = Yes
+	assignees = models.ManyToManyField(User, related_name='assignees')	
+
+	created_at = models.DateTimeField(auto_now_add=True)
 
 	class Meta:
 		ordering = ['order']
@@ -59,10 +65,11 @@ class EntryCreateForm(ModelForm):
 #		self.fields['customer'].queryset = coremodels.Customer.objects.filter(user=current_user)
 #		self.fields['business'].queryset = coremodels.Business.objects.filter(user=current_user)
 
-class EntryForm(ModelForm):
+class EntryForm(ModelForm): # Seams not required
 	class Meta:
 		model = Entry
-		fields = '__all__'
+#		fields = '__all__'  Define exclude instead
+		exclude = ['user']
 
 class Theme(models.Model):
 # il appartient à un user
@@ -112,5 +119,4 @@ class ListAppendView(MultipleObjectMixin,MultipleObjectTemplateResponseMixin,Mod
 	def form_invalid(self, form):
 		self.object_list = self.get_queryset()
 		return self.render_to_response(self.get_context_data(object_list=self.object_list, form=form))
-
 
