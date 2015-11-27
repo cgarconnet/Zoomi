@@ -1,30 +1,39 @@
 {% load widget_tweaks %}
 
+	<script src="http://malsup.github.com/jquery.form.js"></script>
+
+coucou
 <div class="header-buffer">
 </div>
 <section id="services">
-<div class="container">
-<div class="row">
-{% if form %}
-<div class="col-md-12">
-<form action="" method="post" enctype="multipart/form-data">{% csrf_token %}{{ form.media }}
-{% for field in form %}
-<div class="form-group warning">
-<label for="exampleInputFile">{{ field.label }}</label>
-{{ field|add_class:"form-control"}}
-{% if field.help_text %}<p class="help-block">{{ field.help_text }}</p>{% endif %}
-</div>
-{% if field.errors %}
-{% for error in field.errors %}
-<div class="alert alert-danger" id="error_{{ field.name }}">{{ error|escape }}</div>
-{% endfor %}
-{% endif %}
-{% endfor %}
-<input type="submit" class="btn btn-success" role="button" value="{{ verb|default:"Submit" }}" />
-</form>
-</div>
-{% endif %}
-</div>
-</div>
+	<div class="container">
+		<div class="row">
+			{% if form %}
+			<div class="col-md-12">
+				<form id="item_update_form" class="form" role="form" action="{{ item.update_entry_url }}" method="post" enctype="multipart/form-data">{% csrf_token %}{{ form.media }}
+				{% for field in form %}
+				<div class="form-group warning">
+				<label for="exampleInputFile">{{ field.label }}</label>
+				{{ field|add_class:"form-control"}}
+				{% if field.help_text %}<p class="help-block">{{ field.help_text }}</p>{% endif %}
+				</div>
+				{% if field.errors %}
+				{% for error in field.errors %}
+				<div class="alert alert-danger" id="error_{{ field.name }}">{{ error|escape }}</div>
+				{% endfor %}
+				{% endif %}
+				{% endfor %}
+				<div class="modal-footer">
+					<input type="button" class="btn btn-default" data-dismiss="modal" value="{{ verb|default:"Cancel" }}" />
+					<input type="submit" class="btn btn-success" role="button" value="{{ verb|default:"Submit" }}" />
+				</div>
+				</form>
+			</div>
+			{% endif %}
+		</div>
+	</div>
 </section>
 <p>
+
+ <script> jQuery('.modal-content .calendar').datepicker({ dateFormat: "yy-mm-dd" }); var form_options = { target: '#modal', success: function() { } } $('#item_update_form').ajaxForm(form_options); </script>
+

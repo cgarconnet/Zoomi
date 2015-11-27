@@ -59,6 +59,15 @@ class EntryUpdateView(UpdateView):
 	# # fields ="__all__" this is when we want all fields, but in this case, we don't want the user nor the Location Id
 	fields = ['name','duedate','assignees'] # the fields on the edit page
 
+	def dispatch(self, *args, **kwargs):
+		self.item_id = kwargs['pk']
+		return super(EntryUpdateView, self).dispatch(*args, **kwargs)
+
+	def form_valid(self, form):
+		form.save()
+		item = Item.objects.get(id=self.item_id)
+		return HttpResponse(render_to_string('base/success_form.html', {'item': item}))
+
 class ListAppend(ListAppendView):
 	model = coremodels.Entry
 	template_name = 'entry/listcreate.html'
