@@ -23,6 +23,12 @@ from core.models import ListAppendView
 class LandingView(TemplateView):
 		template_name = "index.html"
 
+class EntryRefreshView(DetailView):
+	model = coremodels.Entry
+	template_name = "modal/entry.html"
+	context_object_name = 'entry'
+
+
 class ModalView(ListView):
 	model = coremodels.Entry
 	template_name = "modal/list.html"

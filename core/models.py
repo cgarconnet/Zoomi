@@ -51,6 +51,9 @@ class Entry(models.Model):
 		# instead use the core.urlresolvers
 		return reverse (viewname="listappend") #, args=[self.id]) 3 before index, now listappend because after adding we want to load again that page
 
+	def refresh_entry_url(self):
+		return reverse (viewname="detailrefresh", args=[self.id]) #, args=[self.id]) 3 before index, now listappend because after adding we want to load again that page
+		
 
 class EntryCreateForm(ModelForm):
 
