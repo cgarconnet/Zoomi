@@ -4,6 +4,8 @@ from django.http import HttpResponse, Http404, QueryDict
 from django.template import RequestContext
 from django.contrib import messages
 
+from django.template.loader import render_to_string #for the modal edit
+
 # Create your views here.
 
 
@@ -63,6 +65,22 @@ class EntryUpdateView(UpdateView):
 	template_name = 'base/form.html'
 	# # fields ="__all__" this is when we want all fields, but in this case, we don't want the user nor the Location Id
 	fields = ['name','duedate','assignees'] # the fields on the edit page
+
+
+class EntryModalUpdateView(UpdateView):
+	model = coremodels.Entry
+#	form_class = ItemForm
+	template_name = 'modal/form.html'
+	fields = ['name','duedate','assignees'] # the fields on the edit page
+
+	def dispatch(self, *args, **kwargs):
+		self.item_id = kwargs['pk']
+		return super(EntryModalUpdateView, self).dispatch(*args, **kwargs)
+
+	def form_valid(self, form):
+		form.save()
+		item = coremodels.Entry.objects.get(id=self.item_id)
+		return HttpResponse(render_to_string('modal/edit_success.html', {'item': item}))
 
 class ListAppend(ListAppendView):
 	model = coremodels.Entry
