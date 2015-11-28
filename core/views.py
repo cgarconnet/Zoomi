@@ -84,9 +84,10 @@ class EntryModalUpdateView(UpdateView):
 		return super(EntryModalUpdateView, self).dispatch(*args, **kwargs)
 
 	def form_valid(self, form):
- 		form.save()
+		form.save()
 # 		item = coremodels.Entry.objects.get(id=self.item_id)
- 		return HttpResponse('') # we could return something here
+#		return render_to_response('modal/')
+		return HttpResponse('') # we could return something here
 # #		return HttpResponse(render_to_string('modal/edit_success.html', {'item': item}))
 
 class ListAppend(ListAppendView):
