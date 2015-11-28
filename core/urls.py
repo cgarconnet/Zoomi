@@ -5,6 +5,8 @@ import core.views as coreviews
 urlpatterns = patterns('',
 
 	url(r'^$', coreviews.LandingView.as_view()),
+	url(r'^modal/$', coreviews.ModalView.as_view()),
+	url(r'^popup/$', coreviews.PopupView.as_view()),
 	url(r'^entries/$', coreviews.index, name='index'),
 	url(r'^listcreate/$', coreviews.ListAppend.as_view(), name='listappend'),	
 	# eg: /entries/5/

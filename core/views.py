@@ -21,6 +21,11 @@ from core.models import ListAppendView
 class LandingView(TemplateView):
 		template_name = "index.html"
 
+class ModalView(TemplateView):
+		template_name = "modal/list.html"
+
+class PopupView(TemplateView):
+		template_name = "modal/modal.html"
 
 def index(request):
 
