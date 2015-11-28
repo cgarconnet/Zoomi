@@ -23,8 +23,13 @@ from core.models import ListAppendView
 class LandingView(TemplateView):
 		template_name = "index.html"
 
-class ModalView(TemplateView):
-		template_name = "modal/list.html"
+class ModalView(ListView):
+	model = coremodels.Entry
+	template_name = "modal/list.html"
+
+	def get_queryset(self):
+		# return the review object for the current user and the current location
+		return coremodels.Entry.objects.filter(user=self.request.user).order_by('order')
 
 class PopupView(TemplateView):
 		template_name = "modal/modal.html"

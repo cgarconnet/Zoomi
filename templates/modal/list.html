@@ -40,17 +40,15 @@ http://www.abidibo.net/blog/2014/05/26/how-implement-modal-popup-django-forms-bo
 
 <div data-role="page" class="jqm-demos" data-quicklinks="true">
 
+
 <ul data-role="listview" data-filter="true"  data-split-icon="gear" data-split-theme="a" data-filter-placeholder="Search an action ..." data-inset="true">
 
-      <li id="entry_1" class="ui-state-default" data-chris="/entriesmodal/1/">
-        <a data-rel="popup" data-position-to="window" class="edit" data-ajax="false">Orange</a>
+    {% for objects in object_list %}
+      <li data-chris="{{ objects.update_modal_entry_url }}" id="entry_{{ objects.id }}" class="ui-state-default">
+        <a data-ajax="false">{{ objects }}</a>
+<a href="#details" data-rel="popup" data-position-to="window" data-transition="pop">Details</a>
       </li>
-      <li id="entry_1" class="ui-state-default" data-chris="/entriesmodal/2/" >
-        <a data-rel="popup" data-position-to="window" class="edit" data-ajax="false">Green</a>
-      </li>
-      <li id="entry_1" class="ui-state-default" data-chris="/entriesmodal/3/" >
-        <a data-rel="popup" data-position-to="window" class="edit" data-ajax="false">Blue</a>
-      </li>
+    {% endfor %}
 
 </ul>
 
