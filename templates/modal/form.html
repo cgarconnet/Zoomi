@@ -1,6 +1,5 @@
 {% load widget_tweaks %}
 
-loading modal/form.html
 
 <div class="header-buffer">
 </div>
@@ -9,7 +8,7 @@ loading modal/form.html
 <div class="row">
 {% if form %}
 <div class="col-md-12">
-<form action="/entriesmodal/2/" method="post" enctype="multipart/form-data">{% csrf_token %}{{ form.media }}
+<form id="Entry_update_form" action="{{ entry.update_modal_entry_url }}" method="post" enctype="multipart/form-data">{% csrf_token %}{{ form.media }}
 {% for field in form %}
 <div class="form-group warning">
 <label for="exampleInputFile">{{ field.label }}</label>
@@ -30,3 +29,11 @@ loading modal/form.html
 </div>
 </section>
 <p>
+
+ <script>
+ // to submit the form thru Ajax
+ 	var form_options = {
+ 		target: '#popupLogin', success: function() { }
+ 	}
+ 	$('#Entry_update_form').ajaxForm(form_options);
+ 	</script>

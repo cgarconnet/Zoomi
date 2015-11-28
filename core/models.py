@@ -41,6 +41,11 @@ class Entry(models.Model):
 		# instead use the core.urlresolvers
 		return reverse (viewname="detail", args=[self.id])
 
+	def update_modal_entry_url(self):
+		# return "location/"+str(self.id)+"/detail" # not the best way to do it
+		# instead use the core.urlresolvers
+		return reverse (viewname="detailmodal", args=[self.id])
+
 	def get_absolute_url(self):
 		# return "location/"+str(self.id)+"/detail" # not the best way to do it
 		# instead use the core.urlresolvers

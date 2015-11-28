@@ -13,6 +13,13 @@
 
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+<!-- Ajax Form submission 
+http://www.abidibo.net/blog/2014/05/26/how-implement-modal-popup-django-forms-bootstrap/
+-->
+<script src="http://malsup.github.com/jquery.form.js"></script> 
+
+
 </head>
 <body>
 
@@ -35,13 +42,13 @@
 
 <ul data-role="listview" data-filter="true"  data-split-icon="gear" data-split-theme="a" data-filter-placeholder="Search an action ..." data-inset="true">
 
-      <li id="entry_1" class="ui-state-default" data-chris="/entriesmodal/1">
+      <li id="entry_1" class="ui-state-default" data-chris="/entriesmodal/1/">
         <a data-rel="popup" data-position-to="window" class="edit" data-ajax="false">Orange</a>
       </li>
-      <li id="entry_1" class="ui-state-default" data-chris="/entriesmodal/2" >
+      <li id="entry_1" class="ui-state-default" data-chris="/entriesmodal/2/" >
         <a data-rel="popup" data-position-to="window" class="edit" data-ajax="false">Green</a>
       </li>
-      <li id="entry_1" class="ui-state-default" data-chris="/entriesmodal/3" >
+      <li id="entry_1" class="ui-state-default" data-chris="/entriesmodal/3/" >
         <a data-rel="popup" data-position-to="window" class="edit" data-ajax="false">Blue</a>
       </li>
 

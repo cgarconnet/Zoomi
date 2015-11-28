@@ -1,6 +1,5 @@
 {% load widget_tweaks %}
 
-loading modal/form.html
 
 <div class="modal-header">
 	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -10,7 +9,7 @@ loading modal/form.html
 
 	<script>
 		setTimeout(function() {
-			jQuery('#popupLogin').modal('hide');
+			$('#popupLogin').modal('hide');
 			}, 1000);
 		$('body').on('hidden.bs.modal', '.modal', function () {
 			// we intend to remove data loaded
