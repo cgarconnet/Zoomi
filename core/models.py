@@ -18,11 +18,11 @@ class Entry(models.Model):
 	user = models.ForeignKey(User)
 	name = models.CharField(max_length=50)
 	data = models.CharField(max_length=200, blank=True)
-	order = models.IntegerField(default=0)
+	order = models.IntegerField(default=1000)
 	duedate = models.DateTimeField(null=True, blank=True)
 	done = models.IntegerField(default=0) # 0 = to do / 1 = completed
 	impediment = models.IntegerField(default=0) # 0 = No / 1 = Yes
-	assignees = models.ManyToManyField(User, related_name='assignees')	
+	assignees = models.ManyToManyField(User, related_name='assignees',blank=True)	
 
 	created_at = models.DateTimeField(auto_now_add=True)
 
