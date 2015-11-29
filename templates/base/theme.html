@@ -17,11 +17,9 @@
 
 	<title>Zoomi</title>
 
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
-<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
+{% block css_js %}
 
-<!-- TEST IF WE NEED THE CSS BELOW -->
 	<!-- CSS -->
 	<link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet" media="screen">
 	<link href="{% static "css/font-awesome.min.css" %}" rel="stylesheet" media="screen">
@@ -32,11 +30,11 @@
 	<link href="{% static "css/style.css" %}" rel="stylesheet" media="screen">
     
     <script src="{% static "js/modernizr.custom.js" %}"></script>
-    
-<!--     Dashboard theme
-	<script src="{% static "js/chart.js" %}"></script>
-	<link href="{% static "css/toolkit-light.css" %}" rel="stylesheet">
- -->
+
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>    
+
+{% endblock %}
 
 </head>
 
@@ -53,6 +51,7 @@
 </script>
 
 <body>
+
 
 {% block animation %}
 {% if user.is_authenticated == False %}
@@ -89,6 +88,7 @@
 
 	<!-- Navigation start -->
 
+{% block navigation %}
 	<header class="header">
 
 		<nav class="navbar navbar-custom" role="navigation">
@@ -105,7 +105,7 @@
 					<a class="navbar-brand" href="/">Zoomi</a>
 				</div>
 
-				<div class="collapse navbar-collapse" id="custom-collapse">
+				<div class="collapse navbar-collapse" id="custom-collapse" data-role="navbar">
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="/">Home</a></li>
 <!--
@@ -138,6 +138,8 @@
 		</nav>
 
 	</header>
+
+{% endblock %}
 
 	<!-- Navigation end -->
 {% block content %}
@@ -440,6 +442,8 @@ By filling this form you will also be added to our MailChimp distribution list. 
 
 	<!-- Footer start -->
 
+{% block footer %}
+
 	<footer id="footer">
 		<div class="container">
 			<div class="row">
@@ -490,6 +494,7 @@ By filling this form you will also be added to our MailChimp distribution list. 
     <script src="{% static "js/waypoints.min.js" %}"></script>
     <script src="{% static "js/jquery.cbpQTRotator.js" %}"></script>
 	<script src="{% static "js/custom.js" %}"></script>
+{% endblock %}
 
 </body>
 </html>

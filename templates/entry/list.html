@@ -1,9 +1,60 @@
 {% extends "base/theme.html" %}
 
+{% block css_js %}
+
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+	<!-- Ajax Form submission 
+	http://www.abidibo.net/blog/2014/05/26/how-implement-modal-popup-django-forms-bootstrap/
+	-->
+	<script src="http://malsup.github.com/jquery.form.js"></script> 
+
+
+{% endblock %}
+
+	<div data-role="page" class="jqm-demos" data-quicklinks="true">
+
+{% block navigation %}
+<div data-role="header">
+		<h1>Welcome to Zoomi</h1>
+<!-- 		<a href="index.html" data-icon="gear" class="ui-btn-right">Options</a> -->
+	<div data-role="navbar" data-iconpos="right">
+		<ul>
+		    <li><a href="a.html" class="ui-btn-active" data-icon="star">Your List</a></li>
+		    <li><a href="c.html" data-icon="grid">Your Theme</a></li>
+		    <li><a href="c.html" data-icon="gear">Options</a></li>
+		</ul>
+	</div>
+</div>
+{% endblock %}
+
 {% block animation %}
 {% endblock %}
 
 
 {% block content %}
 
+		<ul data-role="listview" data-filter="true"  data-split-icon="gear" data-split-theme="a" data-filter-placeholder="Search an action ..." data-inset="true">
+
+		    {% for objects in object_list %}
+		    	{% include 'entry/details.html' %}
+		    {% endfor %}
+
+		</ul>
+
+{% endblock %}
+	</div>
+
+{% block footer %}
 {% endblock %}

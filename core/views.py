@@ -83,7 +83,7 @@ class EntryUpdateView(UpdateView):
 class EntryModalUpdateView(UpdateView):
 	model = coremodels.Entry
 #	form_class = ItemForm
-	template_name = 'modal/form.html'
+	template_name = 'v2/modal/form.html'
 	fields = ['name','duedate','assignees'] # the fields on the edit page
 	context_object_name = 'entry'
 
@@ -100,7 +100,7 @@ class EntryModalUpdateView(UpdateView):
 
 class ListAppend(ListAppendView):
 	model = coremodels.Entry
-	template_name = 'entry/listcreate.html'
+	template_name = 'v2/entry/listcreate.html'
 #	fields = ['name'] # "__all__" no longer required as defined in the models
 
 	def get_queryset(self):

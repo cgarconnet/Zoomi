@@ -1,3 +1,7 @@
+To test for v3
+http://www.sitepoint.com/10-jquery-mobile-device-plugins/
+
+
 Installation
 - Upgrade Wheel en 0.26 sur le mac
 
