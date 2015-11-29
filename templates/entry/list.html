@@ -27,13 +27,13 @@
 <div data-role="page" data-quicklinks="true">
 
 	{% block navigation %}
-	<div data-role="header">
+	<div data-role="header" data-position="fixed">
 			<h1>Welcome to Zoomi</h1>
 	<!-- 		<a href="index.html" data-icon="gear" class="ui-btn-right">Options</a> -->
 		<div data-role="navbar" data-iconpos="right">
 			<ul>
-			    <li><a href="a.html" class="ui-btn-active" data-icon="star">Your List</a></li>
-			    <li><a href="c.html" data-icon="grid">Your Theme</a></li>
+			    <li><a href="a.html" class="ui-btn-active" data-icon="star">List</a></li>
+			    <li><a href="c.html" data-icon="grid">Theme</a></li>
 			    <li><a href="c.html" data-icon="gear">Options</a></li>
 			</ul>
 		</div>
@@ -45,16 +45,16 @@
 
 
 	{% block content %}
-
 			<ul data-role="listview" data-filter="true"  data-split-icon="gear" data-split-theme="a" data-filter-placeholder="Search an action ..." data-inset="true">
-
 			    {% for objects in object_list %}
 			    	{% include 'entry/details.html' %}
 			    {% endfor %}
 
 			</ul>
 
+<div data-role="footer" data-position="fixed">
 	    	{% include 'entry/create.html' %}
+</div>
 
 	{% endblock %}
 </div>
