@@ -73,11 +73,6 @@ class EntryCreateForm(ModelForm):
 #		self.fields['customer'].queryset = coremodels.Customer.objects.filter(user=current_user)
 #		self.fields['business'].queryset = coremodels.Business.objects.filter(user=current_user)
 
-class EntryForm(ModelForm): # Seams not required
-	class Meta:
-		model = Entry
-#		fields = '__all__'  Define exclude instead
-		exclude = ['user']
 
 class Theme(models.Model):
 # il appartient à un user

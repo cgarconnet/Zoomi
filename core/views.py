@@ -19,26 +19,28 @@ import core.models as coremodels # we import our models
 from core.models import ListAppendView
 	
 # Create your views here.
+# v1 views
+class LegacyHomePageView(TemplateView):
+		template_name = "v1/index.html"
 
-class LandingView(TemplateView):
-		template_name = "index.html"
 
+# v2 views (to be deleted once v3 is fully tested)
 class EntryRefreshView(DetailView):
 	model = coremodels.Entry
-	template_name = "modal/entry.html"
+	template_name = "v2/modal/entry.html"
 	context_object_name = 'entry'
 
 
 class ModalView(ListView):
 	model = coremodels.Entry
-	template_name = "modal/list.html"
+	template_name = "v2/modal/list.html"
 
 	def get_queryset(self):
 		# return the review object for the current user and the current location
 		return coremodels.Entry.objects.filter(user=self.request.user).order_by('order')
 
 class PopupView(TemplateView):
-		template_name = "modal/modal.html"
+		template_name = "v2/modal/modal.html"
 
 def index(request):
 
@@ -61,19 +63,19 @@ def index(request):
 
 	context = {'entry_list1': entry_list1, 'entry_list2': entry_list2}
 
-	return render_to_response('entry/index.html', context, context_instance=RequestContext(request))
+	return render_to_response('v2/entry/index.html', context, context_instance=RequestContext(request))
 
 def detail(request, entry_id):
 	try:
 		entry = coremodels.Entry.objects.get(pk=entry_id)
 	except Entry.DoesNotExist:
 		raise Http404
-	return render_to_response('entry/detail.html', {'entry': entry})
+	return render_to_response('v2/entry/detail.html', {'entry': entry})
 
 class EntryUpdateView(UpdateView):
 	model = coremodels.Entry
 #	model = coremodels.Event # by just changing the model here, I can have access to the right form edit template
-	template_name = 'base/form.html'
+	template_name = 'v2/base/form.html'
 	# # fields ="__all__" this is when we want all fields, but in this case, we don't want the user nor the Location Id
 	fields = ['name','duedate','assignees'] # the fields on the edit page
 
@@ -109,3 +111,20 @@ class ListAppend(ListAppendView):
 	# this feature is used between submission of the user and sending these data to the database
 		form.instance.user = self.request.user
 		return super(ListAppend, self).form_valid(form)
+
+
+# v3 views
+class EntryListAppendView(ListAppendView):
+	model = coremodels.Entry
+	template_name = 'entry/list.html'
+#	fields = ['name'] # "__all__" no longer required as defined in the models
+
+	def get_queryset(self):
+		# return the review object for the current user and the current location
+		return coremodels.Entry.objects.filter(user=self.request.user).order_by('order')
+
+	def form_valid(self, form):
+	# this feature is used between submission of the user and sending these data to the database
+		form.instance.user = self.request.user
+		return super(ListAppend, self).form_valid(form)
+
