@@ -1,0 +1,495 @@
+{% load staticfiles %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="You saw an interesting job position and you don't want to miss it. Maximize your chances by using our services before applying">
+	<meta name="author" content="">
+	<!-- Image for LinkedIn and Facebook -->
+	<meta property="og:title" content="Prepare Your Interviews" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="http://interviews.garconnet.ch" />
+	<meta property="og:image" content="http://interviews.garconnet.ch/static/images/cover_light.jpg" />
+	<meta property="og:description" content="You saw an interesting job position and you don't want to miss it. Maximize your chances by using our services before applying">
+
+
+	<title>Zoomi</title>
+
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+
+<!-- TEST IF WE NEED THE CSS BELOW -->
+	<!-- CSS -->
+	<link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet" media="screen">
+	<link href="{% static "css/font-awesome.min.css" %}" rel="stylesheet" media="screen">
+	<link href="{% static "css/simple-line-icons.css" %}" rel="stylesheet" media="screen">
+	<link href="{% static "css/animate.css" %}" rel="stylesheet">
+
+	<!-- Custom styles CSS -->
+	<link href="{% static "css/style.css" %}" rel="stylesheet" media="screen">
+    
+    <script src="{% static "js/modernizr.custom.js" %}"></script>
+    
+<!--     Dashboard theme
+	<script src="{% static "js/chart.js" %}"></script>
+	<link href="{% static "css/toolkit-light.css" %}" rel="stylesheet">
+ -->
+
+</head>
+
+<!-- Metrics for Google Stats -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  // ga('create', 'UA-68624675-1', 'auto');
+  // ga('send', 'pageview');
+
+</script>
+
+<body>
+
+{% block animation %}
+{% if user.is_authenticated == False %}
+
+	<!-- Preloader -->
+
+	<div id="preloader">
+		<div id="status"></div>
+	</div>
+
+	<!-- Home start -->
+
+	<section id="home" class="pfblock-image screen-height">
+        <div class="home-overlay"></div>
+		<div class="intro">
+			<div class="start">Find a new way to</div>
+			<h1>VISUALIZE YOUR CUSTOMERS RELATIONSHIPS</h1>
+			<div class="start">with our CReaM solution</div>
+		</div>
+
+        <a href="#services">
+		<div class="scroll-down">
+            <span>
+                <i class="fa fa-angle-down fa-2x"></i>
+            </span>
+		</div>
+        </a>
+
+	</section>
+{% endif %}
+{% endblock %}
+
+	<!-- Home end -->
+
+	<!-- Navigation start -->
+
+	<header class="header">
+
+		<nav class="navbar navbar-custom" role="navigation">
+
+			<div class="container">
+
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#custom-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="/">Zoomi</a>
+				</div>
+
+				<div class="collapse navbar-collapse" id="custom-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="/">Home</a></li>
+<!--
+						<li><a href="#services">Services</a></li>
+	 	                <li><a href="#portfolio">Works</a></li>
+                        <li><a href="#skills">Skills</a></li> -->
+
+						{% if user.is_authenticated %}
+						<li>
+						    <a class="page-scroll" href="/event">Events</a>
+						</li>
+						<li>
+						    <a class="page-scroll" href="/business">Businesses</a>
+						</li>
+						<li>
+						    <a class="page-scroll" href="/logout">Logout</a>
+						</li>
+						{% else %}
+						<li>
+						    <a class="page-scroll" href="/entrance">Log in</a>
+						</li>
+						{% endif %}
+<!-- 						<li><a href="#testimonials">Testimonials</a></li> 
+						<li><a href="#contact">Contact</a></li>
+ -->					</ul>
+				</div>
+
+			</div><!-- .container -->
+
+		</nav>
+
+	</header>
+
+	<!-- Navigation end -->
+{% block content %}
+
+    <!-- Services start -->
+
+	<section id="services" class="pfblock pfblock-gray">
+		<div class="container">
+			<div class="row">
+
+				<div class="col-sm-6 col-sm-offset-3">
+
+					<div class="pfblock-header wow fadeInUp">
+						<h2 class="pfblock-title">We can help you</h2>
+						<div class="pfblock-line"></div>
+						<div class="pfblock-subtitle">
+							to visualize your customers relationships
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="row">
+
+				<div class="col-sm-3">
+
+					<div class="iconbox wow slideInRight">
+						<div class="iconbox-icon">
+							<span class="icon-plus"></span>
+						</div>
+						<div class="iconbox-text">
+							<h3 class="iconbox-title">List</h3>
+							<div class="iconbox-desc">
+								You record your businesses, customers and events
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="col-sm-3">
+
+					<div class="iconbox wow slideInLeft">
+						<div class="iconbox-icon">
+							<span class="icon-magic-wand"></span>
+						</div>
+						<div class="iconbox-text">
+							<h3 class="iconbox-title">Vizualize</h3>
+							<div class="iconbox-desc">
+								You see portions of prospects vs active customers 
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="col-sm-3">
+
+					<div class="iconbox wow slideInRight">
+						<div class="iconbox-icon">
+							<span class="icon-badge"></span>
+						</div>
+						<div class="iconbox-text">
+							<h3 class="iconbox-title">Evaluate</h3>
+							<div class="iconbox-desc">
+								The impact of your activities on prospects transformation
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="col-sm-3">
+
+					<div class="iconbox wow slideInLeft">
+						<div class="iconbox-icon">
+							<span class="icon-puzzle"></span>
+						</div>
+						<div class="iconbox-text">
+							<h3 class="iconbox-title">Grow</h3>
+							<div class="iconbox-desc">
+								You identify which customers you should pay attention to
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div><!-- .row -->
+		</div><!-- .container -->
+	</section>
+
+
+	<!-- Services end -->
+    
+	<!-- Portfolio start -->
+	<!-- Portfolio end -->
+    
+    <!-- Skills start -->  
+    <!-- Skills end -->
+
+	<!-- CallToAction start -->
+	<section class="calltoaction">
+		<div class="container">
+
+			<div class="row">
+
+				<div class="col-md-12 col-lg-12">
+					<h2 class="wow slideInRight" data-wow-delay=".1s">Eager TO START?</h2>
+					<div class="calltoaction-decription wow slideInRight" data-wow-delay=".2s">
+						Let's create your first Business, Customers and then Events.
+					</div>
+				</div>
+
+				<div class="col-md-12 col-lg-12 calltoaction-btn wow slideInRight" data-wow-delay=".3s">
+					<a href="/business/create" class="btn btn-lg">Create a Business</a>
+				</div>
+
+			</div><!-- .row -->
+		</div><!-- .container -->
+	</section>
+
+	<!-- CallToAction end -->
+
+
+	<!-- Testimonials start -->
+	<section id="testimonials" class="pfblock pfblock-gray" style="display:none">
+
+		<div class="container">
+            
+            <div class="row">
+
+				<div class="col-sm-6 col-sm-offset-3">
+
+					<div class="pfblock-header wow fadeInUp">
+						<h2 class="pfblock-title">What our clients say</h2>
+						<div class="pfblock-line"></div>
+						<div class="pfblock-subtitle">
+							Who never try get nothing.
+						</div>
+					</div>
+
+				</div>
+
+			</div><!-- .row -->
+
+            <div class="row">
+
+			<div id="cbp-qtrotator" class="cbp-qtrotator">
+                <div class="cbp-qtcontent">
+                    <img src="{% static "images/client-1.jpg" %}" alt="client-1" />
+                    <blockquote>
+                      <p>I was confused with 2 similar yet different career opportunities in hand. Christophe brainstormed me and made me think in depth about [...] and it slowly came to me.</p>
+                      <footer>Anil B.</footer>
+                    </blockquote>
+                </div>
+                <div class="cbp-qtcontent">
+                    <img src="{% static "images/client-2.jpg" %}" alt="client-2" />
+                    <blockquote>
+                      <p>I have never met Christophe in person; yet he has laid a solid impression on my thinking and perception on my own career choices, ambitions and how I look at it [...] He is very clear, calm-minded and helpful person.</p>
+                      <footer>Eva R.</footer>
+                    </blockquote>
+                </div>
+
+            </div>		
+
+            </div><!-- .row -->
+
+					
+		</div><!-- .row -->
+	</section>
+
+	<!-- Testimonial end -->
+
+
+	<!-- Contact start -->
+
+	<!-- Chris changes
+
+
+	 -->
+
+	<section id="contact" class="pfblock" style="display:none">
+		<div class="container">
+			<div class="row">
+
+				<div class="col-sm-6 col-sm-offset-3">
+
+					<div class="pfblock-header">
+						<h2 class="pfblock-title">Get a gift</h2>
+						<div class="pfblock-line"></div>
+						<div class="pfblock-subtitle">
+							Tell us where you are now and how we can help you. As a new guest you will receive a tool to start your questionning path.
+						</div>
+					</div>
+
+				</div>
+
+			</div><!-- .row -->
+
+			<div class="row">
+
+				<div class="col-sm-6 col-sm-offset-3">
+
+<!-- 					<form id="contact-form" role="form">
+						<div class="ajax-hidden">
+							<div class="form-group wow fadeInUp">
+								<label class="sr-only" for="c_name">Name</label>
+								<input type="text" id="c_name" class="form-control" name="c_name" placeholder="Name">
+							</div>
+
+							<div class="form-group wow fadeInUp" data-wow-delay=".1s">
+								<label class="sr-only" for="c_email">Email</label>
+								<input type="email" id="c_email" class="form-control" name="c_email" placeholder="E-mail">
+							</div>
+
+							<div class="form-group wow fadeInUp" data-wow-delay=".2s">
+								<textarea class="form-control" id="c_message" name="c_message" rows="7" placeholder="Message"></textarea>
+							</div>
+
+							<button type="submit" class="btn btn-lg btn-block wow fadeInUp" data-wow-delay=".3s">Get my gift</button>
+						</div>
+						<div class="ajax-response"></div>
+					</form> -->
+
+<!-- Begin MailChimp Signup Form -->
+<link href="//cdn-images.mailchimp.com/embedcode/classic-081711.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+	#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+	/* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+	   We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+</style>
+<div id="mc_embed_signup">
+<form action="//garconnet.us11.list-manage.com/subscribe/post?u=4cf1c30bf5360aad615028998&amp;id=f1c51f4d91" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+    <div id="mc_embed_signup_scroll">
+	
+<div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+<!-- <div class="mc-field-group">
+ -->
+<div class="mc-field-group wow fadeInUp">
+	<label for="mce-FNAME">First Name  <span class="asterisk">*</span>
+</label>
+	<input type="text" value="" name="FNAME" class="required" id="mce-FNAME">
+</div>
+
+<!-- <div class="mc-field-group"> -->
+<div class="mc-field-group wow fadeInUp" data-wow-delay=".1s">
+	<label for="mce-LNAME">Last Name  <span class="asterisk">*</span>
+</label>
+	<input type="text" value="" name="LNAME" class="required" id="mce-LNAME">
+</div>
+
+<!-- <div class="mc-field-group"> -->
+<div class="mc-field-group wow fadeInUp" data-wow-delay=".2s">
+	<label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
+</label>
+	<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+</div>
+
+<!-- <div class="mc-field-group"> -->
+<div class="mc-field-group wow fadeInUp" data-wow-delay=".3s">
+	<label for="mce-MMERGE3">Message </label>
+	<textarea class="form-control" id="mce-MMERGE3" name="MMERGE3" rows="4" placeholder=""></textarea>
+
+<!-- 	<input type="text" value="" name="MMERGE3" class="" id="mce-MMERGE3">
+ -->
+
+</div>
+<div class="wow fadeInUp" data-wow-delay=".4s">
+By filling this form you will also be added to our MailChimp distribution list. As we value our customers, you can opt-out from it at any time and we will never share your information with any third party.<p>
+</div>
+	<div id="mce-responses" class="clear">
+		<div class="response" id="mce-error-response" style="display:none"></div>
+		<div class="response" id="mce-success-response" style="display:none"></div>
+	</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+    <div style="position: absolute; left: -5000px;"><input type="text" name="b_4cf1c30bf5360aad615028998_f1c51f4d91" tabindex="-1" value=""></div>
+<div class="wow fadeInUp" data-wow-delay=".5s">
+    <div class="clear"><input type="submit" value="Subscribe and get a gift" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+    </div>
+</div>
+</form>
+</div>
+<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[0]='EMAIL';ftypes[0]='email';fnames[3]='MMERGE3';ftypes[3]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+<!--End mc_embed_signup-->
+
+				</div>
+
+			</div><!-- .row -->
+		</div><!-- .container -->
+	</section>
+
+	<!-- Contact end -->
+
+{% endblock %}
+
+{% block pagination %}
+{% endblock %}
+
+	<!-- Footer start -->
+
+	<footer id="footer">
+		<div class="container">
+			<div class="row">
+
+				<div class="col-sm-12">
+
+					<ul class="social-links">
+						<li><a href="index.html#" class="wow fadeInUp"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="index.html#" class="wow fadeInUp" data-wow-delay=".1s"><i class="fa fa-twitter"></i></a></li>
+						<li><a href="index.html#" class="wow fadeInUp" data-wow-delay=".2s"><i class="fa fa-google-plus"></i></a></li>
+						<li><a href="index.html#" class="wow fadeInUp" data-wow-delay=".4s"><i class="fa fa-pinterest"></i></a></li>
+						<li><a href="index.html#" class="wow fadeInUp" data-wow-delay=".5s"><i class="fa fa-envelope"></i></a></li>
+					</ul>
+
+					<p class="heart">
+                        Made with <span class="fa fa-heart fa-2x animated pulse"></span> in Paris
+                    </p>
+                    <p class="copyright">
+                        © 2015 <a href="http://conseil.garconnet.ch" target=_new >Conseils à la carte</a> | Images: <a href="https://unsplash.com/">Unsplash</a> & <a href="http://zoomwalls.com/">Zoomwalls</a>
+					</p>
+
+				</div>
+
+			</div><!-- .row -->
+		</div><!-- .container -->
+	</footer>
+
+	<!-- Footer end -->
+
+	<!-- Scroll to top -->
+
+	<div class="scroll-up">
+		<a href="#home"><i class="fa fa-angle-up"></i></a>
+	</div>
+    
+    <!-- Scroll to top end-->
+
+	<!-- Javascript files -->
+
+	<script src="{% static "js/jquery-1.11.1.min.js" %}"></script>
+	<script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
+	<script src="{% static "js/jquery.parallax-1.1.3.js" %}"></script>
+	<script src="{% static "js/imagesloaded.pkgd.js" %}"></script>
+	<script src="{% static "js/jquery.sticky.js" %}"></script>
+	<script src="{% static "js/smoothscroll.js" %}"></script>
+	<script src="{% static "js/wow.min.js" %}"></script>
+    <script src="{% static "js/jquery.easypiechart.js" %}"></script>
+    <script src="{% static "js/waypoints.min.js" %}"></script>
+    <script src="{% static "js/jquery.cbpQTRotator.js" %}"></script>
+	<script src="{% static "js/custom.js" %}"></script>
+
+</body>
+</html>
