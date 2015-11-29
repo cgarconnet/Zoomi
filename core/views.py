@@ -126,5 +126,5 @@ class EntryListAppendView(ListAppendView):
 	def form_valid(self, form):
 	# this feature is used between submission of the user and sending these data to the database
 		form.instance.user = self.request.user
-		return super(ListAppend, self).form_valid(form)
+		return super(EntryListAppendView, self).form_valid(form)
 

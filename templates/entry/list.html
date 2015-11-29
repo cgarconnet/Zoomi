@@ -1,4 +1,5 @@
 {% extends "base/theme.html" %}
+{% load widget_tweaks %}
 
 {% block css_js %}
 
@@ -23,38 +24,40 @@
 
 {% endblock %}
 
-	<div data-role="page" class="jqm-demos" data-quicklinks="true">
+<div data-role="page" data-quicklinks="true">
 
-{% block navigation %}
-<div data-role="header">
-		<h1>Welcome to Zoomi</h1>
-<!-- 		<a href="index.html" data-icon="gear" class="ui-btn-right">Options</a> -->
-	<div data-role="navbar" data-iconpos="right">
-		<ul>
-		    <li><a href="a.html" class="ui-btn-active" data-icon="star">Your List</a></li>
-		    <li><a href="c.html" data-icon="grid">Your Theme</a></li>
-		    <li><a href="c.html" data-icon="gear">Options</a></li>
-		</ul>
+	{% block navigation %}
+	<div data-role="header">
+			<h1>Welcome to Zoomi</h1>
+	<!-- 		<a href="index.html" data-icon="gear" class="ui-btn-right">Options</a> -->
+		<div data-role="navbar" data-iconpos="right">
+			<ul>
+			    <li><a href="a.html" class="ui-btn-active" data-icon="star">Your List</a></li>
+			    <li><a href="c.html" data-icon="grid">Your Theme</a></li>
+			    <li><a href="c.html" data-icon="gear">Options</a></li>
+			</ul>
+		</div>
 	</div>
+	{% endblock %}
+
+	{% block animation %}
+	{% endblock %}
+
+
+	{% block content %}
+
+			<ul data-role="listview" data-filter="true"  data-split-icon="gear" data-split-theme="a" data-filter-placeholder="Search an action ..." data-inset="true">
+
+			    {% for objects in object_list %}
+			    	{% include 'entry/details.html' %}
+			    {% endfor %}
+
+			</ul>
+
+	    	{% include 'entry/create.html' %}
+
+	{% endblock %}
 </div>
-{% endblock %}
-
-{% block animation %}
-{% endblock %}
-
-
-{% block content %}
-
-		<ul data-role="listview" data-filter="true"  data-split-icon="gear" data-split-theme="a" data-filter-placeholder="Search an action ..." data-inset="true">
-
-		    {% for objects in object_list %}
-		    	{% include 'entry/details.html' %}
-		    {% endfor %}
-
-		</ul>
-
-{% endblock %}
-	</div>
 
 {% block footer %}
 {% endblock %}
