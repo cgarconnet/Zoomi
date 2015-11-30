@@ -82,7 +82,7 @@ class EntryCreateForm(ModelForm):
 #		current_business = kwargs['pk']
 		super(EntryCreateForm, self).__init__(*args, **kwargs)
 		self.fields['name'].label = "What do you need to do today?"
-#		self.fields['name'].widget.attrs['class'] = "col-xs-12 col-md-8"
+		self.fields['name'].widget.attrs['autofocus'] = "on"
 #		self.fields['duedate'].widget.attrs['class'] = "col-xs-6 col-md-4"
 
 
