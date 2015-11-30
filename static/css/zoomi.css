@@ -1,0 +1,11 @@
+.ui-li-aside {
+	top:0 !important;
+}
+
+.todo {
+	color:lightgrey;
+}
+
+.completed {
+	color:black;
+}

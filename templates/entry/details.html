@@ -1,5 +1,6 @@
 
         <a href="#" >
+        	<span class="glyphicon glyphicon-ok entrycheckmark todo"> </span>
         {{ objects }}
         <!-- 
 data-ajax="false"
@@ -7,7 +8,14 @@ data-ajax="false"
         class="ui-btn ui-icon-check ui-btn-icon-left" style="right:30px;" 
 class="ui-icon ui-icon-check" 
     -->
-    <span class="ui-li-aside">Done</span>
+    <span class="ui-li-aside">
+    	<form>
+			<select name="flip-1" id="flip-1" data-role="slider" data-mini="true">
+	    	    <option value="off">RAS</option>
+	        	<option value="on">KO</option>
+	    	</select>
+	    </form>
+    </span>
    </a>
 
 <a href="#" class="options" data-rel="popup" data-to-load="{{ objects.update_modal_entry_url }}" data-position-to="window" data-transition="pop"> </a> 
