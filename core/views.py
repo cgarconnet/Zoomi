@@ -44,28 +44,6 @@ class ModalView(ListView):
 class PopupView(TemplateView):
 		template_name = "v2/modal/modal.html"
 
-def index(request):
-
-	if request.method == 'POST':
-
-		# request.POST['content'] is a query string like 'entry[]=3&entry[]=2&entry[]=1'
-		# convert to a QueryDict so we can do things with it
-		entries = QueryDict(request.POST['content'])
-
-		for index, entry_id in enumerate(entries.getlist('entry[]')):
-			# save index of entry_id as it's new order value
-			entry = coremodels.Entry.objects.get(id=entry_id)
-			entry.order = index
-			print(index)
-			entry.save()
-
-    # split our entries arbitrarily, so we can have two lists on the page...
-	entry_list1 = coremodels.Entry.objects.order_by('order')[:20]
-	entry_list2 = coremodels.Entry.objects.order_by('order')[20:]
-
-	context = {'entry_list1': entry_list1, 'entry_list2': entry_list2}
-
-	return render_to_response('v2/entry/index.html', context, context_instance=RequestContext(request))
 
 def detail(request, entry_id):
 	try:
@@ -115,10 +93,11 @@ class ListAppend(ListAppendView):
 		return super(ListAppend, self).form_valid(form)
 
 
-# v3 views
+# ----- v3 views -----
 class EntryListAppendView(ListAppendView):
 	model = coremodels.Entry
 	template_name = 'entry/list.html'
+	context_object_name = 'entry'
 #	fields = ['name'] # "__all__" no longer required as defined in the models
 
 	def get_queryset(self):
@@ -155,6 +134,32 @@ class EntryRefreshView(DetailView):
 	context_object_name = 'objects'
 
 @csrf_exempt
+def index(request):
+
+	if request.method == 'POST':
+
+		# request.POST['content'] is a query string like 'entry[]=3&entry[]=2&entry[]=1'
+		# convert to a QueryDict so we can do things with it
+		entries = QueryDict(request.POST['content'])
+
+		for index, entry_id in enumerate(entries.getlist('entry[]')):
+			# save index of entry_id as it's new order value
+			entry = coremodels.Entry.objects.get(id=entry_id)
+			entry.order = index
+			print(index)
+			entry.save()
+
+    # split our entries arbitrarily, so we can have two lists on the page...
+
+	context = coremodels.Entry.objects.order_by('order')
+
+#	entry_list1 = coremodels.Entry.objects.order_by('order')[:20]
+#	entry_list2 = coremodels.Entry.objects.order_by('order')[20:]
+#	context = {'entry_list1': entry_list1, 'entry_list2': entry_list2}
+
+	return HttpResponse('')
+
+@csrf_exempt
 def EntryAjaxUpdateView(request, pk):
 	# source: http://stackoverflow.com/questions/25135155/how-to-change-model-variable-by-onclick-function-used-in-template-asynchronously?answertab=active#tab-top
 #    JSON_field=request.POST.get("field")
@@ -167,4 +172,5 @@ def EntryAjaxUpdateView(request, pk):
 #    return HttpResponse(resp, content_type="application/json")
 	# I should now refresh the value in the DOM
     return HttpResponse(None, content_type="application/json")
+
 

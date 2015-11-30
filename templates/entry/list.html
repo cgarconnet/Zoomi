@@ -39,8 +39,30 @@
 			$("#edit_entry").popup("open");
 // ???			$(this).parent().toggleClass("state_on");
 		})
+	
+		$(function() {
+	    $( "#todo_list" ).sortable({
+	      placeholder: "ui-state-highlight",
+	      stop: function (event, ui) {
+	          $('#todo_list').listview('refresh');
 
-	})
+	      // then we post the context to save the sorting
+	        var serial = $('#todo_list').sortable('serialize');
+	        console.log(serial);
+	        $.ajax({
+//	          url: "{{ index.get_index_url }}",
+	          url: "{% url 'index' %}",
+	          type: "post",
+	          data: { 'content': serial, 'csrfmiddlewaretoken' : '{{ csrf_token }}' } 
+	        });
+
+	      }
+	    });
+	    $( "#todo_list" ).disableSelection();
+		});
+
+});
+
 </script>
 
 

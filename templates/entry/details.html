@@ -1,7 +1,7 @@
 
         <a href="#" >
         	<span class="glyphicon glyphicon-ok entrycheckmark {% if objects.done == 1 %}completed{% else %}todo{% endif %}" onclick="EntryComplete({{ objects.id }})"> </span>
-        {{ objects }}
+        {{ objects.order }} / {{ objects.id }} / {{ objects }}
         <!-- 
 data-ajax="false"
 

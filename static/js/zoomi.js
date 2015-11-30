@@ -62,12 +62,4 @@ $(document).ready(function () {
   
 */
 
-$(function() {
-    $( "#todo_list" ).sortable({
-      placeholder: "ui-state-highlight",
-      stop: function (event, ui) {
-          $('#todo_list').listview('refresh');
-      }
-    });
-    $( "#todo_list" ).disableSelection();
-});
+

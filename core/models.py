@@ -55,6 +55,13 @@ class Entry(models.Model):
 # for v3
 		return reverse (viewname="entrylist") #, args=[self.id]) 3 before index, now listappend because after adding we want to load again that page
 
+	def get_index_url(self):
+		# return "location/"+str(self.id)+"/detail" # not the best way to do it
+		# instead use the core.urlresolvers
+# v2		return reverse (viewname="listappend") #, args=[self.id]) 3 before index, now listappend because after adding we want to load again that page
+# for v3
+		return reverse (viewname="index") #, args=[self.id]) 3 before index, now listappend because after adding we want to load again that page
+
 	def refresh_entry_url(self):
 # v2		return reverse (viewname="detailrefresh", args=[self.id]) #, args=[self.id]) 3 before index, now listappend because after adding we want to load again that page
 # for v3

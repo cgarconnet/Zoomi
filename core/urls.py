@@ -12,7 +12,7 @@ urlpatterns = patterns('',
 # to be deleted once v3 is fully tested
 	url(r'^modal/$', coreviews.ModalView.as_view()),
 	url(r'^popup/$', coreviews.PopupView.as_view()),
-	url(r'^entries/$', coreviews.index, name='index'),
+#	url(r'^entries/$', coreviews.index, name='index'),
 	url(r'^listcreate/$', coreviews.ListAppend.as_view(), name='listappend'),	
 	# eg: /entries/5/
 #	url(r'^entries/(?P<entry_id>\d+)/$', coreviews.detail, name='detail'),	
@@ -25,6 +25,5 @@ urlpatterns = patterns('',
 	url(r'^entries/modal/(?P<pk>\d+)/$', coreviews.EntryModalUpdateView.as_view(), name='entrymodal'),	
 	url(r'^entries/refresh/(?P<pk>\d+)/$', coreviews.EntryRefreshView.as_view(), name='entryrefresh'),
 	url(r'^entries/update/(?P<pk>\d+)/$', coreviews.EntryAjaxUpdateView, name='entryupdate'),	
-
-
+	url(r'^entries/index$', coreviews.index, name='index'),
 )
