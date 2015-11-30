@@ -6,6 +6,8 @@ from django.contrib import messages
 
 from django.template.loader import render_to_string #for the modal edit
 
+from django.views.decorators.csrf import csrf_exempt
+
 # Create your views here.
 
 
@@ -151,4 +153,18 @@ class EntryRefreshView(DetailView):
 	model = coremodels.Entry
 	template_name = "entry/details.html"
 	context_object_name = 'objects'
+
+@csrf_exempt
+def EntryAjaxUpdateView(request, pk):
+	# source: http://stackoverflow.com/questions/25135155/how-to-change-model-variable-by-onclick-function-used-in-template-asynchronously?answertab=active#tab-top
+#    JSON_field=request.POST.get("field")
+    JSON_value=request.POST.get("value")
+    b=coremodels.Entry.objects.get(id=pk) #str(value))
+    #delete change statement
+    b.done = (1 if b.done == 0 else 0) # int(JSON_value) #10
+    b.save()
+    # resp=json.dumps(b)
+#    return HttpResponse(resp, content_type="application/json")
+	# I should now refresh the value in the DOM
+    return HttpResponse(None, content_type="application/json")
 

@@ -24,5 +24,7 @@ urlpatterns = patterns('',
 	url(r'^$', coreviews.EntryListAppendView.as_view(), name='entrylist'),	
 	url(r'^entries/modal/(?P<pk>\d+)/$', coreviews.EntryModalUpdateView.as_view(), name='entrymodal'),	
 	url(r'^entries/refresh/(?P<pk>\d+)/$', coreviews.EntryRefreshView.as_view(), name='entryrefresh'),
+	url(r'^entries/update/(?P<pk>\d+)/$', coreviews.EntryAjaxUpdateView, name='entryupdate'),	
+
 
 )
