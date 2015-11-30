@@ -9,7 +9,7 @@ loading entry/modal.html
 <div class="row">
 {% if form %}
 <div class="col-md-12">
-<form action="" method="post" enctype="multipart/form-data">{% csrf_token %}{{ form.media }}
+<form id="entry_modal_form" action="{{ entry.update_modal_entry_url }}" method="post" enctype="multipart/form-data">{% csrf_token %}{{ form.media }}
 {% for field in form %}
 <div class="form-group warning">
 <label for="exampleInputFile">{{ field.label }}</label>
@@ -30,3 +30,28 @@ loading entry/modal.html
 </div>
 </section>
 <p>
+
+ <script>
+// to submit the form thru Ajax
+//	console.log({{ entry.update_modal_entry_url }});
+	var form_options = {
+		target: '#edit_entry', success: function() { 
+
+// html for static replacement
+//			$("#entry_1").html('<li data-chris="{{ entry.update_modal_entry_url }}" id="entry_{{ entry.id }}" class="ui-state-default">MAJ via Ajax</li>'); //$(this).attr(URL_GET_DETAILS));
+
+		// we load the entry/details.html page
+		$("#entry_{{ entry.id }}").load('{{ entry.refresh_entry_url }}');
+
+		setTimeout(function () {
+		// then we refresh so it is well formatted like mobile style
+		$("#entry_{{ entry.id }}").parent().listview("refresh");
+			// $("#todo_list").listview().listview("refresh");
+		}, 10);
+
+		}
+	}
+	$('#entry_modal_form').ajaxForm(form_options);
+
+
+	</script>

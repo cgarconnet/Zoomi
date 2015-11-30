@@ -19,7 +19,7 @@ class Entry(models.Model):
 	name = models.CharField(max_length=50)
 	data = models.CharField(max_length=200, blank=True)
 	order = models.IntegerField(default=1000)
-	duedate = models.DateTimeField(null=True, blank=True)
+	duedate = models.DateField(null=True, blank=True)
 	done = models.IntegerField(default=0) # 0 = to do / 1 = completed
 	impediment = models.IntegerField(default=0) # 0 = No / 1 = Yes
 	assignees = models.ManyToManyField(User, related_name='assignees',blank=True)	
@@ -55,10 +55,11 @@ class Entry(models.Model):
 # for v3
 		return reverse (viewname="entrylist") #, args=[self.id]) 3 before index, now listappend because after adding we want to load again that page
 
-
 	def refresh_entry_url(self):
-		return reverse (viewname="detailrefresh", args=[self.id]) #, args=[self.id]) 3 before index, now listappend because after adding we want to load again that page
-		
+# v2		return reverse (viewname="detailrefresh", args=[self.id]) #, args=[self.id]) 3 before index, now listappend because after adding we want to load again that page
+# for v3
+		return reverse (viewname="entryrefresh", args=[self.id]) #, args=[self.id]) 3 before index, now listappend because after adding we want to load again that page
+
 
 class EntryCreateForm(ModelForm):
 

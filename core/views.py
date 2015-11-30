@@ -25,7 +25,7 @@ class LegacyHomePageView(TemplateView):
 
 
 # v2 views (to be deleted once v3 is fully tested)
-class EntryRefreshView(DetailView):
+class EntryRefreshViewv2(DetailView):
 	model = coremodels.Entry
 	template_name = "v2/modal/entry.html"
 	context_object_name = 'entry'
@@ -146,3 +146,9 @@ class EntryModalUpdateView(UpdateView):
 #		return render_to_response('modal/')
 		return HttpResponse('') # we could return something here
 # #		return HttpResponse(render_to_string('modal/edit_success.html', {'item': item}))
+
+class EntryRefreshView(DetailView):
+	model = coremodels.Entry
+	template_name = "entry/details.html"
+	context_object_name = 'objects'
+

@@ -44,6 +44,7 @@ INSTALLED_APPS = (
     'core',
     'widget_tweaks', # for managing the forms easier
     'sitegate', # to enable the sign-in
+    'datetimewidget',
     'bootstrap3', # required by sitegate
 )
 

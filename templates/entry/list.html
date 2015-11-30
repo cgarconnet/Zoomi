@@ -27,14 +27,12 @@
 	$(document).ready(function () {
 
 		$(document).on("click", ".options", function(){
-//			console.log($(this).attr('data-chris'));
-//			$("#popupLogin").load("/popup");
+//	click on the gear
 			$("#edit_entry").load($(this).attr('data-to-load'));
-
 			$("#edit_entry").popup("open");
-//			$(this).toggleClass("state_on");
-
+// ???			$(this).parent().toggleClass("state_on");
 		})
+
 	})
 </script>
 
@@ -64,9 +62,11 @@
  	{% block content %}
  	<div data-role="content"> 
 <!-- data-split-icon="gear" -->
-			<ul data-role="listview" data-filter="true"  data-split-icon="gear" data-split-theme="a" data-filter-placeholder="Search an action ..." data-inset="true">
+			<ul id="todo_list" data-role="listview" data-filter="true"  data-split-icon="gear" data-split-theme="a" data-filter-placeholder="Search an action ..." data-inset="true">
 			    {% for objects in object_list %}
-			    	{% include 'entry/details.html' %}
+			    	<li id="entry_{{ objects.id }}" data-icon="gear" class="ui-state-default">
+			    		{% include 'entry/details.html' %}
+			    	</li>
 			    {% endfor %}
 
 			</ul>
