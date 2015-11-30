@@ -21,6 +21,23 @@
 	-->
 	<script src="http://malsup.github.com/jquery.form.js"></script> 
 
+<script>
+//	For the Editpopup
+
+	$(document).ready(function () {
+
+		$(document).on("click", ".options", function(){
+//			console.log($(this).attr('data-chris'));
+//			$("#popupLogin").load("/popup");
+			$("#edit_entry").load($(this).attr('data-to-load'));
+
+			$("#edit_entry").popup("open");
+//			$(this).toggleClass("state_on");
+
+		})
+	})
+</script>
+
 
 {% endblock %}
 
@@ -43,8 +60,8 @@
 	{% block animation %}
 	{% endblock %}
 
-
-	{% block content %}
+ 	{% block content %}
+<!-- data-split-icon="gear" -->
 			<ul data-role="listview" data-filter="true"  data-split-icon="gear" data-split-theme="a" data-filter-placeholder="Search an action ..." data-inset="true">
 			    {% for objects in object_list %}
 			    	{% include 'entry/details.html' %}
@@ -55,6 +72,10 @@
 <div data-role="footer" data-position="fixed">
 	    	{% include 'entry/create.html' %}
 </div>
+
+	<div data-role="popup" id="edit_entry" data-theme="a" class="ui-corner-all">
+		<!-- That's for the edit modal popup -->
+	</div>
 
 	{% endblock %}
 </div>
