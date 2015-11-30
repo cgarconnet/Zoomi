@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+/* move to EntryComple(id) sucessful Ajax load */
 		$(document).on("click", ".entrycheckmark", function(){
 			// this is the checkbox as input. So it's parent is required to be checked
 			// completed css will put a line-through as text-decoration
@@ -8,10 +9,12 @@ $(document).ready(function () {
 			$(this).toggleClass("completed");
 
 		});
+
+
 });
 
 
-    function EntryComplete(id)
+    function EntryComplete(this, id)
     {
     //	var points = $("input").val();
         $.ajax({
@@ -20,6 +23,10 @@ $(document).ready(function () {
             data: {
             	'value': 1},
             success: function(response) {
+// do the toggleClass only when load is sucessfull
+//				$(this).toggleClass("todo");
+//				$(this).toggleClass("completed");
+
             },
 
         });
@@ -53,3 +60,4 @@ $(document).ready(function () {
     });
   });
   */
+
