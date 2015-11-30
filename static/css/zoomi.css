@@ -1,11 +1,22 @@
+/* For the slider - no longer used */
 .ui-li-aside {
 	top:0 !important;
 }
 
+/* For the checkmark that could have either todo or completed class */
 .todo {
 	color:lightgrey;
 }
 
 .completed {
 	color:black;
+}
+
+/* To create a container when sorting listview */
+.ui-state-highlight {
+    height: 45px; line-height: 45px;
+    margin: 5px 0;
+    border: 1px solid #FCEFA1;
+    background: #FBF9EE repeat-x scroll 50% 50%;
+    color: #363636;
 }

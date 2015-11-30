@@ -14,7 +14,7 @@ $(document).ready(function () {
 });
 
 
-    function EntryComplete(this, id)
+    function EntryComplete(id)
     {
     //	var points = $("input").val();
         $.ajax({
@@ -52,12 +52,22 @@ $(document).ready(function () {
 // we will have to save it
 /*
   $(document).bind('pageinit', function() {
-    $( "#sortable" ).sortable();
-    $( "#sortable" ).disableSelection();
+    $( "#todo_list" ).sortable();
+    $( "#todo_list" ).disableSelection();
     <!-- Refresh list to the end of sort to have a correct display -->
-    $( "#sortable" ).bind( "sortstop", function(event, ui) {
-      $('#sortable').listview('refresh');
+    $( "#todo_list" ).bind( "sortstop", function(event, ui) {
+      $('#todo_list').listview('refresh');
     });
   });
-  */
+  
+*/
 
+$(function() {
+    $( "#todo_list" ).sortable({
+      placeholder: "ui-state-highlight",
+      stop: function (event, ui) {
+          $('#todo_list').listview('refresh');
+      }
+    });
+    $( "#todo_list" ).disableSelection();
+});
