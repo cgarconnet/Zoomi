@@ -17,11 +17,12 @@ urlpatterns = patterns('',
 	# eg: /entries/5/
 #	url(r'^entries/(?P<entry_id>\d+)/$', coreviews.detail, name='detail'),	
 	url(r'^entries/(?P<pk>\d+)/$', coreviews.EntryUpdateView.as_view(), name='detail'),	
-	url(r'^entriesmodal/(?P<pk>\d+)/$', coreviews.EntryModalUpdateView.as_view(), name='detailmodal'),	
+	url(r'^entriesmodal/(?P<pk>\d+)/$', coreviews.EntryModalUpdateViewv2.as_view(), name='detailmodal'),	
 	url(r'^refresh_entries/(?P<pk>\d+)/$', coreviews.EntryRefreshView.as_view(), name='detailrefresh'),
 
 # Now comes the v 3.0, well better structured
 	url(r'^$', coreviews.EntryListAppendView.as_view(), name='entrylist'),	
+	url(r'^entries/modal/(?P<pk>\d+)/$', coreviews.EntryModalUpdateView.as_view(), name='entrymodal'),	
 
 
 

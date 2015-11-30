@@ -80,7 +80,7 @@ class EntryUpdateView(UpdateView):
 	fields = ['name','duedate','assignees'] # the fields on the edit page
 
 
-class EntryModalUpdateView(UpdateView):
+class EntryModalUpdateViewv2(UpdateView):
 	model = coremodels.Entry
 #	form_class = ItemForm
 	template_name = 'v2/modal/form.html'
@@ -89,7 +89,7 @@ class EntryModalUpdateView(UpdateView):
 
 	def dispatch(self, *args, **kwargs):
 		self.item_id = kwargs['pk']
-		return super(EntryModalUpdateView, self).dispatch(*args, **kwargs)
+		return super(EntryModalUpdateViewv2, self).dispatch(*args, **kwargs)
 
 	def form_valid(self, form):
 		form.save()
@@ -128,3 +128,21 @@ class EntryListAppendView(ListAppendView):
 		form.instance.user = self.request.user
 		return super(EntryListAppendView, self).form_valid(form)
 
+
+class EntryModalUpdateView(UpdateView):
+	model = coremodels.Entry
+#	form_class = ItemForm
+	template_name = 'entry/modal.html' #I will have to customize the fields to make it more simple rather than the current generic form template
+	fields = ['name','duedate','assignees'] # the fields on the edit page
+	context_object_name = 'entry'
+
+	def dispatch(self, *args, **kwargs):
+		self.item_id = kwargs['pk']
+		return super(EntryModalUpdateView, self).dispatch(*args, **kwargs)
+
+	def form_valid(self, form):
+		form.save()
+# 		item = coremodels.Entry.objects.get(id=self.item_id)
+#		return render_to_response('modal/')
+		return HttpResponse('') # we could return something here
+# #		return HttpResponse(render_to_string('modal/edit_success.html', {'item': item}))
