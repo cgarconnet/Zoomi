@@ -1,6 +1,11 @@
-/* For the slider - no longer used */
-.ui-li-aside {
+/* For the slider - no longer used *
 	top:0 !important;
+	*/
+.ui-li-aside {
+
+}
+.overdue {
+	color:red;
 }
 
 /* For the checkmark that could have either todo or completed class */
