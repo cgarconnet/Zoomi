@@ -1,6 +1,7 @@
 # coding: utf8
 from django.db import models
 from django.forms import ModelForm
+from django import forms
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from django.db.models import Avg
@@ -81,10 +82,8 @@ class EntryCreateForm(ModelForm):
 #		current_business = kwargs['pk']
 		super(EntryCreateForm, self).__init__(*args, **kwargs)
 		self.fields['name'].label = "What do you need to do today?"
-		#self.fields['customer'].queryset = 
-#		self.fields['customer'].queryset = coremodels.Customer.objects.filter(user=current_user,business=current_business)
-#		self.fields['customer'].queryset = coremodels.Customer.objects.filter(user=current_user)
-#		self.fields['business'].queryset = coremodels.Business.objects.filter(user=current_user)
+#		self.fields['name'].widget.attrs['class'] = "col-xs-12 col-md-8"
+#		self.fields['duedate'].widget.attrs['class'] = "col-xs-6 col-md-4"
 
 
 class Theme(models.Model):

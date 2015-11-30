@@ -7,6 +7,12 @@ $(document).ready(function () {
 			// si checked alors il n'est plus à faire
 			$(this).toggleClass("todo");
 			$(this).toggleClass("completed");
+            $(this).parent().parent().addClass("hide_entry");
+            $('#todo_list').listview("refresh");
+
+            setTimeout(function() {
+
+            },30);
 
 		});
 

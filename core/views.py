@@ -101,8 +101,8 @@ class EntryListAppendView(ListAppendView):
 #	fields = ['name'] # "__all__" no longer required as defined in the models
 
 	def get_queryset(self):
-		# return the review object for the current user and the current location
-		return coremodels.Entry.objects.filter(user=self.request.user).order_by('order')
+		# return the Entry object for the current user and for done = not done
+		return coremodels.Entry.objects.filter(user=self.request.user, done=0).order_by('order')
 
 	def form_valid(self, form):
 	# this feature is used between submission of the user and sending these data to the database
@@ -146,7 +146,7 @@ def index(request):
 			# save index of entry_id as it's new order value
 			entry = coremodels.Entry.objects.get(id=entry_id)
 			entry.order = index
-			print(index)
+# for debug			print(index)
 			entry.save()
 
     # split our entries arbitrarily, so we can have two lists on the page...

@@ -17,6 +17,10 @@
 	color:black;
 }
 
+.hide_entry {
+	display: none;
+}
+
 /* To create a container when sorting listview */
 .ui-state-highlight {
     height: 45px; line-height: 45px;
