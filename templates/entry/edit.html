@@ -53,12 +53,9 @@
 
  	{% block content %}
  	<div data-role="content"> 
- 		Content of edit form will go there
+		    	{% include 'entry/form.html' %}
 	</div>
 
-	<div data-role="footer" data-position="fixed">
-		    	{% include 'entry/create.html' %}
-	</div>
 
 		<div data-role="popup" id="edit_entry" data-theme="a" class="ui-corner-all">
 			<!-- That's for the edit modal popup -->

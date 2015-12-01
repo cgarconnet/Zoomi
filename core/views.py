@@ -139,6 +139,7 @@ class EntryEditView(UpdateView):
 	fields = ['name','duedate','assignees'] # the fields on the edit page
 	context_object_name = 'entry'
 
+
 @csrf_exempt
 def index(request):
 
