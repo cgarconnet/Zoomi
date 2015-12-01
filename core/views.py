@@ -133,6 +133,12 @@ class EntryRefreshView(DetailView):
 	template_name = "entry/details.html"
 	context_object_name = 'objects'
 
+class EntryEditView(UpdateView):
+	model = coremodels.Entry
+	template_name = "entry/edit.html"
+	fields = ['name','duedate','assignees'] # the fields on the edit page
+	context_object_name = 'entry'
+
 @csrf_exempt
 def index(request):
 

@@ -1,7 +1,6 @@
 {% extends "base/theme.html" %}
 {% load widget_tweaks %}
 {% load staticfiles %}
-
 {% block css_js %}
 
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
@@ -28,42 +27,6 @@
     <link rel="stylesheet" href="{% static "css/zoomi.css" %}">
     <script src="{% static "js/zoomi.js" %}"></script>
 
-<script>
-//	For the Editpopup
-
-	$(document).ready(function () {
-
-		$(document).on("click", ".options", function(){
-//	click on the gear
-			$("#edit_entry").load($(this).attr('data-to-load'));
-			$("#edit_entry").popup("open");
-// ???			$(this).parent().toggleClass("state_on");
-		})
-	
-		$(function() {
-	    $( "#todo_list" ).sortable({
-	      placeholder: "ui-state-highlight",
-	      stop: function (event, ui) {
-	          $('#todo_list').listview('refresh');
-
-	      // then we post the context to save the sorting
-	        var serial = $('#todo_list').sortable('serialize');
-	        console.log(serial);
-	        $.ajax({
-//	          url: "{{ index.get_index_url }}",
-	          url: "{% url 'index' %}",
-	          type: "post",
-	          data: { 'content': serial, 'csrfmiddlewaretoken' : '{{ csrf_token }}' } 
-	        });
-
-	      }
-	    });
-	    $( "#todo_list" ).disableSelection();
-		});
-
-});
-
-</script>
 
 
 {% endblock %}
@@ -77,9 +40,9 @@
 	<!-- 		<a href="index.html" data-icon="gear" class="ui-btn-right">Options</a> -->
 		<div data-role="navbar" data-iconpos="right">
 			<ul>
-			    <li><a href="#" class="ui-btn-active" data-icon="star">List</a></li>
+			    <li><a href="#" class="ui-btn-active" data-rel="back" data-icon="star">List</a></li>
 			    <li><a href="/theme" data-icon="grid">Theme</a></li>
-			    <li><a href="/entries/editpage/" data-icon="gear">Options</a></li>
+			    <li><a href="/options" data-icon="gear">Options</a></li>
 			</ul>
 		</div>
 	</div>
@@ -90,17 +53,9 @@
 
  	{% block content %}
  	<div data-role="content"> 
-<!-- data-split-icon="gear" -->
-			<ul id="todo_list" data-role="listview" data-filter="true"  data-split-icon="gear" data-split-theme="a" data-filter-placeholder="Search an action ..." data-inset="true">
-			    {% for objects in object_list %}
-			    	<li id="entry_{{ objects.id }}" data-icon="gear" class="ui-state-default">
-			    		{% include 'entry/details.html' %}
-			    	</li>
-			    {% endfor %}
-
-			</ul>
-
+ 		Content of edit form will go there
 	</div>
+
 	<div data-role="footer" data-position="fixed">
 		    	{% include 'entry/create.html' %}
 	</div>
