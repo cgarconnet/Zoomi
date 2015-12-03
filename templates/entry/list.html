@@ -36,7 +36,10 @@
 		$(document).on("click", ".options", function(){
 //	click on the gear
 			$("#edit_entry").load($(this).attr('data-to-load'));
-			$("#edit_entry").popup("open");
+			setTimeout( function() {
+				$("#edit_entry").popup("open");
+			}
+				, 50);
 // ???			$(this).parent().toggleClass("state_on");
 		})
 	

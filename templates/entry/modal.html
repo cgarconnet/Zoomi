@@ -1,7 +1,5 @@
 {% load widget_tweaks %}
 
-loading entry/modal.html
-
 <div class="header-buffer">
 </div>
 <section id="services">
@@ -43,11 +41,13 @@ loading entry/modal.html
 		// we load the entry/details.html page
 		$("#entry_{{ entry.id }}").load('{{ entry.refresh_entry_url }}');
 
-		setTimeout(function () {
-		// then we refresh so it is well formatted like mobile style
-		$("#entry_{{ entry.id }}").parent().listview("refresh");
-			// $("#todo_list").listview().listview("refresh");
-		}, 10);
+// Refresh not working, so I am using Detailsformatted.html for the refresh_entry_url
+
+		// setTimeout(function () {
+		// // then we refresh so it is well formatted like mobile style
+		// $("#entry_{{ entry.id }}").parent().listview("refresh");
+		// 	// $("#todo_list").listview().listview("refresh");
+		// }, 10);
 
 		}
 	}

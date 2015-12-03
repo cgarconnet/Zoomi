@@ -130,7 +130,7 @@ class EntryModalUpdateView(UpdateView):
 
 class EntryRefreshView(DetailView):
 	model = coremodels.Entry
-	template_name = "entry/details.html"
+	template_name = "entry/detailsformatted.html"
 	context_object_name = 'objects'
 
 @csrf_exempt
