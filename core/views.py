@@ -3,13 +3,13 @@ from django.shortcuts import render, render_to_response
 from django.http import HttpResponse, Http404, QueryDict
 from django.template import RequestContext
 from django.contrib import messages
-from django.core.urlresolvers import reverse
 
 from django.template.loader import render_to_string #for the modal edit
 
 from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
+
 
 from django.shortcuts import render
 from django.views.generic.base import TemplateView # to import html templates
@@ -132,18 +132,6 @@ class EntryRefreshView(DetailView):
 	model = coremodels.Entry
 	template_name = "entry/detailsformatted.html"
 	context_object_name = 'objects'
-
-
-class EntryEditView(UpdateView): # test on the edit form not modal
-	model = coremodels.Entry
-	template_name = "entry/edit.html"
-	fields = ['name','duedate','assignees'] # the fields on the edit page
-	context_object_name = 'entry'
-
-	def get_success_url(self):
-#		return HttpResponse(reverse("entrylist"))
-		return reverse (viewname="entrylist") #, args=[self.id]) 3 before index, now listappend because after adding we want to load again that page
-#		return HttpResponse(None)
 
 @csrf_exempt
 def index(request):
