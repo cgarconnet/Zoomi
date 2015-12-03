@@ -31,7 +31,8 @@
 
  <script>
 // to submit the form thru Ajax
-//	console.log({{ entry.update_modal_entry_url }});
+// source: http://malsup.com/jquery/form/#getting-started
+
 	var form_options = {
 		target: '#edit_entry', success: function() { 
 
@@ -39,9 +40,8 @@
 //			$("#entry_1").html('<li data-chris="{{ entry.update_modal_entry_url }}" id="entry_{{ entry.id }}" class="ui-state-default">MAJ via Ajax</li>'); //$(this).attr(URL_GET_DETAILS));
 
 		// we load the entry/details.html page
+		// As refresh is not working, so I am using Detailsformatted.html for the refresh_entry_url
 		$("#entry_{{ entry.id }}").load('{{ entry.refresh_entry_url }}');
-
-// Refresh not working, so I am using Detailsformatted.html for the refresh_entry_url
 
 		// setTimeout(function () {
 		// // then we refresh so it is well formatted like mobile style

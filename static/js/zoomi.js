@@ -1,3 +1,10 @@
+$(document).on('pageinit', function(){
+// with JQueryMobile, use this instead of classical ready function
+// source here: http://www.gajotres.net/document-onpageinit-vs-document-ready/
+//$("#id_name").focus();
+
+});
+
 $(document).ready(function () {
 
 /* move to EntryComple(id) sucessful Ajax load */
