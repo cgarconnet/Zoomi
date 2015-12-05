@@ -82,6 +82,8 @@ class EntryCreateForm(ModelForm):
 #		current_business = kwargs['pk']
 		super(EntryCreateForm, self).__init__(*args, **kwargs)
 		self.fields['name'].label = "What do you need to do today?"
+		self.fields['duedate'].label = "Have a due date?"
+		self.fields['duedate'].widget.attrs['placeholder'] = "YYYY-MM-DD"
 		self.fields['name'].widget.attrs['autofocus'] = "on"
 #		self.fields['duedate'].widget.attrs['class'] = "col-xs-6 col-md-4"
 

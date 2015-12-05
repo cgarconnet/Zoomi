@@ -17,6 +17,9 @@ $(document).ready(function () {
             $(this).parent().parent().addClass("hide_entry");
             $('#todo_list').listview("refresh");
 
+            $(this).parent().parent().slideUp("slow", function(){
+            });
+
             setTimeout(function() {
 
             },30);
