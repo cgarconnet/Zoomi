@@ -111,6 +111,21 @@ class EntryListAppendView(ListAppendView):
 		form.instance.user = self.request.user
 		return super(EntryListAppendView, self).form_valid(form)
 
+class EntryListTransferredAppendView(ListAppendView):
+	model = coremodels.Entry
+	template_name = 'entry/list.html'
+	context_object_name = 'entry'
+#	fields = ['name'] # "__all__" no longer required as defined in the models
+
+	def get_queryset(self):
+		# return the Entry object for the current user and for done = not done
+		return coremodels.Entry.objects.filter(user=self.request.user, transfered=1, done=0).order_by('order')
+
+	def form_valid(self, form):
+	# this feature is used between submission of the user and sending these data to the database
+		form.instance.user = self.request.user
+		return super(EntryListAppendView, self).form_valid(form)
+
 
 class EntryModalUpdateView(UpdateView):
 	model = coremodels.Entry

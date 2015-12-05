@@ -27,6 +27,8 @@ urlpatterns = patterns('',
 
 # Now comes the v 3.0, well better structured
 	url(r'^$', login_required(coreviews.EntryListAppendView.as_view()), name='entrylist'),	
+	url(r'^transferred/$', login_required(coreviews.EntryListTransferredAppendView.as_view()), name='entrylist'),	
+
 	url(r'^entries/modal/(?P<pk>\d+)/$', login_required(coreviews.EntryModalUpdateView.as_view()), name='entrymodal'),	
 	url(r'^entries/refresh/(?P<pk>\d+)/$', login_required(coreviews.EntryRefreshView.as_view()), name='entryrefresh'),
 	url(r'^entries/update/(?P<pk>\d+)/$', login_required(coreviews.EntryAjaxUpdateView), name='entryupdate'),	
