@@ -29,3 +29,7 @@
     background: #FBF9EE repeat-x scroll 50% 50%;
     color: #363636;
 }
+
+.ui-fixed-hidden {
+    position: fixed;
+}
