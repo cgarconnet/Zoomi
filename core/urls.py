@@ -1,6 +1,11 @@
 # -*- coding: utf-8 -*-
 from django.conf.urls import patterns, include, url
 import core.views as coreviews
+from django.contrib.auth.decorators import login_required, permission_required # to block users who are not logged is so that cannot create
+# all url that we want to protect we add login_required()
+# for admin securisation we add permission_required('is_staff') before (coreviews.LocationUpdateView.as_view())
+# this prevent people from cheating the url
+
 
 urlpatterns = patterns('',
 
@@ -21,9 +26,17 @@ urlpatterns = patterns('',
 	url(r'^refresh_entries/(?P<pk>\d+)/$', coreviews.EntryRefreshViewv2.as_view(), name='detailrefresh'),
 
 # Now comes the v 3.0, well better structured
-	url(r'^$', coreviews.EntryListAppendView.as_view(), name='entrylist'),	
-	url(r'^entries/modal/(?P<pk>\d+)/$', coreviews.EntryModalUpdateView.as_view(), name='entrymodal'),	
-	url(r'^entries/refresh/(?P<pk>\d+)/$', coreviews.EntryRefreshView.as_view(), name='entryrefresh'),
-	url(r'^entries/update/(?P<pk>\d+)/$', coreviews.EntryAjaxUpdateView, name='entryupdate'),	
-	url(r'^entries/index$', coreviews.index, name='index'),
+	url(r'^$', login_required(coreviews.EntryListAppendView.as_view()), name='entrylist'),	
+	url(r'^entries/modal/(?P<pk>\d+)/$', login_required(coreviews.EntryModalUpdateView.as_view()), name='entrymodal'),	
+	url(r'^entries/refresh/(?P<pk>\d+)/$', login_required(coreviews.EntryRefreshView.as_view()), name='entryrefresh'),
+	url(r'^entries/update/(?P<pk>\d+)/$', login_required(coreviews.EntryAjaxUpdateView), name='entryupdate'),	
+	url(r'^entries/index$', login_required(coreviews.index), name='index'),
+
+	# Registering the entrance login page
+	url(r'entrance/$', coreviews.entrance),
+
+	# easy url to logout
+	url(r'^logout/$', 'django.contrib.auth.views.logout',{'next_page': '/entrance'})
+		# next page coulb be our /entrance
+
 )

@@ -5,17 +5,19 @@ from django.template import RequestContext
 from django.contrib import messages
 
 from django.template.loader import render_to_string #for the modal edit
+from django.db.models import Q # used to select OR conditions in Filters
 
 from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
-
 
 from django.shortcuts import render
 from django.views.generic.base import TemplateView # to import html templates
 from django.views.generic.list import ListView # to list my object from database
 from django.views.generic.detail import DetailView # to show details of my selected object from database
 from django.views.generic.edit import CreateView, UpdateView # to enable the edit form (create and then edit)
+
+from sitegate.decorators import redirect_signedin, sitegate_view # for sitegate and authenficiation
 
 import core.models as coremodels # we import our models
 from core.models import ListAppendView
@@ -102,7 +104,7 @@ class EntryListAppendView(ListAppendView):
 
 	def get_queryset(self):
 		# return the Entry object for the current user and for done = not done
-		return coremodels.Entry.objects.filter(user=self.request.user, done=0).order_by('order')
+		return coremodels.Entry.objects.filter(Q(user=self.request.user, transfered=0) | Q(assignees=self.request.user), done=0).order_by('order')
 
 	def form_valid(self, form):
 	# this feature is used between submission of the user and sending these data to the database
@@ -114,7 +116,7 @@ class EntryModalUpdateView(UpdateView):
 	model = coremodels.Entry
 #	form_class = ItemForm
 	template_name = 'entry/modal.html' #I will have to customize the fields to make it more simple rather than the current generic form template
-	fields = ['name','duedate','done','impediment','assignees'] # the fields on the edit page
+	fields = ['name','duedate','done','impediment','transfered','assignees'] # the fields on the edit page
 	context_object_name = 'entry'
 
 	def dispatch(self, *args, **kwargs):
@@ -174,3 +176,8 @@ def EntryAjaxUpdateView(request, pk):
     return HttpResponse(None, content_type="application/json")
 
 
+# code for site authentification
+# only specific here is the name of entrance page
+@sitegate_view(widget_attrs={'class': 'form-control', 'placeholder': lambda f: f.label}, template='form_bootstrap3') # This also prevents logged in users from accessing our sign in/sign up page.
+def entrance(request):
+	return render(request, 'base/entrance.html', {'title': 'Sign in & Sign up'})

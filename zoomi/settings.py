@@ -133,3 +133,5 @@ STATIC_ROOT = '/static/' # Pour le deploiement sur Heroku
 STATICFILES_DIRS = (
     os.path.join(MAIN_DIR, 'static'),
     )
+
+LOGIN_URL = '/entrance'
