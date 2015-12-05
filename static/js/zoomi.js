@@ -5,6 +5,7 @@ $(document).on('pageinit', function(){
 
 });
 
+
 $(document).ready(function () {
 
 /* move to EntryComple(id) sucessful Ajax load */
@@ -27,6 +28,15 @@ $(document).ready(function () {
 		});
 
 
+// /* changing the top menu active button selection */
+//         $(document).on("click", ".top_menu", function(){
+//             // this is the checkbox as input. So it's parent is required to be checked
+//             // completed css will put a line-through as text-decoration
+//             // si checked alors il n'est plus à faire
+//             $( ".top_menu" ).removeClass( "ui-btn-active" );
+//             $(this).addClass("ui-btn-active");
+
+//         });
 });
 
 
