@@ -98,7 +98,7 @@
 <!-- data-split-icon="gear" -->
 			<ul id="todo_list" data-role="listview" data-filter="true"  data-split-icon="gear" data-split-theme="a" data-filter-placeholder="Search an action ..." data-inset="true">
 			    {% for objects in object_list %}
-			    	<li id="entry_{{ objects.id }}" data-icon="gear" class="ui-state-default {% if objects.section == 1 %}section{% endif %}">
+			    	<li id="entry_{{ objects.id }}" data-icon="gear" class="ui-state-default" {% if objects.section == 1 %}data-theme="b"{% endif %} >
 			    		{% include 'entry/details.html' %}
 			    	</li>
 			    {% endfor %}

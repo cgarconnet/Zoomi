@@ -26,9 +26,8 @@ http://stackoverflow.com/questions/21626443/jquery-mobile-listview-applying-the-
 
 */
 
-.section {
+a.section {
 	background:red !important;
-	background:transparent !important;
 }
 
 
