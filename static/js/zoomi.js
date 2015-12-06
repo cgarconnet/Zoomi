@@ -5,6 +5,18 @@ $(document).on('pageinit', function(){
 
 });
 
+// $(document).on('pageshow', function(event, data) {
+// $('[data-url="/"]').not(".ui-page-active").remove();
+// // $('[data-url=/transferred]').not(".ui-page-active").remove();
+// });
+
+// $(document).on('pageshow', function(event, data) {
+// $('[data-role=page]').not(".ui-page-active").remove();
+// });
+
+// $('#page1').on('pagehide',function(event){
+// $('#page1').remove();
+// });
 
 $(document).ready(function () {
 
