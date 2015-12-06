@@ -14,6 +14,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='entry',
             name='transfered',
-            field=models.IntegerField(default=0),
+            field=models.BooleanField(default=False),
         ),
     ]

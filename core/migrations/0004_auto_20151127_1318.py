@@ -29,7 +29,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='entry',
             name='done',
-            field=models.IntegerField(default=0),
+            field=models.BooleanField(default=False),
         ),
         migrations.AddField(
             model_name='entry',
@@ -39,6 +39,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='entry',
             name='impediment',
-            field=models.IntegerField(default=0),
+            field=models.BooleanField(default=False),
         ),
     ]
