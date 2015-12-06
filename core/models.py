@@ -22,7 +22,7 @@ class Entry(models.Model):
 	order = models.IntegerField(default=1000)
 	duedate = models.DateField(null=True, blank=True)
 	done = models.BooleanField(default=False) # 0 = to do / 1 = completed
-	impediment = models.BooleanField(default=False) # 0 = No / 1 = Yes
+#	impediment = models.BooleanField(default=False) # 0 = No / 1 = Yes
 	transfered = models.BooleanField(default=False) # 0 = No / 1 = Yes = no longer in your List
 	assignees = models.ManyToManyField(User, related_name='assignees',blank=True)	
 	section = models.BooleanField(default=False) # 0 = No / 1 = Yes
