@@ -35,6 +35,7 @@ class Entry(models.Model):
 	def __str__(self):
 		return str(self.name)
 
+
 # <!--         <a href="{% url 'core.views.detail' entry.id %}">{{ entry }}</a>  -->
 #         <a href="{% url entry.update_entry_url entry.id %}">{{ entry }}</a>
 
