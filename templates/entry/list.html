@@ -81,8 +81,8 @@
  -->			<a href="/logout" data-ajax="false" class="ui-btn-right">Logout</a>
 		<div data-role="navbar" data-iconpos="right">
 			<ul class="top_menu">
-			    <li><a href="/" data-ajax="false" data-icon="star">Your List</a></li>
-			    <li><a href="/transferred" data-ajax="false" data-icon="action">Transferred</a></li>
+			    <li><a href="/" data-ajax="false" data-icon="star">Your List {{ request.view }} </a></li>
+			    <li><a href="/transferred" data-ajax="false" data-icon="action">Transferred {{ object_list|length }}</a></li>
 			    <li><a href="/theme" data-icon="grid">Theme</a></li>
 			    <li><a href="/options" data-icon="gear">Options</a></li>
 			</ul>
@@ -98,7 +98,7 @@
 <!-- data-split-icon="gear" -->
 			<ul id="todo_list" data-role="listview" data-filter="true"  data-split-icon="gear" data-split-theme="a" data-filter-placeholder="Search an action ..." data-inset="true">
 			    {% for objects in object_list %}
-			    	<li id="entry_{{ objects.id }}" data-icon="gear" class="ui-state-default">
+			    	<li id="entry_{{ objects.id }}" data-icon="gear" class="ui-state-default {% if objects.section == 1 %}section{% endif %}">
 			    		{% include 'entry/details.html' %}
 			    	</li>
 			    {% endfor %}

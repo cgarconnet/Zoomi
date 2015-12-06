@@ -21,6 +21,18 @@
 	display: none;
 }
 
+/* For the checkmark that could have either todo or completed class 
+http://stackoverflow.com/questions/21626443/jquery-mobile-listview-applying-the-list-item-background-color
+
+*/
+
+.section {
+	background:red !important;
+	background:transparent !important;
+}
+
+
+
 /* To create a container when sorting listview */
 .ui-state-highlight {
     height: 45px; line-height: 45px;

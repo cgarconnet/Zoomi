@@ -1,6 +1,6 @@
 
         <a href="#" >
-        	<span class="glyphicon glyphicon-ok entrycheckmark {% if objects.done == 1 %}completed{% else %}todo{% endif %}" onclick="EntryComplete({{ objects.id }})"> </span>
+        	<span class="{% if objects.section == 0 %}glyphicon glyphicon-ok entrycheckmark{% endif %} {% if objects.done == 1 %}completed{% else %}todo{% endif %}" onclick="EntryComplete({{ objects.id }})"> </span>
         {{ objects }}
         <!-- 
 data-ajax="false"
