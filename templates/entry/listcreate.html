@@ -15,11 +15,19 @@
 	</div>
 <!-- /.modal -->
 
+<script>
+
+$.mobile.changePage( "{{ objects.update_entry_url }}", { role: "popup" } );
+// Can I make it as well for popup
+// Load a pop-up in Ajax???
+
+</script>
+
 <ul data-role="listview" data-filter="true"  data-split-icon="gear" data-split-theme="a" data-filter-placeholder="Search an action ..." data-inset="true">
 
     {% for objects in object_list %}
       <li id="entry_{{ objects.id }}" >
-        <a data-rel="dialog" href="{{ objects.update_entry_url }}">{{ objects }}</a>
+        <a data-rel="popup" href="#edit">{{ objects }}</a>
 <a href="#details" data-rel="popup" data-position-to="window" data-transition="pop">Details</a>
       </li>
     {% endfor %}
