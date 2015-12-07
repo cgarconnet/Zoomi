@@ -42,6 +42,9 @@
 
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
 
+	<!-- Javascript for sortable on touch -->
+    <script src="{% static "js/jquery.ui.touch-punch.min.js" %}"></script>
+
 {% endblock %}
 
 </head>
@@ -123,10 +126,10 @@
 
 						{% if user.is_authenticated %}
 						<li>
-						    <a class="page-scroll" href="/event">Events</a>
+						    <a class="page-scroll" href="/event">Theme</a>
 						</li>
 						<li>
-						    <a class="page-scroll" href="/business">Businesses</a>
+						    <a class="page-scroll" href="/business">Options</a>
 						</li>
 						<li>
 						    <a class="page-scroll" href="/logout">Logout</a>
@@ -492,7 +495,9 @@ By filling this form you will also be added to our MailChimp distribution list. 
 	<!-- Javascript files -->
 
 
-<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script> <!-- for sortable UI -->
+{% endblock %}
+
+	<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script> <!-- for sortable UI -->
 
 	<script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
 	<script src="{% static "js/jquery.parallax-1.1.3.js" %}"></script>
@@ -504,7 +509,6 @@ By filling this form you will also be added to our MailChimp distribution list. 
     <script src="{% static "js/waypoints.min.js" %}"></script>
     <script src="{% static "js/jquery.cbpQTRotator.js" %}"></script>
 	<script src="{% static "js/custom.js" %}"></script>
-{% endblock %}
 
 </body>
 </html>

@@ -47,10 +47,6 @@
 
 							{% endfor %}
 						</ul>
-					<div data-role="footer" data-position="fixed">
-		    			{% include 'entry/create.html' %}
-					</div>
-
 			</div>
 		</div>
 	</div>
@@ -77,4 +73,12 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
+{% endblock %}
+
+{% block footer %}
+	<footer class="footer">
+		<div class="container">
+			{% include 'entry/create.html' %}
+		</div>
+	</footer>
 {% endblock %}
