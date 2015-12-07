@@ -104,7 +104,7 @@ class EntryListAppendView(ListAppendView):
 
 	def get_queryset(self):
 		# return the Entry object for the current user and for done = not done
-		return coremodels.Entry.objects.filter(Q(user=self.request.user, transfered=0) | Q(assignees=self.request.user), done=0).order_by('order')
+		return coremodels.Entry.objects.filter(Q(user=self.request.user, transfered=0) | Q(assignees=self.request.user), done=False).order_by('order')
 
 	def form_valid(self, form):
 	# this feature is used between submission of the user and sending these data to the database
@@ -119,7 +119,7 @@ class EntryListTransferredAppendView(ListAppendView):
 
 	def get_queryset(self):
 		# return the Entry object for the current user and for done = not done
-		return coremodels.Entry.objects.filter(user=self.request.user, transfered=1, done=0).order_by('order')
+		return coremodels.Entry.objects.filter(user=self.request.user, transfered=1, done=False).order_by('order')
 
 	def form_valid(self, form):
 	# this feature is used between submission of the user and sending these data to the database
@@ -183,7 +183,7 @@ def EntryAjaxUpdateView(request, pk):
     JSON_value=request.POST.get("value")
     b=coremodels.Entry.objects.get(id=pk) #str(value))
     #delete change statement
-    b.done = (1 if b.done == 0 else 0) # int(JSON_value) #10
+    b.done = (False if b.done == 1 else True) # int(JSON_value) #10
     b.save()
     # resp=json.dumps(b)
 #    return HttpResponse(resp, content_type="application/json")
