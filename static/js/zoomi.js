@@ -20,6 +20,49 @@ $(document).on('pageinit', function(){
 
 $(document).ready(function () {
 
+new Sortable(document.getElementsByClassName('sortable')[0]);
+
+        $(document).on("click", ".options", function(){
+//  click on the gear
+            $("#edit_entry").load($(this).attr('data-to-load'));
+            setTimeout( function() {
+                $("#edit_entry").popup("open");
+            }
+                , 50);
+// ???          $(this).parent().toggleClass("state_on");
+        })
+
+$(function () {
+    $(".grid").sortable({
+        tolerance: 'pointer',
+        revert: 'invalid',
+        placeholder: 'span2 well placeholder tile',
+        forceHelperSize: true
+    });
+});
+    
+        $(function() {
+        $( "#todo_list_BS" ).sortable({
+          placeholder: "ui-state-highlight",
+          stop: function (event, ui) {
+
+
+          // then we post the context to save the sorting
+            var serial = $('#todo_list_BS').sortable('serialize');
+            console.log(serial);
+            $.ajax({
+//            url: "{{ index.get_index_url }}",
+              url: "{% url 'index' %}",
+              type: "post",
+              data: { 'content': serial, 'csrfmiddlewaretoken' : '{{ csrf_token }}' } 
+            });
+
+          }
+        });
+        $( "#todo_list_BS" ).disableSelection();
+        });
+
+
 /* move to EntryComple(id) sucessful Ajax load */
 		$(document).on("click", ".entrycheckmark", function(){
 			// this is the checkbox as input. So it's parent is required to be checked
