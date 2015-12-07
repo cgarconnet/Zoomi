@@ -21,6 +21,9 @@ $(document).on('pageinit', function(){
 $(document).ready(function () {
 
 
+// Force scrolling to the top, otherwise, the focus on the crete form make the page going to the down
+$(this).scrollTop(0);
+
         $(document).on("click", ".options", function(){
 //  click on the gear
             $("#edit_entry").load($(this).attr('data-to-load'));
@@ -34,6 +37,7 @@ $(document).ready(function () {
 
         $(function() {
         $( "#todo_list_BS" ).sortable({
+          handle: ".selector",
           placeholder: "ui-state-highlight",
           stop: function (event, ui) {
 

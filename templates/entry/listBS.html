@@ -38,9 +38,15 @@
 								   		<div class="col-xs-7 text-left">
 								   			<p class="list-group-item-text">{{ objects }}</p>
 								   		</div>
-								   		<div class="col-xs-4">
+								   		<div class="col-xs-3">
 								   			<p class="list-group-item-text">more details on this Entry</p>
 									    </div>
+								   		<div class="col-xs-1">
+								   			<span class="glyphicon glyphicon-edit editor">
+								   			<span class="glyphicon glyphicon-menu-hamburger selector">
+									    </div>
+
+									    
 
 									</div>
 								</li>
@@ -76,7 +82,7 @@
 {% endblock %}
 
 {% block footer %}
-	<footer class="footer">
+	<footer class="navbar navbar-default navbar-fixed-bottom">
 		<div class="container">
 			{% include 'entry/create.html' %}
 		</div>
