@@ -20,6 +20,9 @@ body {
 
 /* For Bootstrap list */
 
+#editModal {
+    margin-top: 0;
+}
 
 .placeholder {
     border: 1px solid green;

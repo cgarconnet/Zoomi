@@ -18,11 +18,13 @@ $(document).on('pageinit', function(){
 // $('#page1').remove();
 // });
 
+
 $(document).ready(function () {
 
 
 // Force scrolling to the top, otherwise, the focus on the crete form make the page going to the down
     $(this).scrollTop(0);
+
 
 
     // $('#editModal').on('show.bs.modal', function (event) {
