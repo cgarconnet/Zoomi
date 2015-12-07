@@ -52,6 +52,20 @@ $(document).ready(function () {
         })
 
 
+// Code for the modal
+$('#editModal').on('show.bs.modal', function(event) {
+    var button = $(event.relatedTarget) // Button that triggered the modal
+    $("#editModalContent").load(button.data('toload'));
+})
+
+//         $(document).on("click", ".editor", function(){
+// //  click on the gear
+//             $("#editModalContent").load($(this).attr('data-to-load'));
+//             conqolz.log($(this).attr('data-to-load'));
+// // ???          $(this).parent().toggleClass("state_on");
+//         })
+
+
         $(function() {
         $( "#todo_list_BS" ).sortable({
           handle: ".selector",
