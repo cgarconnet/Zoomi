@@ -7,6 +7,13 @@
     -moz-box-shadow: 0px 0px 10px #888;
     box-shadow: 0px 0px 10px #888;
 }
+
+ul {
+    padding: 0;
+    text-align: left;
+    list-style: none;
+}
+
 .tile {
     height: 50px;
 }
@@ -27,6 +34,7 @@
 /* For the checkmark that could have either todo or completed class */
 .todo {
 	color:lightgrey;
+	cursor: pointer;
 }
 
 .completed {

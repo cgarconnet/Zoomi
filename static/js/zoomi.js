@@ -20,7 +20,6 @@ $(document).on('pageinit', function(){
 
 $(document).ready(function () {
 
-new Sortable(document.getElementsByClassName('sortable')[0]);
 
         $(document).on("click", ".options", function(){
 //  click on the gear
@@ -32,15 +31,7 @@ new Sortable(document.getElementsByClassName('sortable')[0]);
 // ???          $(this).parent().toggleClass("state_on");
         })
 
-$(function () {
-    $(".grid").sortable({
-        tolerance: 'pointer',
-        revert: 'invalid',
-        placeholder: 'span2 well placeholder tile',
-        forceHelperSize: true
-    });
-});
-    
+
         $(function() {
         $( "#todo_list_BS" ).sortable({
           placeholder: "ui-state-highlight",
