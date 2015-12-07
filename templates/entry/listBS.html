@@ -35,14 +35,24 @@
 										<div class="col-xs-1">
 								   			<span class="{% if objects.section == 0 %}glyphicon glyphicon-ok entrycheckmark{% endif %} {% if objects.done == 1 %}completed{% else %}todo{% endif %}" onclick="EntryComplete({{ objects.id }})"> </span>
 								   		</div>
-								   		<div class="col-xs-7 text-left">
+								   		<div class="col-xs-8 text-left">
 								   			<p class="list-group-item-text">{{ objects }}</p>
 								   		</div>
-								   		<div class="col-xs-3">
-								   			<p class="list-group-item-text">more details on this Entry</p>
+								   		<div class="col-xs-2 text-right">
+								   			<p class="list-group-item-text">
+										        {% if objects.duedate %}
+										            <span class="
+										                {% if objects.duedate|timesince >= "1 min" %}
+										                overdue
+										                {% endif %}
+										                ">
+										                {{ objects.duedate }}
+										            </span>
+										        {% endif %}
+								   			</p>
 									    </div>
-								   		<div class="col-xs-1">
-								   			<span class="glyphicon glyphicon-edit editor">
+								   		<div class="col-xs-1 text-right">
+								   			<span class="glyphicon glyphicon-edit editor" data-to-load="{{ objects.update_modal_entry_url }}"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal">Edit</button>
 								   			<span class="glyphicon glyphicon-menu-hamburger selector">
 									    </div>
 
@@ -56,12 +66,7 @@
 			</div>
 		</div>
 	</div>
-</section>
-
-
-<!-- My test modal -->
-
-<div class="modal fade" tabindex="-1" role="dialog">
+<div class="modal" tabindex="-1" role="dialog" id="editModal" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -78,6 +83,12 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+</section>
+
+
+<!-- My test modal -->
+
 
 {% endblock %}
 
