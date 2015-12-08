@@ -32,13 +32,13 @@
 								<li id="entry_{{ objects.id }}" class="list-group-item {% if objects.section == 1 %}active{% endif %}">
 								  	<div class="row">
 
-										<div class="col-xs-1">
+										<div class="col-xs-1 col-sm-1 col-md-1">
 								   			<span class="{% if objects.section == 0 %}glyphicon glyphicon-ok entrycheckmark{% endif %} {% if objects.done == 1 %}completed{% else %}todo{% endif %}" onclick="EntryComplete({{ objects.id }})"> </span>
 								   		</div>
-								   		<div class="col-xs-6 text-left">
+								   		<div class="col-xs-8 col-sm-6 col-md-6 text-left">
 								   			<p class="list-group-item-text">{{ objects }}</p>
 								   		</div>
-								   		<div class="col-xs-3 text-right">
+								   		<div class="hidden-xs col-sm-3 col-md-3 text-right">
 								   			<p class="list-group-item-text">
 										        {% if objects.duedate %}
 										            <span class="
@@ -51,12 +51,12 @@
 										        {% endif %}
 								   			</p>
 									    </div>
-								   		<div class="col-xs-1 text-right">
+								   		<div class="col-xs-1 col-sm-1 col-md-1 text-right">
 								   			<button type="button" class="btn btn-link" data-toggle="modal" data-toload="{{ objects.update_modal_entry_url }}" data-backdrop="true" data-target="#editModal">
 												<span class="glyphicon glyphicon-edit editor">
 								   			</button>
 									    </div>
-								   		<div class="col-xs-1 text-right">
+								   		<div class="hidden-xs col-sm-1 col-md-1 text-right">
 								   			<span class="glyphicon glyphicon-menu-hamburger selector">
 									    </div>
 
