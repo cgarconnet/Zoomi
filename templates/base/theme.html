@@ -21,8 +21,14 @@
 {% block css_js %}
 
 	<!-- CSS -->
-	<link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet" media="screen">
-	<link href="{% static "bootstrap/css/bootstrap-theme.min.css" %}" rel="stylesheet" media="screen">
+
+	<!-- BOOTSTRAP on network to work with Heroku Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+
+<!-- 	<link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet" media="screen">
+	<link href="{% static "bootstrap/css/bootstrap-theme.min.css" %}" rel="stylesheet" media="screen"> -->
 	<link href="{% static "css/font-awesome.min.css" %}" rel="stylesheet" media="screen">
 	<link href="{% static "css/simple-line-icons.css" %}" rel="stylesheet" media="screen">
 	<link href="{% static "css/animate.css" %}" rel="stylesheet">
