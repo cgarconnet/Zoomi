@@ -1,11 +1,18 @@
 								  	<div class="row">
 
-										<div class="col-xs-1 col-sm-1 col-md-1">
+										<div class="{% if objects.section == 1 %}hidden-xs hidden-sm hidden-md{% else %}col-xs-1 col-sm-1 col-md-1{% endif %}">
 								   			<span class="{% if objects.section == 0 %}glyphicon glyphicon-ok entrycheckmark{% endif %} {% if objects.done == 1 %}completed{% else %}todo{% endif %}" onclick="EntryComplete({{ objects.id }})"> </span>
 								   		</div>
+
 								   		<div class="col-xs-8 col-sm-6 col-md-6 text-left">
 								   			<p class="list-group-item-text">{{ objects }}</p>
 								   		</div>
+
+								   		{% if objects.section == 1 %}
+								   		<!-- If we have a section, we show the hidden grid-1 after the title-->
+											<div class="col-xs-1 col-sm-1 col-md-1"></div>
+										{% endif %}
+
 								   		<div class="hidden-xs col-sm-3 col-md-3 text-right">
 								   			<p class="list-group-item-text">
 										        {% if objects.duedate %}
