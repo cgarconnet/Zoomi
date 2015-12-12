@@ -66,27 +66,6 @@ $('#editModal').on('show.bs.modal', function(event) {
 //         })
 
 
-        $(function() {
-        $( "#todo_list_BS" ).sortable({
-          handle: ".selector",
-          placeholder: "ui-state-highlight",
-          stop: function (event, ui) {
-
-
-          // then we post the context to save the sorting
-            var serial = $('#todo_list_BS').sortable('serialize');
-            console.log(serial);
-            $.ajax({
-//            url: "{{ index.get_index_url }}",
-              url: "{% url 'index' %}",
-              type: "post",
-              data: { 'content': serial, 'csrfmiddlewaretoken' : '{{ csrf_token }}' } 
-            });
-
-          }
-        });
-        $( "#todo_list_BS" ).disableSelection();
-        });
 
 
 /* move to EntryComple(id) sucessful Ajax load */
