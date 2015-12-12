@@ -65,16 +65,6 @@ $('#editModal').on('hide.bs.modal', function(event) {
 })
 
 
-//         $(document).on("click", ".editor", function(){
-// //  click on the gear
-//             $("#editModalContent").load($(this).attr('data-to-load'));
-//             conqolz.log($(this).attr('data-to-load'));
-// // ???          $(this).parent().toggleClass("state_on");
-//         })
-
-
-
-
 /* move to EntryComple(id) sucessful Ajax load */
 		$(document).on("click", ".entrycheckmark", function(){
 			// this is the checkbox as input. So it's parent is required to be checked

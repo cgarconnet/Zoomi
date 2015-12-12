@@ -26,8 +26,8 @@ urlpatterns = patterns('',
 	url(r'^refresh_entries/(?P<pk>\d+)/$', coreviews.EntryRefreshViewv2.as_view(), name='detailrefresh'),
 
 # Now comes the v 3.0, well better structured
-	url(r'^$', login_required(coreviews.EntryListAppendView.as_view()), name='entrylist'),	
-	url(r'^bs/$', login_required(coreviews.EntryListAppendViewBS.as_view()), name='entrylistBS'), # Bootstrap test
+	url(r'^v2/$', login_required(coreviews.EntryListAppendView.as_view()), name='entrylist'),	
+	url(r'^$', login_required(coreviews.EntryListAppendViewBS.as_view()), name='entrylistBS'), # Bootstrap test
 	
 	url(r'^transferred/$', login_required(coreviews.EntryListTransferredAppendView.as_view()), name='transflist'),	
 
