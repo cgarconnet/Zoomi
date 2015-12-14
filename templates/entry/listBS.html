@@ -60,11 +60,9 @@ $(document).ready(function () {
 						<ul id="todo_list_BS">
 						   	{% for objects in object_list %}						
 
-								<li id="entry_{{ objects.id }}" class="list-group-item {% if objects.section == 1 %}active{% endif %}">
 
 									{% include 'entry/detailsBS.html' %}
 
-								</li>
 
 							{% endfor %}
 						</ul>

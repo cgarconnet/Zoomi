@@ -33,6 +33,12 @@
 // to submit the form thru Ajax
 // source: http://malsup.com/jquery/form/#getting-started
 
+        $(document).on("click", "#id_section", function(){
+//  click on the section
+			$("#entry_{{ entry.id }}").toggleClass('active');
+        })
+
+
 	var form_options = {
 		target: '#editModal',
 
@@ -43,7 +49,23 @@
 
 		// we load the entry/details.html page
 		// As refresh is not working, so I am using Detailsformatted.html for the refresh_entry_url
-		$("#entry_{{ entry.id }}").load('{{ entry.refresh_entry_url }}');
+		// $.get('{{ entry.refresh_entry_url }}', function (data) {
+		// 	$("#entry_{{ entry.id }}").empty().append(data);
+		// });
+// No longer load directly so we can refresh the entire LI as well, not just insde the LI
+//		$("#entry_{{ entry.id }}").load('{{ entry.refresh_entry_url }}');
+
+		$("#entry_{{ entry.id }}").load('{{ entry.refresh_entry_url }} #entry_{{ entry.id }} > *');
+
+/*
+		var section = '{{ entry.section }}';
+		console.log(form.id_section);
+		if (section == 'True') {
+			 $("#entry_{{ entry.id }}").addClass('active');}
+		else {
+			 $("#entry_{{ entry.id }}").removeClass('active');
+		}
+*/
 		$('#editModal').modal('hide')
 
 		// setTimeout(function () {
