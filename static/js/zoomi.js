@@ -72,7 +72,7 @@ $('#editModal').on('hide.bs.modal', function(event) {
 			// si checked alors il n'est plus à faire
 			$(this).toggleClass("todo");
 			$(this).toggleClass("completed");
-            $(this).parent().parent().addClass("hide_entry");
+            $(this).parent().parent().parent().addClass("hide_entry");
             $('#todo_list').listview("refresh");
 
             $(this).parent().parent().slideUp("slow", function(){
