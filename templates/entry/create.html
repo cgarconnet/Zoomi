@@ -12,7 +12,7 @@
 
 <!-- Entry Name field -->
 
-				<div class="col-xs-6 col-sm-4">
+				<div class="col-xs-12 col-sm-6">
 					<div class="form-group warning">
 						<label for="exampleInputFile">{{ form.name.label }}</label>
 						{{ form.name|add_class:"form-control"}}
@@ -26,10 +26,10 @@
 				{% endif %}
 
 <!-- Due Date field -->
-				<div class="col-xs-6 col-sm-4">
+				<div class="hidden-xs col-sm-4">
 					<div class="form-group warning">
-						<label for="exampleInputFile" class="hidden-xs">{{ form.duedate.label }}</label>
-						{{ form.duedate|add_class:"form-control hidden-xs"}}
+						<label for="exampleInputFile">{{ form.duedate.label }}</label>
+						{{ form.duedate|add_class:"form-control"}}
 						{% if form.duedate.help_text %}<p class="help-block">{{ form.duedate.help_text }}</p>{% endif %}
 					</div>
 				</div>
@@ -40,8 +40,8 @@
 				{% endif %}
 
 
-			<div class="col-xs-6 col-sm-4">
-				<input type="submit" class="btn btn-success" role="button" value="{{ verb|default:"Add to the list" }}" />
+			<div class="hidden-xs col-sm-2"><p>
+				<input type="submit" class="btn btn-success" role="button" value="{{ verb|default:"Add" }}" />
 			</div>
 		</form>
 	</div>
