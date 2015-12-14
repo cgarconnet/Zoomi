@@ -87,7 +87,7 @@ class EntryCreateForm(ModelForm):
 		self.fields['duedate'].label = "Have a due date?"
 		self.fields['duedate'].widget.attrs['placeholder'] = "YYYY-MM-DD"
 		self.fields['name'].widget.attrs['autofocus'] = "on"
-#		self.fields['duedate'].widget.attrs['class'] = "col-xs-6 col-md-4"
+#		self.fields['duedate'].widget.attrs['class'] = "hidden-xs" - now moved to create.html form customization page
 
 
 class Theme(models.Model):
