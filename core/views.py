@@ -129,7 +129,7 @@ class EntryListAppendViewBS(ListAppendView):
 
 class EntryListTransferredAppendView(ListAppendView):
 	model = coremodels.Entry
-	template_name = 'entry/list.html'
+	template_name = 'entry/transferred.html'
 	context_object_name = 'entry'
 #	fields = ['name'] # "__all__" no longer required as defined in the models
 

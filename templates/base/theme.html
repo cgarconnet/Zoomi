@@ -122,12 +122,12 @@
 
 						{% if user.is_authenticated %}
 						<li>
-						    <a class="page-scroll" href="/event">Theme</a>
+						    <a class="page-scroll" href="/transferred">Transferred</a>
 						</li>
-						<li>
+<!-- 						<li>
 						    <a class="page-scroll" href="/business">Options</a>
 						</li>
-						<li>
+ -->						<li>
 						    <a class="page-scroll" href="/logout">Logout</a>
 						</li>
 						{% else %}
@@ -149,7 +149,25 @@
 {% endblock %}
 
 	<!-- Navigation end -->
+
+    <!-- Sub-page_title start -->
+
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+
+{% block page_sub_title %}
+
+
+{% endblock %}
+		</div>
+	</div>
+</div>
+	<!-- Sub-page_title end -->
+
+
 {% block content %}
+
 
     <!-- Services start -->
 
