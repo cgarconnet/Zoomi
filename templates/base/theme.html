@@ -571,7 +571,8 @@ By filling this form you will also be added to our MailChimp distribution list. 
 		$.ajax({
 		    type: "GET",
 		    headers: {"Access-Control-Allow-Origin": "*"},
-		    url: button.data('toload')
+		    url: button.data('toload'),
+		    'csrfmiddlewaretoken' : '{{ csrf_token }}'
 		}).done(function (data) {
 		    $("#editModalContent").html(data);
 		});
