@@ -561,7 +561,22 @@ By filling this form you will also be added to our MailChimp distribution list. 
 	// Code for the modal
 	$('#editModal').on('show.bs.modal', function(event) {
 	    var button = $(event.relatedTarget) // Button that triggered the modal
+
+// v1
+ /*
 	    $("#editModalContent").load(button.data('toload'));
+*/
+
+// v2 - to make it work with cross-origin issue
+		$.ajax({
+		    type: "GET",
+		    headers: {"Access-Control-Allow-Origin": "*"},
+		    url: button.data('toload')
+		}).done(function (data) {
+		    $("#editModalContent").html(data);
+		});
+
+
 	})
 
 	$('#editModal').on('hide.bs.modal', function(event) {
