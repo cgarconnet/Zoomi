@@ -37,7 +37,7 @@ urlpatterns = patterns('',
 	url(r'^entries/index$', login_required(coreviews.index), name='index'),
 
 	# Registering the entrance login page
-	url(r'entrance/$', coreviews.entrance),
+	url(r'^entrance$', coreviews.entrance),
 
 	# easy url to logout
 	url(r'^logout/$', 'django.contrib.auth.views.logout',{'next_page': '/entrance'})
