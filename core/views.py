@@ -145,9 +145,9 @@ class EntryListTransferredAppendView(ListAppendView):
 
 class EntryModalUpdateView(UpdateView):
 	model = coremodels.Entry
-#	form_class = ItemForm
+	form_class = coremodels.EntryUpdateForm
 	template_name = 'entry/modal.html' #I will have to customize the fields to make it more simple rather than the current generic form template
-	fields = ['name','duedate','impediment','transfered','assignees', 'section'] # the fields on the edit page
+#	fields = ['name','duedate','impediment','transfered','assignees', 'section'] # the fields on the edit page
 	context_object_name = 'entry'
 
 	def dispatch(self, *args, **kwargs):

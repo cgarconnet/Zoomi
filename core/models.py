@@ -106,6 +106,7 @@ class EntryUpdateForm(ModelForm):
 		self.fields['duedate'].label = "Have a due date?"
 		self.fields['duedate'].widget.attrs['placeholder'] = "YYYY-MM-DD"
 		self.fields['name'].widget.attrs['autofocus'] = "on"
+		users = User.objects.all()
 		self.fields['assignees'].choices = [(user.pk, user.get_full_name()) for user in users]
 
 #		self.fields['duedate'].widget.attrs['class'] = "hidden-xs" - now moved to create.html form customization page
