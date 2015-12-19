@@ -90,6 +90,26 @@ class EntryCreateForm(ModelForm):
 #		self.fields['duedate'].widget.attrs['class'] = "hidden-xs" - now moved to create.html form customization page
 
 
+class EntryUpdateForm(ModelForm):
+
+	class Meta:
+		model = Entry
+		fields = ['name','duedate','impediment','transfered','assignees', 'section'] # the fields on the edit page
+
+
+	def __init__(self, *args, **kwargs): # current_business, as parameter (cf Creeam)
+#		self.request = kwargs.pop('request', None)
+#		current_user = kwargs.pop('user')
+#		current_business = kwargs['pk']
+		super(EntryUpdateForm, self).__init__(*args, **kwargs)
+		self.fields['name'].label = "What do you need to do today?"
+		self.fields['duedate'].label = "Have a due date?"
+		self.fields['duedate'].widget.attrs['placeholder'] = "YYYY-MM-DD"
+		self.fields['name'].widget.attrs['autofocus'] = "on"
+		self.fields['assignees'].choices = [(user.pk, user.get_full_name()) for user in users]
+
+#		self.fields['duedate'].widget.attrs['class'] = "hidden-xs" - now moved to create.html form customization page
+
 class Theme(models.Model):
 # il appartient à un user
 	user = models.ForeignKey(User)
