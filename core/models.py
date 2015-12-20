@@ -22,7 +22,7 @@ import uuid
 # ------------------------
 # all Details for User
 class UserProfile(models.Model):
-	user = models.ForeignKey(User, on_delete=models.CASCADE)
+	user = models.OneToOneField(User, on_delete=models.CASCADE)
 	company = models.CharField(max_length=50)
 
 	def __str__(self):
