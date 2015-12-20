@@ -5,9 +5,9 @@ from django.contrib.auth.decorators import login_required, permission_required #
 # all url that we want to protect we add login_required()
 # for admin securisation we add permission_required('is_staff') before (coreviews.LocationUpdateView.as_view())
 # this prevent people from cheating the url
+import django.contrib.auth.views as authviews
 
-
-urlpatterns = patterns('',
+urlpatterns = [
 
 # v1 is formerly the simple Index.html jQuery page
 # this view is kept as i was well communicated to first customers
@@ -44,7 +44,7 @@ urlpatterns = patterns('',
 	url(r'^entrance$', coreviews.entrance),
 
 	# easy url to logout
-	url(r'^logout/$', 'django.contrib.auth.views.logout',{'next_page': '/entrance'})
+	url(r'^logout/$', authviews.logout,{'next_page': '/entrance'}),
 		# next page coulb be our /entrance
 
-)
+]
