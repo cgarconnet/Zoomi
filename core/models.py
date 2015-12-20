@@ -6,6 +6,8 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from django.contrib.auth.models import AbstractUser # to create an User extension for additional fields
 
+from django.db.models.signals import post_save # to react on save on User so we can create a UserProfile
+
 from django.db.models import Avg
 
 from django.views.generic.list import MultipleObjectMixin, MultipleObjectTemplateResponseMixin
@@ -17,6 +19,8 @@ import uuid
 
 # Create your models here.
 
+# ------------------------
+# all Details for User
 class UserProfile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
 	company = models.CharField(max_length=50)
@@ -27,6 +31,15 @@ class UserProfile(models.Model):
 # v2		return reverse (viewname="listappend") #, args=[self.id]) 3 before index, now listappend because after adding we want to load again that page
 # for v3
 		return reverse (viewname="entrylistBS") #, args=[self.id]) 3 before index, now listappend because after adding we want to load again that page
+
+def create_user_profile(sender, instance, created, **kwargs):
+	if created:
+		UserProfile.objects.create(user=instance)
+
+post_save.connect(create_user_profile, sender=User)
+
+# ------------------------
+
 
 
 class Entry(models.Model):
