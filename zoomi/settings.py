@@ -135,3 +135,7 @@ STATICFILES_DIRS = (
     )
 
 LOGIN_URL = '/entrance'
+
+ABSOLUTE_URL_OVERRIDES = {
+        'auth.user' : lambda o:'/user/profile/',
+}

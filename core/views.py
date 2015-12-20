@@ -10,8 +10,9 @@ from django.db.models import Q # used to select OR conditions in Filters
 from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
+from django.forms.models import model_to_dict # for the UserProfile view
 
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic.base import TemplateView # to import html templates
 from django.views.generic.list import ListView # to list my object from database
 from django.views.generic.detail import DetailView # to show details of my selected object from database
@@ -96,6 +97,30 @@ class ListAppend(ListAppendView):
 
 
 # ----- v3 views -----
+
+class UserDetailView(UpdateView):
+#	model = coremodels.User
+	template_name = 'base/form.html'
+	fields = ['first_name','last_name','email'] # the fields on the edit page
+
+	def get_object(self):
+		return get_object_or_404(coremodels.User, pk=self.request.user.id)
+
+class UserProfileView(UpdateView):
+#	model = coremodels.User
+	template_name = 'base/form.html'
+	fields = ['company'] # the fields on the edit page
+
+	def get_object(self):
+		return get_object_or_404(coremodels.UserProfile, pk=self.request.user.id)
+
+
+	# def get_context_data(request, self): #, **kwargs):
+	# 	context = super(UserDetailView, self.request.user)
+	# 	context['user_attr_map'] = model_to_dict(self.object)
+	# 	context['userprofile_attr_map'] = model_to_dict(self.object.UserProfile)
+	# 	return context
+
 class EntryListAppendView(ListAppendView):
 	model = coremodels.Entry
 	template_name = 'entry/list.html'

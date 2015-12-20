@@ -36,6 +36,10 @@ urlpatterns = patterns('',
 	url(r'^entries/update/(?P<pk>\d+)/$', login_required(coreviews.EntryAjaxUpdateView), name='entryupdate'),	
 	url(r'^entries/index$', login_required(coreviews.index), name='index'),
 
+	# to show the user profile
+	url(r'^user/details/$', login_required(coreviews.UserDetailView.as_view()), name='userdetails'),
+	url(r'^user/profile/$', login_required(coreviews.UserProfileView.as_view()), name='userprofile'),
+
 	# Registering the entrance login page
 	url(r'^entrance$', coreviews.entrance),
 
