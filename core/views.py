@@ -112,7 +112,8 @@ class UserProfileView(UpdateView):
 	fields = ['company'] # the fields on the edit page
 
 	def get_object(self):
-		return get_object_or_404(coremodels.UserProfile, pk=self.request.user.id)
+		return get_object_or_404(coremodels.UserProfile, user=self.request.user.id)
+#		return get_object_or_404(coremodels.UserProfile, pk=self.request.user.id)
 
 
 	# def get_context_data(request, self): #, **kwargs):
