@@ -68,8 +68,9 @@ $(document).ready(function () {
 						   	{% for objects in object_list %}						
 
 
+{% block detail %}
 									{% include 'entry/detailsBS.html' %}
-
+{% endblock %}
 
 							{% endfor %}
 						</ul>
