@@ -14,7 +14,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='entry',
             name='section',
-            field=models.BooleanField(default=0),
-            preserve_default=False,
+            field=models.BooleanField(default=False),
         ),
     ]

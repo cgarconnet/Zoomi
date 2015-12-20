@@ -4,6 +4,8 @@ from django.forms import ModelForm
 from django import forms
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser # to create an User extension for additional fields
+
 from django.db.models import Avg
 
 from django.views.generic.list import MultipleObjectMixin, MultipleObjectTemplateResponseMixin
@@ -14,6 +16,12 @@ import uuid
 
 
 # Create your models here.
+
+class UserProfile(models.Model):
+	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	company = models.CharField(max_length=50)
+
+
 class Entry(models.Model):
 
 	user = models.ForeignKey(User)
@@ -110,6 +118,8 @@ class EntryUpdateForm(ModelForm):
 		self.fields['assignees'].choices = [(user.pk, user.get_full_name()) for user in users]
 
 #		self.fields['duedate'].widget.attrs['class'] = "hidden-xs" - now moved to create.html form customization page
+
+
 
 class Theme(models.Model):
 # il appartient à un user
