@@ -103,6 +103,11 @@ class UserDetailView(UpdateView):
 	template_name = 'base/form.html'
 	fields = ['first_name','last_name','email'] # the fields on the edit page
 
+	def get_context_data(self, **kwargs):
+		context = super(UserDetailView, self).get_context_data(**kwargs)
+		context['form_title'] = "Update of your profile - step 1/2"
+		return context
+
 	def get_object(self):
 		return get_object_or_404(coremodels.User, pk=self.request.user.id)
 
@@ -110,6 +115,11 @@ class UserProfileView(UpdateView):
 #	model = coremodels.User
 	template_name = 'base/form.html'
 	fields = ['company'] # the fields on the edit page
+
+	def get_context_data(self, **kwargs):
+		context = super(UserProfileView, self).get_context_data(**kwargs)
+		context['form_title'] = "Update of your profile - step 2/2"
+		return context
 
 	def get_object(self):
 		return get_object_or_404(coremodels.UserProfile, user=self.request.user.id)
