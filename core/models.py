@@ -19,6 +19,13 @@ import uuid
 
 # Create your models here.
 
+# we create a cateogry
+SOURCE_CHOICES = (
+	(0, 'Manual'),
+	(1, 'Action'),
+	(1, 'Log'),
+	)
+
 # ------------------------
 # all Details for User
 class UserProfile(models.Model):
@@ -144,6 +151,42 @@ class EntryUpdateForm(ModelForm):
 
 
 
+class Comment(models.Model):
+# il appartient à un user
+	user = models.ForeignKey(User)
+	entry = models.ForeignKey(Entry)
+	description = models.TextField(null=True, blank=True) 
+	source = models.IntegerField(choices=SOURCE_CHOICES, null=True, blank=True)
+	created_at = models.DateTimeField(auto_now_add=True)
+
+	def __str__(self):
+		return str(self.entry) + ' / ' + str(self.user)
+
+	def get_absolute_url(self):
+		# return "location/"+str(self.id)+"/detail" # not the best way to do it
+		# instead use the core.urlresolvers
+# v2		return reverse (viewname="listappend") #, args=[self.id]) 3 before index, now listappend because after adding we want to load again that page
+# for v3
+		return reverse (viewname="commentlist") #, args=[self.id]) 3 before index, now listappend because after adding we want to load again that page
+
+
+class CommentCreateForm(ModelForm):
+
+	class Meta:
+		model = Comment
+		fields = ['description'] # the form on the homepage
+
+
+	def __init__(self, *args, **kwargs): # current_business, as parameter (cf Creeam)
+#		self.request = kwargs.pop('request', None)
+#		current_user = kwargs.pop('user')
+#		current_business = kwargs['pk']
+		super(CommentCreateForm, self).__init__(*args, **kwargs)
+		self.fields['description'].widget.attrs['autofocus'] = "on"
+#		self.fields['duedate'].widget.attrs['class'] = "hidden-xs" - now moved to create.html form customization page
+
+
+
 class Theme(models.Model):
 # il appartient à un user
 	user = models.ForeignKey(User)
@@ -188,6 +231,34 @@ class ListAppendView(MultipleObjectMixin,MultipleObjectTemplateResponseMixin,Mod
 	def post(self, request, *args, **kwargs):
 		self.object = None
 		return super(ListAppendView, self).post(request, *args, **kwargs)
+
+	def form_invalid(self, form):
+		self.object_list = self.get_queryset()
+		return self.render_to_response(self.get_context_data(object_list=self.object_list, form=form))
+
+
+class ListCommentView(MultipleObjectMixin,MultipleObjectTemplateResponseMixin,ModelFormMixin,ProcessFormView):
+	""" A View that displays a list of objects and a form to create a new object.
+	The View processes this form. """
+	template_name_suffix = '_append'
+	form_class = CommentCreateForm
+	allow_empty = True
+
+	def get(self, request, *args, **kwargs):
+		self.object_list = self.get_queryset()
+		allow_empty = self.get_allow_empty()
+		if not allow_empty and len(self.object_list) == 0:
+			raise Http404(_(u"Empty list and '%(class_name)s.allow_empty' is False.")
+							% {'class_name': self.__class__.__name__})
+		self.object = None
+		form_class = self.get_form_class()
+		form = self.get_form(form_class)
+		context = self.get_context_data(object_list=self.object_list, form=form)
+		return self.render_to_response(context)
+
+	def post(self, request, *args, **kwargs):
+		self.object = None
+		return super(ListCommentView, self).post(request, *args, **kwargs)
 
 	def form_invalid(self, form):
 		self.object_list = self.get_queryset()

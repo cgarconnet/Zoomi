@@ -21,7 +21,7 @@ from django.views.generic.edit import CreateView, UpdateView # to enable the edi
 from sitegate.decorators import redirect_signedin, sitegate_view # for sitegate and authenficiation
 
 import core.models as coremodels # we import our models
-from core.models import ListAppendView
+from core.models import ListAppendView, ListCommentView
 	
 # Create your views here.
 # v1 views
@@ -177,6 +177,23 @@ class EntryListTransferredAppendView(ListAppendView):
 	# this feature is used between submission of the user and sending these data to the database
 		form.instance.user = self.request.user
 		return super(EntryListTransferredAppendView, self).form_valid(form)
+
+
+class CommentListAppendView(ListCommentView):
+	model = coremodels.Comment
+	template_name = 'comment/list.html'
+	context_object_name = 'comment'
+
+
+	def get_queryset(self):
+		# return the Entry object for the current user and for done = not done
+		return coremodels.Comment.objects.all().order_by('created_at')
+
+	def form_valid(self, form):
+	# this feature is used between submission of the user and sending these data to the database
+		form.instance.user = self.request.user
+		form.instance.entry = coremodels.Entry.objects.get(id=self.kwargs['pk'])
+		return super(CommentListAppendView, self).form_valid(form)
 
 
 class EntryModalUpdateView(UpdateView):

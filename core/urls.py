@@ -36,6 +36,9 @@ urlpatterns = [
 	url(r'^entries/update/(?P<pk>\d+)/$', login_required(coreviews.EntryAjaxUpdateView), name='entryupdate'),	
 	url(r'^entries/index$', login_required(coreviews.index), name='index'),
 
+	# to show the comments on an entry
+	url(r'^entries/(?P<pk>\d+)/comment/$', login_required(coreviews.CommentListAppendView.as_view()), name='commentlist'),	
+
 	# to show the user profile
 	url(r'^user/details/$', login_required(coreviews.UserDetailView.as_view()), name='userdetails'),
 	url(r'^user/profile/$', login_required(coreviews.UserProfileView.as_view()), name='userprofile'),
