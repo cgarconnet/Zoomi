@@ -187,7 +187,9 @@ class CommentListAppendView(ListCommentView):
 
 	def get_queryset(self):
 		# return the Entry object for the current user and for done = not done
-		return coremodels.Comment.objects.all().order_by('created_at')
+		entry = coremodels.Entry.objects.get(id=self.kwargs['pk'])
+
+		return coremodels.Comment.objects.filter(entry=entry).order_by('-created_at')
 
 	def form_valid(self, form):
 	# this feature is used between submission of the user and sending these data to the database
