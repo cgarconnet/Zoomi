@@ -55,13 +55,6 @@ def detail(request, entry_id):
 		raise Http404
 	return render_to_response('v2/entry/detail.html', {'entry': entry})
 
-class EntryUpdateView(UpdateView):
-	model = coremodels.Entry
-#	model = coremodels.Event # by just changing the model here, I can have access to the right form edit template
-	template_name = 'base/form.html'
-	# # fields ="__all__" this is when we want all fields, but in this case, we don't want the user nor the Location Id
-	fields = ['name','duedate','transfered','assignees','impediment','section'] # the fields on the edit page
-
 
 class EntryModalUpdateViewv2(UpdateView):
 	model = coremodels.Entry
@@ -131,6 +124,13 @@ class UserProfileView(UpdateView):
 	# 	context['user_attr_map'] = model_to_dict(self.object)
 	# 	context['userprofile_attr_map'] = model_to_dict(self.object.UserProfile)
 	# 	return context
+
+class EntryUpdateView(UpdateView): # re-used from v2
+	model = coremodels.Entry
+#	model = coremodels.Event # by just changing the model here, I can have access to the right form edit template
+	template_name = 'base/form.html'
+	# # fields ="__all__" this is when we want all fields, but in this case, we don't want the user nor the Location Id
+	fields = ['name','duedate','transfered','assignees','impediment','section'] # the fields on the edit page
 
 class EntryListAppendView(ListAppendView):
 	model = coremodels.Entry
