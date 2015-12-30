@@ -58,7 +58,7 @@ def detail(request, entry_id):
 class EntryUpdateView(UpdateView):
 	model = coremodels.Entry
 #	model = coremodels.Event # by just changing the model here, I can have access to the right form edit template
-	template_name = 'v2/base/form.html'
+	template_name = 'base/form.html'
 	# # fields ="__all__" this is when we want all fields, but in this case, we don't want the user nor the Location Id
 	fields = ['name','duedate','transfered','assignees','impediment','section'] # the fields on the edit page
 
