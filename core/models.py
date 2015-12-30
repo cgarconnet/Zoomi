@@ -65,6 +65,9 @@ class Entry(models.Model):
 	assignees = models.ManyToManyField(User, related_name='assignees',blank=True)	
 	section = models.BooleanField(default=False) # 0 = No / 1 = Yes
 	created_at = models.DateTimeField(auto_now_add=True)
+	# new fields required
+	# completed_on
+	# theme
 
 	class Meta:
 		ordering = ['order']
