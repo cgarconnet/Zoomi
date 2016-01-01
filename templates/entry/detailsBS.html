@@ -10,7 +10,7 @@
 								   		</div>
 
 								   		<div class="col-xs-9 col-sm-6 col-md-6 text-left">
-								   			<p class="list-group-item-text">{{ objects }}</p>
+								   			<p class="list-group-item-text">{{ objects|truncatewords:6 }}</p>
 								   		</div>
 
 								   		{% if objects.section == 1 %}
@@ -21,7 +21,7 @@
 								   		<div class="hidden-xs col-sm-3 col-md-3 text-right">
 								   			<p class="list-group-item-text">
 										        {% if objects.duedate %}
-										            <span class="
+										            <span class="switchable 
 										                {% if objects.duedate|timesince >= "1 min" %}
 										                overdue
 										                {% endif %}
@@ -29,13 +29,22 @@
 										                {{ objects.duedate }}
 										            </span>
 										        {% endif %}
+										        	<span class="switchable hide_entry">
+										        		since {{ objects.created_at|timesince }}
+										        	</span>
+										        
+
+										        <span class="glyphicon glyphicon-eye-close switch">
 								   			</p>
 									    </div>
 								   		<div class="hidden-xs col-sm-1 col-md-1 text-right">
 								   			<!-- <button type="button" class="btn btn-link" data-toggle="modal" data-toload="{{ objects.update_modal_entry_url }}" data-backdrop="true" data-target="#editModal">
 												<span class="glyphicon glyphicon-edit editor"> -->
-													<a href="{{ objects.update_entry_url }}">edit</a>
-								   			</button>
+													<a href="{{ objects.update_entry_url }}">
+														<span class="glyphicon glyphicon-edit">
+													</a>
+													
+								   			<!-- </button> -->
 									    </div>
 								   		<div class="col-xs-1 col-sm-1 col-md-1 text-right">
 								   				<span class="glyphicon glyphicon-menu-hamburger selector">

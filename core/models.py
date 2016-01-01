@@ -51,11 +51,22 @@ post_save.connect(create_user_profile, sender=User)
 # ------------------------
 
 
+class Theme(models.Model):
+# il appartient à un user
+	user = models.ForeignKey(User)
+	name = models.CharField(max_length=100, null=True, blank=True)
+
+	created_at = models.DateTimeField(auto_now_add=True)
+
+	def __str__(self):
+		return str(self.user) + ' / ' + str(self.name)
+
+
 
 class Entry(models.Model):
 
 	user = models.ForeignKey(User)
-	name = models.CharField(max_length=50)
+	name = models.CharField(max_length=100)
 	data = models.CharField(max_length=200, blank=True)
 	order = models.IntegerField(default=1000)
 	duedate = models.DateField(null=True, blank=True)
@@ -66,8 +77,8 @@ class Entry(models.Model):
 	section = models.BooleanField(default=False) # 0 = No / 1 = Yes
 	created_at = models.DateTimeField(auto_now_add=True)
 	# new fields required
-	# completed_on
-	# theme
+	completed_on = models.DateTimeField(null=True, blank=True)
+	theme = models.ForeignKey(Theme, null=True)
 
 	class Meta:
 		ordering = ['order']
@@ -195,16 +206,7 @@ class CommentCreateForm(ModelForm):
 
 
 
-class Theme(models.Model):
-# il appartient à un user
-	user = models.ForeignKey(User)
-	name = models.CharField(max_length=100, null=True, blank=True)
-
-	created_at = models.DateTimeField(auto_now_add=True)
-
-	def __str__(self):
-		return str(self.user) + ' / ' + str(self.name)
-
+# Item is no longer used #
 class Item(models.Model):
 # il appartient à un client d'un user pour un Business
 	user = models.ForeignKey(User)
