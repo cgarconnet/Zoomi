@@ -1,0 +1,92 @@
+{% extends "base/theme.html" %}
+{% load sitegate %}
+{% load staticfiles %}
+
+
+{% block animation %}
+{% endblock %}
+
+{% block page_sub_title %}
+
+Please find the list of future releases and details on previous releases
+
+{% endblock %}
+
+{% block content %}
+
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<link rel="stylesheet" href="{% static "css/zoomi.css" %}">
+
+
+<section id="services">
+	<div class="container">
+
+<div class="panel-group" id="accordion" role="tablist">
+	<div class="panel panel-default">
+		<div class="panel-heading" role="tab" id="collapseListGroupHeading1">
+			<h4 class="panel-title">
+				<a class="" role="button" data-toggle="collapse" href="#collapseListGroup1" aria-expanded="true" data-parent="#accordion" aria-controls="collapseListGroup1">
+					Future release </a>
+			</h4>
+		</div>
+
+		<div style="" aria-expanded="true" id="collapseListGroup1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="collapseListGroupHeading1">
+			<ul class="list-group">
+				<li class="list-group-item">Bootply</li>
+				<li class="list-group-item">One itmus ac facilin</li>
+				<li class="list-group-item">Second eros</li>
+			</ul>
+			<div class="panel-footer"><a href="mailto:cgarconnet@gmail.com">Vote here</a></div>
+		</div>
+	</div>
+
+	<div class="panel panel-default">
+
+
+		<div class="panel-heading" role="tab" id="collapseListGroupHeading3">
+			<h4 class="panel-title">
+				<a class="" role="button" data-toggle="collapse" href="#collapseListGroup3" aria-expanded="true" data-parent="#accordion" aria-controls="collapseListGroup3">
+					v2.2 - Jan 1st 2016 </a>
+			</h4>
+		</div>
+
+		<div style="" aria-expanded="false" id="collapseListGroup3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading3">
+			<ul class="list-group">
+				<li class="list-group-item">Create theme and make it linked to Entry</li>
+				<li class="list-group-item">Restructure the comment</li>
+				<li class="list-group-item">Show/hide age of the entries</li>
+				<li class="list-group-item">Edit an entry no longer in pop-up mode</li>
+			</ul>
+			<div class="panel-footer"><a href="mailto:cgarconnet@gmail.com">Share feedback</a></div>
+		</div>
+
+	</div>
+	<div class="panel panel-default">
+
+		<div class="panel-heading" role="tab" id="collapseListGroupHeading2">
+			<h4 class="panel-title">
+				<a class="" role="button" data-toggle="collapse" href="#collapseListGroup2" aria-expanded="true" data-parent="#accordion" aria-controls="collapseListGroup2">
+					v2.1 - Dec 27th 2015</a>
+			</h4>
+		</div>
+
+		<div style="" aria-expanded="false" id="collapseListGroup2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading2">
+			<ul class="list-group">
+				<li class="list-group-item">Create a profile to change your full name and company</li>
+				<li class="list-group-item">One itmus ac facilin</li>
+				<li class="list-group-item">Second eros</li>
+			</ul>
+			<div class="panel-footer"><a href="mailto:cgarconnet@gmail.com">Share feedback</a></div>
+		</div>
+
+	</div>
+
+</div>
+	</div>
+
+</section>
+
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

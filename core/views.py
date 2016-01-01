@@ -91,6 +91,9 @@ class ListAppend(ListAppendView):
 
 # ----- v3 views -----
 
+class ReleasesPageView(TemplateView):
+		template_name = "base/releases.html"
+
 class UserDetailView(UpdateView):
 #	model = coremodels.User
 	template_name = 'base/form.html'

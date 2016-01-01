@@ -28,7 +28,8 @@ urlpatterns = [
 # Now comes the v 3.0, well better structured
 #	url(r'^v2/$', login_required(coreviews.EntryListAppendView.as_view()), name='entrylist'),	
 	url(r'^$', login_required(coreviews.EntryListAppendViewBS.as_view()), name='entrylistBS'), # Bootstrap test
-	
+	url(r'^releases/$', coreviews.ReleasesPageView.as_view()),
+
 	url(r'^transferred/$', login_required(coreviews.EntryListTransferredAppendView.as_view()), name='transflist'),	
 
 	url(r'^entries/modal/(?P<pk>\d+)/$', login_required(coreviews.EntryModalUpdateView.as_view()), name='entrymodal'),	
