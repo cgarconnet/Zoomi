@@ -59,7 +59,7 @@ class Theme(models.Model):
 	created_at = models.DateTimeField(auto_now_add=True)
 
 	def __str__(self):
-		return str(self.user) + ' / ' + str(self.name)
+		return str(self.name)
 
 	def get_absolute_url(self):
 		# return "location/"+str(self.id)+"/detail" # not the best way to do it
@@ -157,7 +157,7 @@ class EntryUpdateForm(ModelForm):
 
 	class Meta:
 		model = Entry
-		fields = ['name','duedate','impediment','transfered','assignees', 'section'] # the fields on the edit page
+		fields = ['name','duedate','section','transfered','assignees', 'theme'] # the fields on the edit page
 
 
 	def __init__(self, *args, **kwargs): # current_business, as parameter (cf Creeam)

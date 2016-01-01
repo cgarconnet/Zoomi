@@ -129,8 +129,10 @@ class EntryUpdateView(UpdateView): # re-used from v2
 	model = coremodels.Entry
 #	model = coremodels.Event # by just changing the model here, I can have access to the right form edit template
 	template_name = 'base/form.html'
+	form_class = coremodels.EntryUpdateForm
+
 	# # fields ="__all__" this is when we want all fields, but in this case, we don't want the user nor the Location Id
-	fields = ['name','duedate','transfered','assignees','impediment','section','theme'] # the fields on the edit page
+#	fields = ['name','duedate','transfered','assignees','impediment','section','theme'] # the fields on the edit page
 
 class EntryListAppendView(ListAppendView):
 	model = coremodels.Entry
