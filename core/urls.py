@@ -37,9 +37,11 @@ urlpatterns = [
 	url(r'^entries/index$', login_required(coreviews.index), name='index'),
 	url(r'^entries/(?P<pk>\d+)/$', login_required(coreviews.EntryUpdateView.as_view()), name='detail'),	
 
-
 	# to show the comments on an entry
 	url(r'^entries/(?P<pk>\d+)/comment/$', login_required(coreviews.CommentListAppendView.as_view()), name='commentlist'),	
+
+	# to show the theme
+	url(r'^themes/$', login_required(coreviews.ThemeListAppendView.as_view()), name='themelist'),	
 
 	# to show the user profile
 	url(r'^user/details/$', login_required(coreviews.UserDetailView.as_view()), name='userdetails'),

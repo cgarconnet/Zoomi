@@ -1,0 +1,54 @@
+{% extends "base/theme.html" %}
+{% load sitegate %}
+{% load staticfiles %}
+
+
+{% block animation %}
+{% endblock %}
+
+{% block page_sub_title %}
+
+This is your comments for the entry XXX
+
+{% endblock %}
+
+{% block content %}
+
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<link rel="stylesheet" href="{% static "css/zoomi.css" %}">
+
+
+<section id="services">
+	<div class="container">
+
+		<div class="row ">
+			<a href="/">back</a>
+			<div class="col-lg-12 text-center">
+
+				{% include 'theme/create.html' %}
+
+		</div>
+		</div>
+		<div class="row ">
+			<div class="col-lg-12 text-center">
+
+						<ul id="comment_list">
+						   	{% for objects in object_list %}						
+
+
+{% block detail %}
+									{% include 'theme/details.html' %}
+{% endblock %}
+
+							{% endfor %}
+						</ul>
+			</div>
+		</div>
+	</div>
+
+</section>
+
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
