@@ -133,6 +133,11 @@ class Entry(models.Model):
 		# instead use the core.urlresolvers
 		return reverse (viewname="commentlist", args=[self.id])
 
+	def theme_entry_url(self):
+		# return "location/"+str(self.id)+"/detail" # not the best way to do it
+		# instead use the core.urlresolvers
+		return reverse (viewname="themedetails", args=[self.theme.id])
+
 
 class EntryCreateForm(ModelForm):
 
@@ -161,8 +166,8 @@ class EntryUpdateForm(ModelForm):
 
 
 	def __init__(self, *args, **kwargs): # current_business, as parameter (cf Creeam)
-#		self.request = kwargs.pop('request', None)
-#		current_user = kwargs.pop('user')
+		self.request = kwargs.pop('request', None)
+		current_user = kwargs.pop('user')
 #		current_business = kwargs['pk']
 		super(EntryUpdateForm, self).__init__(*args, **kwargs)
 		self.fields['name'].label = "What do you need to do today?"
@@ -171,6 +176,7 @@ class EntryUpdateForm(ModelForm):
 		self.fields['name'].widget.attrs['autofocus'] = "on"
 		users = User.objects.all()
 		self.fields['assignees'].choices = [(user.pk, user.get_full_name()) for user in users]
+		self.fields['theme'].queryset = Theme.objects.filter(user=current_user)
 
 #		self.fields['duedate'].widget.attrs['class'] = "hidden-xs" - now moved to create.html form customization page
 

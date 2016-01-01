@@ -10,7 +10,11 @@
 								   		</div>
 
 								   		<div class="col-xs-9 col-sm-6 col-md-6 text-left">
-								   			<p class="list-group-item-text">{{ objects|truncatewords:6 }}</p>
+								   			<p class="list-group-item-text">
+								   				{% if objects.theme %}
+								   					<a href="{{ objects.theme_entry_url }}">{{ objects.theme }}</a> > 
+								   				{% endif %}
+								   				{{ objects|truncatewords:10 }}</p>
 								   		</div>
 
 								   		{% if objects.section == 1 %}

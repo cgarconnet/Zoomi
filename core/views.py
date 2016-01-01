@@ -125,11 +125,32 @@ class UserProfileView(UpdateView):
 	# 	context['userprofile_attr_map'] = model_to_dict(self.object.UserProfile)
 	# 	return context
 
+
+class ThemeListEntriesView(ListAppendView):
+	model = coremodels.Entry
+	template_name = 'entry/listBS.html'
+	context_object_name = 'entry'
+#	fields = ['name'] # "__all__" no longer required as defined in the models
+
+	def get_queryset(self):
+		# return the Entry object for the current user and for done = not done
+		return coremodels.Entry.objects.filter(user=self.request.user, transfered=0, theme=self.kwargs['pk']).order_by('created_at')
+
+	def form_valid(self, form):
+	# this feature is used between submission of the user and sending these data to the database
+		form.instance.user = self.request.user
+		return super(ThemeListEntriesView, self).form_valid(form)
+
 class EntryUpdateView(UpdateView): # re-used from v2
 	model = coremodels.Entry
 #	model = coremodels.Event # by just changing the model here, I can have access to the right form edit template
 	template_name = 'base/form.html'
 	form_class = coremodels.EntryUpdateForm
+
+	def get_form_kwargs(self):
+		kwargs = super(EntryUpdateView, self).get_form_kwargs()
+		kwargs['user'] = self.request.user
+		return kwargs
 
 	# # fields ="__all__" this is when we want all fields, but in this case, we don't want the user nor the Location Id
 #	fields = ['name','duedate','transfered','assignees','impediment','section','theme'] # the fields on the edit page

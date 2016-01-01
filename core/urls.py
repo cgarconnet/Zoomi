@@ -42,6 +42,8 @@ urlpatterns = [
 
 	# to show the theme
 	url(r'^themes/$', login_required(coreviews.ThemeListAppendView.as_view()), name='themelist'),	
+	url(r'^themes/(?P<pk>\d+)/entries/$', login_required(coreviews.ThemeListEntriesView.as_view()), name='themedetails'),	
+
 
 	# to show the user profile
 	url(r'^user/details/$', login_required(coreviews.UserDetailView.as_view()), name='userdetails'),
