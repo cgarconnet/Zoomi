@@ -132,6 +132,7 @@ class UserProfileView(UpdateView):
 	# 	return context
 
 
+# View behind this entry http://127.0.0.1:8000/themes/3/entries/
 class ThemeListEntriesView(ListAppendView):
 	model = coremodels.Entry
 	template_name = 'entry/listBS.html'
@@ -147,6 +148,7 @@ class ThemeListEntriesView(ListAppendView):
 	def form_valid(self, form):
 	# this feature is used between submission of the user and sending these data to the database
 		form.instance.user = self.request.user
+		form.instance.theme = coremodels.Theme.objects.get(id=self.kwargs['pk'])
 		return super(ThemeListEntriesView, self).form_valid(form)
 
 class EntryUpdateView(UpdateView): # re-used from v2

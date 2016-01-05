@@ -119,6 +119,7 @@ class Entry(models.Model):
 		# instead use the core.urlresolvers
 # v2		return reverse (viewname="listappend") #, args=[self.id]) 3 before index, now listappend because after adding we want to load again that page
 # for v3
+#		return self.build_absolute_uri
 		return reverse (viewname="entrylistBS") #, args=[self.id]) 3 before index, now listappend because after adding we want to load again that page
 
 	def get_index_url(self):
