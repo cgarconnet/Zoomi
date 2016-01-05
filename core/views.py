@@ -133,6 +133,8 @@ class ThemeListEntriesView(ListAppendView):
 	model = coremodels.Entry
 	template_name = 'entry/listBS.html'
 	context_object_name = 'entry'
+	hide_sortable = 'hide_entry' # this is a CSS to hide the move item
+	
 #	fields = ['name'] # "__all__" no longer required as defined in the models
 
 	def get_queryset(self):
@@ -178,6 +180,7 @@ class EntryListAppendViewBS(ListAppendView):
 	model = coremodels.Entry
 	template_name = 'entry/listBS.html'
 	context_object_name = 'entry'
+	hide_sortable = ""
 #	fields = ['name'] # "__all__" no longer required as defined in the models
 
 	def get_queryset(self):
