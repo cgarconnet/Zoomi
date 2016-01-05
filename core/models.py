@@ -68,6 +68,11 @@ class Theme(models.Model):
 # for v3
 		return reverse (viewname="themelist") #, args=[self.id]) 3 before index, now listappend because after adding we want to load again that page
 
+	def theme_entry_url(self):
+		# return "location/"+str(self.id)+"/detail" # not the best way to do it
+		# instead use the core.urlresolvers
+		return reverse (viewname="themedetails", args=[self.id])
+
 
 class Entry(models.Model):
 

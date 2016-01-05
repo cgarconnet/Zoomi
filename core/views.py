@@ -22,7 +22,10 @@ from sitegate.decorators import redirect_signedin, sitegate_view # for sitegate 
 
 import core.models as coremodels # we import our models
 from core.models import ListAppendView, ListCommentView, ListThemeView
-	
+
+#import datetime
+from django.utils import timezone
+
 # Create your views here.
 # v1 views
 class LegacyHomePageView(TemplateView):
@@ -134,7 +137,7 @@ class ThemeListEntriesView(ListAppendView):
 	template_name = 'entry/listBS.html'
 	context_object_name = 'entry'
 	hide_sortable = 'hide_entry' # this is a CSS to hide the move item
-	
+
 #	fields = ['name'] # "__all__" no longer required as defined in the models
 
 	def get_queryset(self):
@@ -300,6 +303,7 @@ def EntryAjaxUpdateView(request, pk):
     b=coremodels.Entry.objects.get(id=pk) #str(value))
     #delete change statement
     b.done = (False if b.done == 1 else True) # int(JSON_value) #10
+    b.completed_on = timezone.now() #datetime.datetime.now()
     b.save()
     # resp=json.dumps(b)
 #    return HttpResponse(resp, content_type="application/json")
