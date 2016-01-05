@@ -18,6 +18,23 @@ body {
 }
 
 
+/* Specific on mobile */
+
+@media screen and (min-width: 768px) {
+  .menucreate {
+      display: none !important;
+  }
+  #create-collapse {
+      display: none !important;    
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .footerform {
+    display: none;
+  }
+}
+
 /* For Bootstrap list */
 
 #editModal {

@@ -112,9 +112,20 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#create-collapse">
+						<span class="sr-only">Toggle form</span>
+						<span class="glyphicon glyphicon-plus">
+					</button>
 					<a class="navbar-brand" href="/">Zoomi</a>
 				</div>
 
+				<div class="collapse navbar-collapse" id="create-collapse" data-role="navbar">
+					<div class="menucreate">
+						<div class="container">
+							{% include 'entry/create.html' %}
+						</div>
+					</div>
+				</div>
 				<div class="collapse navbar-collapse" id="custom-collapse" data-role="navbar">
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="/">Home</a></li>
