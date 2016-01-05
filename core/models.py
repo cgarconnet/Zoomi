@@ -84,7 +84,7 @@ class Entry(models.Model):
 	created_at = models.DateTimeField(auto_now_add=True)
 	# new fields required
 	completed_on = models.DateTimeField(null=True, blank=True)
-	theme = models.ForeignKey(Theme, null=True)
+	theme = models.ForeignKey(Theme, null=True, blank=True)
 
 	class Meta:
 		ordering = ['order']
