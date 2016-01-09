@@ -233,11 +233,37 @@ class CommentListAppendView(ListCommentView):
 	template_name = 'comment/list.html'
 	context_object_name = 'comment'
 
+	def get_context_data(self, **kwargs):
+		# the reverse as form_valid. Modify data between extract from DB -> page
+		context = super(CommentListAppendView, self).get_context_data(**kwargs)
+
+		entry = coremodels.Entry.objects.filter(Q(user=self.request.user) | Q(assignees=self.request.user), id=self.kwargs['pk'])
+		print(entry.count())
+
+		context['nb_entry'] = entry.count()
+
+
+		# location = coremodels.Location.objects.get(id=self.kwargs['pk'])
+
+		# if self.request.user.is_authenticated():
+		# 	user_reviews = coremodels.Review.objects.filter(location=location, user=self.request.user)
+		# 	if user_reviews.count() > 0:
+		# 		context['user_review'] = user_reviews[0]
+		# 	else:
+		# 		context['user_review'] = None
+		return context
 
 	def get_queryset(self):
 		# return the Entry object for the current user and for done = not done
-		entry = coremodels.Entry.objects.get(id=self.kwargs['pk'])
+#		entry = coremodels.Entry.objects.get(id=self.kwargs['pk'])
+		entry = coremodels.Entry.objects.filter(Q(user=self.request.user) | Q(assignees=self.request.user), id=self.kwargs['pk'])
+		print(entry.count())
+		self.nb_entry = '666'
+		if entry:
+			entry = entry[0]
+			print('coucou')
 
+# Q(user=self.request.user, transfered=0) | Q(assignees=self.request.user)
 		return coremodels.Comment.objects.filter(entry=entry).order_by('-created_at')
 
 	def form_valid(self, form):

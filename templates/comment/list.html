@@ -18,8 +18,15 @@ This is your comments for the entry XXX
 <link rel="stylesheet" href="{% static "css/zoomi.css" %}">
 
 
+
+
+<!-- Number of entries found: {{ nb_entry }}
+ -->
+
 <section id="services">
 	<div class="container">
+
+{% if nb_entry %}
 
 		<div class="row ">
 			<a href="/">back</a>
@@ -29,6 +36,11 @@ This is your comments for the entry XXX
 
 		</div>
 		</div>
+{% else %}
+
+This entry do not exist or is no longer assigned to you
+
+{% endif %}
 		<div class="row ">
 			<div class="col-lg-12 text-center">
 
@@ -37,6 +49,7 @@ This is your comments for the entry XXX
 
 
 {% block detail %}
+
 									{% include 'comment/details.html' %}
 {% endblock %}
 
