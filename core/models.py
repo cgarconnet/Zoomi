@@ -155,7 +155,7 @@ class EntryCreateForm(ModelForm):
 
 	def __init__(self, *args, **kwargs): # current_business, as parameter (cf Creeam)
 #		self.request = kwargs.pop('request', None)
-#		current_user = kwargs.pop('user')
+		current_user = kwargs.pop('user')
 #		current_business = kwargs['pk']
 		super(EntryCreateForm, self).__init__(*args, **kwargs)
 		self.fields['name'].label = "What do you need to do today?"
@@ -163,6 +163,7 @@ class EntryCreateForm(ModelForm):
 		self.fields['duedate'].label = "Have a due date?"
 		self.fields['duedate'].widget.attrs['placeholder'] = "YYYY-MM-DD"
 		self.fields['name'].widget.attrs['autofocus'] = "on"
+		self.fields['theme'].queryset = Theme.objects.filter(user=current_user)
 #		self.fields['duedate'].widget.attrs['class'] = "hidden-xs" - now moved to create.html form customization page
 
 
@@ -262,6 +263,11 @@ class ListAppendView(MultipleObjectMixin,MultipleObjectTemplateResponseMixin,Mod
 	form_class = EntryCreateForm
 	allow_empty = True
 
+	def get_form_kwargs(self):
+		kwargs = super(ListAppendView, self).get_form_kwargs()
+		kwargs['user'] = self.request.user
+		return kwargs
+		
 	def get(self, request, *args, **kwargs):
 		self.object_list = self.get_queryset()
 		allow_empty = self.get_allow_empty()
