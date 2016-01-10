@@ -157,6 +157,10 @@ class EntryUpdateView(UpdateView): # re-used from v2
 	template_name = 'base/form.html'
 	form_class = coremodels.EntryUpdateForm
 
+	def get_queryset(self):
+		base_qs = super(EntryUpdateView, self).get_queryset()
+		return base_qs.filter(Q(user=self.request.user, transfered=0) | Q(assignees=self.request.user))
+
 	def get_form_kwargs(self):
 		kwargs = super(EntryUpdateView, self).get_form_kwargs()
 		kwargs['user'] = self.request.user
