@@ -1,5 +1,6 @@
 
 {% extends "base/theme.html" %}
+{% load staticfiles %}
 
 {% load widget_tweaks %}
 
@@ -8,6 +9,10 @@
 
 
 {% block content %}
+
+<link rel="stylesheet" href="{% static "css/zoomi.css" %}">
+
+
 <div class="header-buffer">
 </div>
 <section id="services">
