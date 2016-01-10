@@ -145,10 +145,17 @@ class ThemeListEntriesView(ListAppendView):
 		# return the Entry object for the current user and for done = not done
 		return coremodels.Entry.objects.filter(user=self.request.user, transfered=0, theme=self.kwargs['pk']).order_by('created_at')
 
+	# def get_context_data(self, **kwargs):
+	# 	# the reverse as form_valid. Modify data between extract from DB -> page
+	# 	context = super(ThemeListEntriesView, self).get_context_data(**kwargs)
+	# 	# we prefill the them based on page we have, but he can change it
+	# 	theme = coremodels.Theme.objects.get(id=self.kwargs['pk'])
+	# 	return context
+
 	def form_valid(self, form):
 	# this feature is used between submission of the user and sending these data to the database
 		form.instance.user = self.request.user
-		form.instance.theme = coremodels.Theme.objects.get(id=self.kwargs['pk'])
+		# form.instance.theme = coremodels.Theme.objects.get(id=self.kwargs['pk']) - no longer used because now we have the them field
 		return super(ThemeListEntriesView, self).form_valid(form)
 
 class EntryUpdateView(UpdateView): # re-used from v2
@@ -159,7 +166,7 @@ class EntryUpdateView(UpdateView): # re-used from v2
 
 	def get_queryset(self):
 		base_qs = super(EntryUpdateView, self).get_queryset()
-		return base_qs.filter(Q(user=self.request.user, transfered=0) | Q(assignees=self.request.user))
+		return base_qs.filter(Q(user=self.request.user) | Q(assignees=self.request.user))
 
 	def get_form_kwargs(self):
 		kwargs = super(EntryUpdateView, self).get_form_kwargs()
@@ -203,8 +210,13 @@ class EntryListAppendViewBS(ListAppendView):
 
 class EntryListTransferredAppendView(ListAppendView):
 	model = coremodels.Entry
-	template_name = 'entry/transferred.html'
+	# template_name = 'entry/transferred.html'
+	# context_object_name = 'entry'
+
+	template_name = 'entry/listBS.html'
 	context_object_name = 'entry'
+	hide_sortable = 'hide_entry' # this is a CSS to hide the move item
+
 #	fields = ['name'] # "__all__" no longer required as defined in the models
 
 	def get_queryset(self):
