@@ -164,6 +164,7 @@ class EntryCreateForm(ModelForm):
 		self.fields['duedate'].widget.attrs['placeholder'] = "YYYY-MM-DD"
 		self.fields['name'].widget.attrs['autofocus'] = "on"
 		self.fields['theme'].queryset = Theme.objects.filter(user=current_user)
+		# self.fields['theme'].initial = 'PMO v2' #Theme.objects.get(id=1)
 #		self.fields['duedate'].widget.attrs['class'] = "hidden-xs" - now moved to create.html form customization page
 
 
@@ -267,7 +268,7 @@ class ListAppendView(MultipleObjectMixin,MultipleObjectTemplateResponseMixin,Mod
 		kwargs = super(ListAppendView, self).get_form_kwargs()
 		kwargs['user'] = self.request.user
 		return kwargs
-		
+
 	def get(self, request, *args, **kwargs):
 		self.object_list = self.get_queryset()
 		allow_empty = self.get_allow_empty()
