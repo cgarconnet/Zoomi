@@ -84,6 +84,7 @@ class Entry(models.Model):
 	done = models.BooleanField(default=False) # 0 = to do / 1 = completed
 	impediment = models.BooleanField(default=False) # 0 = No / 1 = Yes
 	transfered = models.BooleanField(default=False) # 0 = No / 1 = Yes = no longer in your List
+	personal = models.BooleanField(default=False) # 0 = No / 1 = Yes
 	assignees = models.ManyToManyField(User, related_name='assignees',blank=True)	
 	section = models.BooleanField(default=False) # 0 = No / 1 = Yes
 	created_at = models.DateTimeField(auto_now_add=True)
@@ -168,7 +169,7 @@ class EntryUpdateForm(ModelForm):
 
 	class Meta:
 		model = Entry
-		fields = ['name','duedate','section','transfered','assignees', 'theme'] # the fields on the edit page
+		fields = ['name','duedate','section','personal','transfered','assignees', 'theme'] # the fields on the edit page
 
 
 	def __init__(self, *args, **kwargs): # current_business, as parameter (cf Creeam)

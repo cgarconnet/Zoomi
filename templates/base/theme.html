@@ -605,6 +605,16 @@ By filling this form you will also be added to our MailChimp distribution list. 
 
 	})
 
+	/* toggle personal */
+			$(document).on("click", ".showpersonal", function(){
+				// this is the checkbox as input. So it's parent is required to be checked
+				// completed css will put a line-through as text-decoration
+				// si checked alors il n'est plus à faire
+	            $(".personal").toggleClass("hide_entry");
+
+			});
+
+
 	/* toggle created_at */
 			$(document).on("click", ".switch", function(){
 				// this is the checkbox as input. So it's parent is required to be checked
