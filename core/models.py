@@ -150,7 +150,7 @@ class EntryCreateForm(ModelForm):
 
 	class Meta:
 		model = Entry
-		fields = ['name','duedate'] # the form on the homepage
+		fields = ['name','theme','duedate'] # the form on the homepage
 
 
 	def __init__(self, *args, **kwargs): # current_business, as parameter (cf Creeam)
@@ -159,6 +159,7 @@ class EntryCreateForm(ModelForm):
 #		current_business = kwargs['pk']
 		super(EntryCreateForm, self).__init__(*args, **kwargs)
 		self.fields['name'].label = "What do you need to do today?"
+		self.fields['theme'].label = "Theme"
 		self.fields['duedate'].label = "Have a due date?"
 		self.fields['duedate'].widget.attrs['placeholder'] = "YYYY-MM-DD"
 		self.fields['name'].widget.attrs['autofocus'] = "on"
@@ -169,7 +170,7 @@ class EntryUpdateForm(ModelForm):
 
 	class Meta:
 		model = Entry
-		fields = ['name','duedate','section','personal','transfered','assignees', 'theme'] # the fields on the edit page
+		fields = ['name','theme','duedate','section','personal','transfered','assignees'] # the fields on the edit page
 
 
 	def __init__(self, *args, **kwargs): # current_business, as parameter (cf Creeam)
@@ -178,7 +179,7 @@ class EntryUpdateForm(ModelForm):
 #		current_business = kwargs['pk']
 		super(EntryUpdateForm, self).__init__(*args, **kwargs)
 		self.fields['name'].label = "What do you need to do today?"
-		self.fields['duedate'].label = "Have a due date?"
+		self.fields['duedate'].label = "Due on?"
 		self.fields['duedate'].widget.attrs['placeholder'] = "YYYY-MM-DD"
 		self.fields['name'].widget.attrs['autofocus'] = "on"
 		users = User.objects.all()
