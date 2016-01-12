@@ -14,7 +14,7 @@
 
 								   		</div>
 
-								   		<div class="col-xs-9 col-sm-6 col-md-6 text-left">
+								   		<div class="col-xs-7 col-sm-6 col-md-6 text-left">
 								   			<p class="list-group-item-text">
 								   				{% if objects.theme %}
 								   					<a href="{{ objects.theme_entry_url }}">{{ objects.theme }}</a> > 
@@ -48,7 +48,7 @@
 <!-- 										        <span class="glyphicon glyphicon-eye-close switch"> -->
 								   			</p>
 									    </div>
-								   		<div class="col-xs-2 col-sm-2 col-md-2 text-right">
+								   		<div class="col-xs-4 col-sm-2 col-md-2 text-right">
 								   			<!-- <button type="button" class="btn btn-link" data-toggle="modal" data-toload="{{ objects.update_modal_entry_url }}" data-backdrop="true" data-target="#editModal">
 												<span class="glyphicon glyphicon-edit editor"> -->
 
@@ -61,7 +61,7 @@
 								   			<!-- Split button -->
 								   			{% if objects.section == 0 %}
 												<div class="btn-group">
-<!--  												  <button type="button" class="btn btn-sm btn-default">Action</button> -->
+<!--  												  <button type="button" class="btn btn-xs btn-default selector">Move</button> -->
 												  <button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 												    <span class="caret"></span>
 												    <span class="sr-only">Toggle Dropdown</span>
@@ -76,11 +76,13 @@
 											{% endif %}
 											<!-- End of Split button -->
 
+								   				<span class="glyphicon glyphicon-menu-hamburger selector {{ view.hide_sortable }}">
+
 									    </div>
 <!-- 								   		<div class="col-xs-1 col-sm-1 col-md-1 text-right">
 								   				<span class="glyphicon glyphicon-menu-hamburger selector {{ view.hide_sortable }}">
-									    </div>
- -->
+									    </div> -->
+
 									    
 
 									</div>
