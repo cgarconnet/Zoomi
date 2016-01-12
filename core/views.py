@@ -173,6 +173,12 @@ class EntryUpdateView(UpdateView): # re-used from v2
 		kwargs['user'] = self.request.user
 		return kwargs
 
+	def form_valid(self, form):
+	# this feature is used between submission of the user and sending these data to the database
+		if form.instance.transfered:
+			form.instance.order = -1
+		return super(EntryUpdateView, self).form_valid(form)
+
 	# # fields ="__all__" this is when we want all fields, but in this case, we don't want the user nor the Location Id
 #	fields = ['name','duedate','transfered','assignees','impediment','section','theme'] # the fields on the edit page
 
