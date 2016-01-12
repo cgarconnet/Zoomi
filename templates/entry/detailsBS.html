@@ -1,16 +1,17 @@
 								<li id="entry_{{ objects.id }}" class="list-group-item
 										{% if objects.section == 1 %}active{% endif %} 
 										{% if objects.personal == 1 %}personal{% endif %} 
-										{% if objects.transfered == 1 %}disabled{% endif %} 
+										{% if objects.transfered == 1 %}list-group-item-success{% endif %} 
 										">
 								  	<div class="row">
 
 										<div class="{% if objects.section == 1 %}hidden-xs hidden-sm hidden-md{% else %}col-xs-1 col-sm-1 col-md-1{% endif %}">
 								   			<span class="{% if objects.section == 0 %}glyphicon glyphicon-ok entrycheckmark{% endif %} {% if objects.done == 1 %}completed{% else %}todo{% endif %}" onclick="EntryComplete({{ objects.id }})"> </span>
 
-								   			 {% if objects.section == 0 %}
+<!-- 								   			 {% if objects.section == 0 %}
 								   			 	<a href="{{ objects.comment_entry_url }}"> - <span class="badge">{{ objects.comment_set.count }}</span></a>
-								   			 {% endif %}
+								   			 {% endif %} -->
+
 								   		</div>
 
 								   		<div class="col-xs-9 col-sm-6 col-md-6 text-left">
@@ -28,36 +29,58 @@
 
 								   		<div class="hidden-xs col-sm-3 col-md-3 text-right">
 								   			<p class="list-group-item-text">
-										        {% if objects.duedate %}
-										            <span class="switchable 
-										                {% if objects.duedate|timesince >= "1 min" %}
-										                overdue
-										                {% endif %}
-										                ">
-										                {{ objects.duedate }}
-										            </span>
-										        {% endif %}
-										        	<span class="switchable hide_entry">
-										        		since {{ objects.created_at|timesince }}
-										        	</span>
+								   				{% if objects.section == 0 %}
+											        {% if objects.duedate %}
+											            <span class="switchable 
+											                {% if objects.duedate|timesince >= "1 min" %}
+											                overdue
+											                {% endif %}
+											                ">
+											                {{ objects.duedate }}
+											            </span>
+											        {% endif %}
+											        	<span class="switchable hide_entry">
+											        		{{ objects.created_at|timesince }}
+											        	</span>
+											    {% endif %}
 										        
 
-										        <span class="glyphicon glyphicon-eye-close switch">
+<!-- 										        <span class="glyphicon glyphicon-eye-close switch"> -->
 								   			</p>
 									    </div>
-								   		<div class="hidden-xs col-sm-1 col-md-1 text-right">
+								   		<div class="col-xs-2 col-sm-2 col-md-2 text-right">
 								   			<!-- <button type="button" class="btn btn-link" data-toggle="modal" data-toload="{{ objects.update_modal_entry_url }}" data-backdrop="true" data-target="#editModal">
 												<span class="glyphicon glyphicon-edit editor"> -->
-													<a href="{{ objects.update_entry_url }}">
+
+<!-- 													<a href="{{ objects.update_entry_url }}">
 														<span class="glyphicon glyphicon-edit">
-													</a>
+													</a> -->
 													
 								   			<!-- </button> -->
+
+								   			<!-- Split button -->
+								   			{% if objects.section == 0 %}
+												<div class="btn-group">
+<!--  												  <button type="button" class="btn btn-sm btn-default">Action</button> -->
+												  <button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+												    <span class="caret"></span>
+												    <span class="sr-only">Toggle Dropdown</span>
+												  </button>
+												  <ul class="dropdown-menu dropdown-menu-right">
+												    <li><a href="{{ objects.update_entry_url }}">Edit</a></li>
+												    <li><a href="{{ objects.comment_entry_url }}">Comments <span class="badge">{{ objects.comment_set.count }}</span></a></li>
+												    <li role="separator" class="divider hide_details_mobile"></li>
+												    <li class="hide_details_mobile"><a href="#" class="switch">Switch</a></li>												    
+												  </ul>
+												</div>
+											{% endif %}
+											<!-- End of Split button -->
+
 									    </div>
-								   		<div class="col-xs-1 col-sm-1 col-md-1 text-right">
+<!-- 								   		<div class="col-xs-1 col-sm-1 col-md-1 text-right">
 								   				<span class="glyphicon glyphicon-menu-hamburger selector {{ view.hide_sortable }}">
 									    </div>
-
+ -->
 									    
 
 									</div>

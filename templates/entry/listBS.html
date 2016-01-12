@@ -34,7 +34,7 @@ $(document).ready(function () {
 
         $(function() {
         $( "#todo_list_BS" ).sortable({
-          handle: ".selector",
+// trying          handle: ".selector",
           placeholder: "ui-state-highlight",
           stop: function (event, ui) {
 
@@ -51,8 +51,8 @@ $(document).ready(function () {
 
           }
         });
-        // $( "#todo_list_BS" ).disableSelection(); - text can now be selected
-         $( ".selector" ).disableSelection();
+         $( "#todo_list_BS" ).disableSelection();
+//         $( ".selector" ).disableSelection();
         });
 
 });
