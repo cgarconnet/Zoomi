@@ -42,6 +42,11 @@ class UserProfile(models.Model):
 # for v3
 		return reverse (viewname="entrylistBS") #, args=[self.id]) 3 before index, now listappend because after adding we want to load again that page
 
+	def get_entry_transfered(self):
+		return self.user.entry_set.filter(transfered=True, done=False).count()
+		# this will return a list of reviews
+
+
 def create_user_profile(sender, instance, created, **kwargs):
 	if created:
 		UserProfile.objects.create(user=instance)

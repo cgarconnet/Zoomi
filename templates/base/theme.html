@@ -135,8 +135,10 @@
                         <li><a href="#skills">Skills</a></li> -->
 
 						{% if user.is_authenticated %}
+
+<!-- 						{{ user.first_name }} -->
 						<li>
-						    <a class="page-scroll" href="/transferred">Transferred</a>
+						    <a class="page-scroll" href="/transferred">Transferred <span class="badge">{{ user.userprofile.get_entry_transfered }}</span></a>
 						</li>
 						<li>
 						    <a class="page-scroll" href="/themes">Themes</a>
