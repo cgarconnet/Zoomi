@@ -186,7 +186,12 @@ class EntryUpdateForm(ModelForm):
 		self.fields['name'].widget.attrs['autofocus'] = "on"
 		users = User.objects.all()
 		self.fields['assignees'].choices = [(user.pk, user.get_full_name()) for user in users]
-		self.fields['theme'].queryset = Theme.objects.filter(user=current_user)
+		instance = getattr(self, 'instance', None)
+		if instance.transfered:
+#        		if self.fields['transfered'].value:
+			self.fields['theme'].widget.attrs['disabled'] = 'disabled'
+		else:
+			self.fields['theme'].queryset = Theme.objects.filter(user=current_user)
 
 #		self.fields['duedate'].widget.attrs['class'] = "hidden-xs" - now moved to create.html form customization page
 
