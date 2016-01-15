@@ -632,7 +632,11 @@ By filling this form you will also be added to our MailChimp distribution list. 
 				$(this).toggleClass("todo");
 				$(this).toggleClass("completed");
 
-	            $(this).closest('li[class^="list-group-item"]').addClass("hide_entry");
+				if ( $( this ).hasClass( "completed" ) ) {
+					// if we have class todo, then we hide
+					//if not (we are on the them list for instance, then we don't hide this entry)
+					$(this).closest('li[class^="list-group-item"]').addClass("hide_entry");
+				}
 //	            $(this).parent().parent().parent().addClass("hide_entry");
 	            $('#todo_list').listview("refresh");
 

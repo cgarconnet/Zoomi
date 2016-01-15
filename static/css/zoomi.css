@@ -93,6 +93,7 @@ ul {
 
 .completed {
 	color:black;
+  cursor: pointer;
 }
 
 .hide_entry {
