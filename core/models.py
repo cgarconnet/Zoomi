@@ -73,6 +73,9 @@ class Theme(models.Model):
 		# instead use the core.urlresolvers
 		return reverse (viewname="themedetails", args=[self.id])
 
+	def get_entry_done(self):
+		return self.entry_set.filter(done=True)
+		# this will return a list of reviews
 
 class Entry(models.Model):
 

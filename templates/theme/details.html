@@ -1,7 +1,7 @@
 								<li id="entry_{{ objects.id }}" class="list-group-item {% if objects.section == 1 %}active{% endif %}">
 								  	<div class="row">
 
-								  			<a href="{{ objects.theme_entry_url }}">{{ objects.name }}</a>
+								  			<a href="{{ objects.theme_entry_url }}">{{ objects.name }} - {{ objects.get_entry_done.count }} / {{ objects.entry_set.count }}</a>
 
 									</div>
 								</li>
