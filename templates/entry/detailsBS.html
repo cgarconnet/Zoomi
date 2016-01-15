@@ -19,7 +19,16 @@
 								   				{% if objects.theme %}
 								   					<a href="{{ objects.theme_entry_url }}">{{ objects.theme }}</a> > 
 								   				{% endif %}
-								   				{{ objects|truncatewords:10 }}</p>
+								   				
+								   				{% if objects.section == 1 %}
+								   					<a href="{{ objects.update_entry_url }}" style="color:#C7DDEF;text-decoration: underline;">{{ objects|truncatewords:10 }}</a>
+
+								   				{% else %}
+									   				{{ objects|truncatewords:10 }}
+
+								   				{% endif %}
+
+									   		</p>
 								   		</div>
 
 								   		{% if objects.section == 1 %}
