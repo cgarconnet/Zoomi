@@ -187,9 +187,21 @@ class EntryUpdateForm(ModelForm):
 		users = User.objects.all()
 		self.fields['assignees'].choices = [(user.pk, user.get_full_name()) for user in users]
 		instance = getattr(self, 'instance', None)
-		if instance.transfered:
-#        		if self.fields['transfered'].value:
+		if instance.transfered and instance.user != current_user: # do not work
 			self.fields['theme'].widget.attrs['disabled'] = 'disabled'
+
+			self.fields['assignees'].widget.attrs['class'] = "hide_entry"
+			self.fields['assignees'].label = ""
+
+			self.fields['section'].widget.attrs['class'] = "hide_entry"
+			self.fields['section'].label = ""
+
+			self.fields['personal'].widget.attrs['class'] = "hide_entry"
+			self.fields['personal'].label = ""
+
+			self.fields['transfered'].widget.attrs['class'] = "hide_entry"
+			self.fields['transfered'].label = ""
+
 		else:
 			self.fields['theme'].queryset = Theme.objects.filter(user=current_user)
 
