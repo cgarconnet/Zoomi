@@ -1,5 +1,5 @@
-								<li id="entry_{{ objects.id }}" class="list-group-item
-										{% if objects.section == 1 %}active{% endif %} 
+<!-- 										For section, we put active to have it blue and personal to be showed even if personal items are filtered  -->											<li id="entry_{{ objects.id }}" class="list-group-item
+										{% if objects.section == 1 %}active personal{% endif %}
 										{% if objects.personal == 1 %}personal{% endif %} 
 										{% if objects.transfered == 1 %}list-group-item-success{% endif %} 
 										">
