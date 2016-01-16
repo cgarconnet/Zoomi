@@ -204,8 +204,9 @@ class EntryUpdateForm(ModelForm):
 			self.fields['section'].widget.attrs['class'] = "hide_entry"
 			self.fields['section'].label = ""
 
-			self.fields['personal'].widget.attrs['class'] = "hide_entry"
-			self.fields['personal'].label = ""
+			# no longer hide because it can help user to falg a transferred item as personal
+			# self.fields['personal'].widget.attrs['class'] = "hide_entry"
+			# self.fields['personal'].label = ""
 
 			self.fields['transfered'].widget.attrs['class'] = "hide_entry"
 			self.fields['transfered'].label = ""
