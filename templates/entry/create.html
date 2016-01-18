@@ -43,7 +43,7 @@
 				<div class="hidden-xs col-sm-2">
 					<div class="form-group warning">
 						<label for="exampleInputFile">Due date?<!-- {{ form.duedate.label }} --></label>
-						{{ form.duedate|add_class:"form-control"}}
+						{{ form.duedate|add_class:"form-control"|attr:"onfocus : return InitiateDate(this);" }}
 						{% if form.duedate.help_text %}<p class="help-block">{{ form.duedate.help_text }}</p>{% endif %}
 					</div>
 				</div>

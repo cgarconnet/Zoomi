@@ -557,6 +557,14 @@ By filling this form you will also be added to our MailChimp distribution list. 
 
 <script>
 
+function InitiateDate(field) {
+	if (field.value == '') {
+		maDate = new Date();
+		field.value= maDate.getFullYear() + "-" + ("0"+(maDate.getMonth()+1)).slice(-2) + "-" + ("0"+(maDate.getDate()+3)).slice(-2);
+	}
+
+}
+
 	$(document).ready(function () {
 
 

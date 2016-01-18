@@ -85,6 +85,10 @@ ul {
 	color:red;
 }
 
+.sender {
+  color:lightgrey;
+}
+
 /* For the checkmark that could have either todo or completed class */
 .todo {
 	color:lightgrey;
