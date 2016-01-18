@@ -279,11 +279,11 @@ class CommentListAppendView(ListCommentView):
 		# return the Entry object for the current user and for done = not done
 #		entry = coremodels.Entry.objects.get(id=self.kwargs['pk'])
 		entry = coremodels.Entry.objects.filter(Q(user=self.request.user) | Q(assignees=self.request.user), id=self.kwargs['pk'])
-		print(entry.count())
+#		print(entry.count())
 		self.nb_entry = '666'
 		if entry:
 			entry = entry[0]
-			print('coucou')
+#			print('coucou')
 
 # Q(user=self.request.user, transfered=0) | Q(assignees=self.request.user)
 		return coremodels.Comment.objects.filter(entry=entry).order_by('-created_at')
