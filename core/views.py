@@ -175,7 +175,7 @@ class EntryUpdateView(UpdateView): # re-used from v2
 
 	def form_valid(self, form):
 	# this feature is used between submission of the user and sending these data to the database
-		if form.instance.transfered:
+		if not(self.object.transfered) and form.instance.transfered: #if this entry is transfered for the first time, then we change the order to appear at the top
 			form.instance.order = -1
 		return super(EntryUpdateView, self).form_valid(form)
 
