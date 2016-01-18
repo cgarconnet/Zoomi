@@ -51,10 +51,10 @@ urlpatterns = [
 	url(r'^user/profile/$', login_required(coreviews.UserProfileView.as_view()), name='userprofile'),
 
 	# Registering the entrance login page
-	url(r'^entrance$', coreviews.entrance),
+	url(r'^entrance/$', coreviews.entrance),
 
 	# easy url to logout
-	url(r'^logout/$', authviews.logout,{'next_page': '/entrance'}),
+	url(r'^logout/$', authviews.logout,{'next_page': '/entrance/'}),
 		# next page coulb be our /entrance
 
 ]
