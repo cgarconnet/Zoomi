@@ -29,6 +29,7 @@ urlpatterns = [
 #	url(r'^v2/$', login_required(coreviews.EntryListAppendView.as_view()), name='entrylist'),	
 	url(r'^$', login_required(coreviews.EntryListAppendViewBS.as_view()), name='entrylistBS'), # Bootstrap test
 	url(r'^releases/$', coreviews.ReleasesPageView.as_view()),
+	url(r'^help/$', coreviews.HelpPageView.as_view()),
 
 	url(r'^transferred/$', login_required(coreviews.EntryListTransferredAppendView.as_view()), name='transflist'),	
 

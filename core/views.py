@@ -97,6 +97,9 @@ class ListAppend(ListAppendView):
 class ReleasesPageView(TemplateView):
 		template_name = "base/releases.html"
 
+class HelpPageView(TemplateView):
+		template_name = "base/help.html"
+
 class UserDetailView(UpdateView):
 #	model = coremodels.User
 	template_name = 'base/form.html'

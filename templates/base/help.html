@@ -1,0 +1,130 @@
+{% extends "base/theme.html" %}
+{% load sitegate %}
+{% load staticfiles %}
+
+
+{% block animation %}
+{% endblock %}
+
+{% block page_sub_title %}
+
+Please find the list of future releases and details on previous releases
+
+{% endblock %}
+
+{% block content %}
+
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<link rel="stylesheet" href="{% static "css/zoomi.css" %}">
+
+
+<section id="services">
+	<div class="container">
+
+		<div>
+
+		  <!-- Nav tabs -->
+		  <ul class="nav nav-tabs" role="tablist">
+		    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">First connection</a></li>
+		    <li role="presentation"><a href="#keyactions" aria-controls="profile" role="tab" data-toggle="tab">Key actions</a></li>
+		    <li role="presentation"><a href="#sections" aria-controls="messages" role="tab" data-toggle="tab">Sections</a></li>
+		    <li role="presentation"><a href="#faq" aria-controls="faq" role="tab" data-toggle="tab">FAQs</a></li>
+		  </ul>
+
+		  <!-- Tab panes -->
+		  <div class="tab-content">
+		    <div role="tabpanel" class="tab-pane active" id="home">
+		    	Welcome to Zoomi<p>
+
+		    	One your account is created, go to the Profile Page to:<br>
+					1) Set your first name and last name (so people show your name in transfer section)<br>
+					2) Give a name at your company/organization (so in future release, you will see by defaut only people in your structure)<br>
+
+				<p>
+				Optionnaly, but recommended, go to Themes page to<br>
+				- Create categories of actions. You can also see them as sub-Business or Problems<br>
+					○ This will allow you to categorize and better visualize your items (done or to be done)<p>
+
+		    </div>
+		    <div role="tabpanel" class="tab-pane" id="keyactions">...</div>
+		    /images/Zoomi_help_mainfeatures.png
+		    <div role="tabpanel" class="tab-pane" id="sections">...</div>
+
+		    <div role="tabpanel" class="tab-pane" id="faq">
+
+				<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+				  <div class="panel panel-default">
+				    <div class="panel-heading" role="tab" id="heading1">
+				      <h4 class="panel-title">
+				        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="false" aria-controls="collapse1">
+				          I marked an action done too fast, can I undo it?
+				        </a>
+				      </h4>
+				    </div>
+				    <div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading1">
+				      <div class="panel-body">
+				        The list of actions maked done will be soon visible in a dashboard page. In the meantime, if this action was linked to a theme, go to that theme to show this action done and tick again the black checkmark
+				      </div>
+				    </div>
+				  </div>
+
+				  <div class="panel panel-default">
+				    <div class="panel-heading" role="tab" id="heading2">
+				      <h4 class="panel-title">
+				        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="false" aria-controls="collapse2">
+				          Where are stored my data?
+				        </a>
+				      </h4>
+				    </div>
+				    <div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
+				      <div class="panel-body">
+				        We use Heroku which is a Platform As A Service, hsoted itself in Amazon Cloud in Europe.
+				      </div>
+				    </div>
+				  </div>
+
+				  <div class="panel panel-default">
+				    <div class="panel-heading" role="tab" id="heading3">
+				      <h4 class="panel-title">
+				        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="false" aria-controls="collapse3">
+				          Do you have a CNIL declaration?
+				        </a>
+				      </h4>
+				    </div>
+				    <div id="collapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading3">
+				      <div class="panel-body">
+				        That's under progress
+				      </div>
+				    </div>
+				  </div>
+
+				  <div class="panel panel-default">
+				    <div class="panel-heading" role="tab" id="heading4">
+				      <h4 class="panel-title">
+				        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="false" aria-controls="collapse4">
+				          Do you have terms and conditions of using this service?
+				        </a>
+				      </h4>
+				    </div>
+				    <div id="collapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
+				      <div class="panel-body">
+				        They are under writing.
+				      </div>
+				    </div>
+				  </div>
+
+				</div>
+
+		    </div>
+		  </div>
+
+		</div>
+
+	</div>
+
+</section>
+
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
