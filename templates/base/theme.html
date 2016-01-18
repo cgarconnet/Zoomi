@@ -119,6 +119,7 @@
 					<a class="navbar-brand" href="/">Zoomi</a>
 				</div>
 
+			{% if user.is_authenticated %}
 				<div class="collapse navbar-collapse" id="create-collapse" data-role="navbar">
 					<div class="menucreate">
 						<div class="container">
@@ -126,6 +127,7 @@
 						</div>
 					</div>
 				</div>
+			{% endif %}
 				<div class="collapse navbar-collapse" id="custom-collapse" data-role="navbar">
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="/">Home</a></li>
