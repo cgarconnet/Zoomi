@@ -330,12 +330,27 @@ def index(request):
 		# request.POST['content'] is a query string like 'entry[]=3&entry[]=2&entry[]=1'
 		# convert to a QueryDict so we can do things with it
 		entries = QueryDict(request.POST['content'])
-
+		section_index = 0 # first section is set to 1000
+		section_count = 0 # first entry in a section
 		for index, entry_id in enumerate(entries.getlist('entry[]')):
 			# save index of entry_id as it's new order value
 			entry = coremodels.Entry.objects.get(id=entry_id)
-			entry.order = index
-# for debug			print(index)
+			if entry.section:
+				section_index = section_index + 1000 # we change the counter
+				section_count = 0 # the short number is defined to 2 as when moving one item to the top
+				# we need an empty slot it will be X001 X being the thousand for the entry
+
+				# so after saving this order to make a section_count increase
+				entry.order = section_index + section_count
+				section_count = section_count + 1
+
+			else:
+				section_count = section_count + 1
+				entry.order = section_index + section_count
+
+#			entry.order = index
+#			entry.order = section_index + section_count
+# for debug			print(entry.order)
 			entry.save()
 
     # split our entries arbitrarily, so we can have two lists on the page...
