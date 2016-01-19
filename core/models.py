@@ -1,6 +1,6 @@
 # coding: utf8
 from django.db import models
-from django.forms import ModelForm
+from django.forms import ModelForm, ModelChoiceField
 from django import forms
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
@@ -95,6 +95,7 @@ class Entry(models.Model):
 	personal = models.BooleanField(default=False) # 0 = No / 1 = Yes
 	assignees = models.ManyToManyField(User, related_name='assignees',blank=True)	
 	section = models.BooleanField(default=False) # 0 = No / 1 = Yes
+	section_name = models.CharField(max_length=100, blank=True) # maybe we can have it linked to Entry later on
 	created_at = models.DateTimeField(auto_now_add=True)
 	# new fields required
 	completed_on = models.DateTimeField(null=True, blank=True)
@@ -156,9 +157,11 @@ class Entry(models.Model):
 
 class EntryCreateForm(ModelForm):
 
+	foo_select = forms.ModelMultipleChoiceField(queryset=None)
+
 	class Meta:
 		model = Entry
-		fields = ['name','theme','duedate'] # the form on the homepage
+		fields = ['name','theme','section_name','duedate'] # the form on the homepage
 
 
 	def __init__(self, *args, **kwargs): # current_business, as parameter (cf Creeam)
@@ -171,6 +174,8 @@ class EntryCreateForm(ModelForm):
 		self.fields['duedate'].label = "Have a due date?"
 		self.fields['duedate'].widget.attrs['placeholder'] = "YYYY-MM-DD"
 		self.fields['name'].widget.attrs['autofocus'] = "on"
+#		self.fields['section_name'].queryset = Entry.objects.filter(user=current_user, section=True)
+		self.fields['foo_select'].queryset = Entry.objects.filter(user=current_user, section=True)
 		self.fields['theme'].queryset = Theme.objects.filter(user=current_user)
 		# self.fields['theme'].initial = 'PMO v2' #Theme.objects.get(id=1)
 #		self.fields['duedate'].widget.attrs['class'] = "hidden-xs" - now moved to create.html form customization page
