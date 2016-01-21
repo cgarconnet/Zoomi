@@ -215,6 +215,8 @@ class EntryListAppendViewBS(ListAppendView):
 	def form_valid(self, form):
 	# this feature is used between submission of the user and sending these data to the database
 		form.instance.user = self.request.user
+		print(form['section_name'].value()[0])
+		form.instance.order = form['section_name'].value()[0]
 		return super(EntryListAppendViewBS, self).form_valid(form)
 
 class EntryListTransferredAppendView(ListAppendView):

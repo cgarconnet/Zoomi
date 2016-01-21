@@ -42,14 +42,14 @@
 <!-- Section Name field -->
 				<div class="col-xs-6 col-sm-2">
 					<div class="form-group warning">
-						<label for="exampleInputFile">{{ form.foo_select.label }}</label>
-						{{ form.foo_select|add_class:"form-control"}}
-						{% if form.foo_select.help_text %}<p class="help-block">{{ form.foo_select.help_text }}</p>{% endif %}
+						<label for="exampleInputFile">{{ form.section_name.label }}</label>
+						{{ form.section_name|add_class:"form-control"}}
+						{% if form.section_name.help_text %}<p class="help-block">{{ form.section_name.help_text }}</p>{% endif %}
 					</div>
 				</div>
-				{% if form.foo_select.errors %}
-					{% for error in form.foo_select.errors %}
-					<div class="alert alert-danger" id="error_{{ form.foo_select.name }}">{{ error|escape }}</div>
+				{% if form.section_name.errors %}
+					{% for error in form.section_name.errors %}
+					<div class="alert alert-danger" id="error_{{ form.section_name.name }}">{{ error|escape }}</div>
 					{% endfor %}
 				{% endif %}
 <!-- Due Date field -->
