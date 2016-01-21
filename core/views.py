@@ -217,7 +217,7 @@ class EntryListAppendViewBS(ListAppendView):
 		form.instance.user = self.request.user
 #		print(form['section_name'].value())
 		if form['section_name'].value():
-			form.instance.order = coremodels.Entry.objects.get(id=form['section_name'].value()).order
+			form.instance.order = coremodels.Entry.objects.get(id=form['section_name'].value()).order+1 # we use the free value x001
 		return super(EntryListAppendViewBS, self).form_valid(form)
 
 class EntryListTransferredAppendView(ListAppendView):
