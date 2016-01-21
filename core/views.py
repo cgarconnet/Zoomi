@@ -215,8 +215,9 @@ class EntryListAppendViewBS(ListAppendView):
 	def form_valid(self, form):
 	# this feature is used between submission of the user and sending these data to the database
 		form.instance.user = self.request.user
-		print(form['section_name'].value()[0])
-		form.instance.order = form['section_name'].value()[0]
+#		print(form['section_name'].value())
+		if form['section_name'].value():
+			form.instance.order = coremodels.Entry.objects.get(id=form['section_name'].value()).order
 		return super(EntryListAppendViewBS, self).form_valid(form)
 
 class EntryListTransferredAppendView(ListAppendView):

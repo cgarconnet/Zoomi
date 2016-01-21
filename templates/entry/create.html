@@ -12,7 +12,7 @@
 
 <!-- Entry Name field -->
 
-				<div class="col-xs-12 col-sm-6">
+				<div class="col-xs-12 col-sm-4">
 					<div class="form-group warning">
 						<label for="exampleInputFile">{{ form.name.label }}</label>
 						{{ form.name|add_class:"form-control"}}
@@ -47,7 +47,7 @@
 						{% if form.section_name.help_text %}<p class="help-block">{{ form.section_name.help_text }}</p>{% endif %}
 					</div>
 				</div>
-				{% if form.section_name.errors %}
+ 				{% if form.section_name.errors %}
 					{% for error in form.section_name.errors %}
 					<div class="alert alert-danger" id="error_{{ form.section_name.name }}">{{ error|escape }}</div>
 					{% endfor %}

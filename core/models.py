@@ -156,7 +156,7 @@ class Entry(models.Model):
 
 class EntryCreateForm(ModelForm):
 
-	section_name = forms.ModelMultipleChoiceField(queryset=None)
+	section_name = forms.ModelChoiceField(queryset=None,required=False)
 
 	class Meta:
 		model = Entry
@@ -168,13 +168,14 @@ class EntryCreateForm(ModelForm):
 		current_user = kwargs.pop('user')
 #		current_business = kwargs['pk']
 		super(EntryCreateForm, self).__init__(*args, **kwargs)
-		self.fields['name'].label = "What do you need to do today?"
+		self.fields['name'].label = "Tell me what to add"
 		self.fields['theme'].label = "Theme"
 		self.fields['duedate'].label = "Have a due date?"
 		self.fields['duedate'].widget.attrs['placeholder'] = "YYYY-MM-DD"
 		self.fields['name'].widget.attrs['autofocus'] = "on"
 #		self.fields['section_name'].queryset = Entry.objects.filter(user=current_user, section=True)
 		self.fields['section_name'].queryset = Entry.objects.filter(user=current_user, section=True)
+		self.fields['section_name'].label = "Section"
 		self.fields['theme'].queryset = Theme.objects.filter(user=current_user)
 		# self.fields['theme'].initial = 'PMO v2' #Theme.objects.get(id=1)
 #		self.fields['duedate'].widget.attrs['class'] = "hidden-xs" - now moved to create.html form customization page
@@ -192,9 +193,10 @@ class EntryUpdateForm(ModelForm):
 		current_user = kwargs.pop('user')
 #		current_business = kwargs['pk']
 		super(EntryUpdateForm, self).__init__(*args, **kwargs)
-		self.fields['name'].label = "What do you need to do today?"
+		self.fields['name'].label = "Action details"
 		self.fields['duedate'].label = "Due on?"
 		self.fields['duedate'].widget.attrs['placeholder'] = "YYYY-MM-DD"
+		self.fields['duedate'].widget.attrs['onfocus'] = "return InitiateDate(this);"
 		self.fields['name'].widget.attrs['autofocus'] = "on"
 		users = User.objects.all()
 		self.fields['assignees'].choices = [(user.pk, user.get_full_name()) for user in users]
