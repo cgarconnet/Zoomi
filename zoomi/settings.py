@@ -134,7 +134,7 @@ STATICFILES_DIRS = (
     os.path.join(MAIN_DIR, 'static'),
     )
 
-LOGIN_URL = '/entrance/'
+LOGIN_URL = '/home/'
 
 ABSOLUTE_URL_OVERRIDES = {
     'auth.user' : lambda o:'/user/profile/',

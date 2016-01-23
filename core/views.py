@@ -97,6 +97,10 @@ class ListAppend(ListAppendView):
 class ReleasesPageView(TemplateView):
 		template_name = "base/releases.html"
 
+class home(TemplateView):
+	template_name = "base/theme.html"
+
+
 class HelpPageView(TemplateView):
 		template_name = "base/help.html"
 

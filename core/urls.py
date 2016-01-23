@@ -53,6 +53,7 @@ urlpatterns = [
 
 	# Registering the entrance login page
 	url(r'^entrance/$', coreviews.entrance),
+	url(r'^home/$', coreviews.home.as_view()),
 
 	# easy url to logout
 	url(r'^logout/$', authviews.logout,{'next_page': '/entrance/'}),
