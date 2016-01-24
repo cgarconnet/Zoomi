@@ -36,6 +36,13 @@ body {
   .hide_details_mobile {
   display: none;
   }
+
+/* For the sign-up form */
+  .section-heading-sign-up {
+  margin: 50px 0px 30px;
+  }
+
+
 }
 
 /* For Bootstrap list */

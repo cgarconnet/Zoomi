@@ -1,5 +1,6 @@
 {% extends "base/theme.html" %}
 {% load sitegate %}
+{% load staticfiles %}
 
 {% block animation %}
 {% endblock %}
@@ -9,21 +10,22 @@
 <!-- We load then 2 defaults forms sitegate_signin_form and sitegate_signup_form
  -->
 
+<link rel="stylesheet" href="{% static "css/zoomi.css" %}">
+
 <section id="services">
 	<div class="container">
 		<div class="row ">
 			<div class="col-lg-6 text-center">
 				<div class="my_signin_block">
-					<h2 class="section-heading"><a href="{{ location.get_absolute_url }}">Sign In</a></h2>
-					<h3 class="section-subheading text-muted">Welcome back!</h3>
+					<h2 class="section-heading"><a href="{{ location.get_absolute_url }}">Welcome back</a></h2>
+<!-- 					<h3 class="section-subheading text-muted">Sign-In</h3> -->
 					{% sitegate_signin_form %}
 				</div>
 			</div>
-			<br>
 			<div class="col-lg-6 text-center">
 				<div class="my_signup_block">
-					<h2 class="section-heading"><a href="{{ location.get_absolute_url }}">Join Zoomi </a></h2>
-					<h3 class="section-subheading text-muted">Master the to-do lists for you and your peers!</h3>
+					<h2 class="section-heading-sign-up"><a href="{{ location.get_absolute_url }}">Join Zoomi</a></h2>
+<!-- 					<h3 class="section-subheading text-muted">Sign-up</h3> -->
 					{% sitegate_signup_form %}
 				</div>
 			</div>
@@ -31,5 +33,7 @@
 		</div>
 	</div>
 </section>
+<br>
+<br>
 
 {% endblock %}
