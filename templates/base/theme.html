@@ -134,9 +134,15 @@
 						    <a class="page-scroll" href="/logout">Logout</a>
 						</li>
 						{% else %}
-						<li>
-						    <a class="page-scroll" href="/releases">?</a>
-						</li>
+						<li class="dropdown">
+					          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">?<span class="caret"></span></a>
+					          <ul class="dropdown-menu">
+					            <li><a href="/static/ZoomiHelpPage.pdf">Help</a></li>
+					            <li><a href="/releases">Releases</a></li>
+<!-- 					            <li role="separator" class="divider"></li>
+					            <li><a href="#">Separated link</a></li> -->
+					          </ul>
+					    </li>
 						<li>
 						    <a class="page-scroll" href="/entrance">Log in</a>
 						</li>
@@ -188,7 +194,8 @@
 						<h2 class="pfblock-title">We can help you</h2>
 						<div class="pfblock-line"></div>
 						<div class="pfblock-subtitle">
-							to visualize your customers relationships
+							to master your to-do lists for you and your peers<br>
+							from any device
 						</div>
 					</div>
 
@@ -207,7 +214,7 @@
 						<div class="iconbox-text">
 							<h3 class="iconbox-title">List</h3>
 							<div class="iconbox-desc">
-								You record your businesses, customers and events
+								all your themes, actions and progresses 
 							</div>
 						</div>
 					</div>
@@ -221,9 +228,9 @@
 							<span class="icon-magic-wand"></span>
 						</div>
 						<div class="iconbox-text">
-							<h3 class="iconbox-title">Vizualize</h3>
+							<h3 class="iconbox-title">Prioritize</h3>
 							<div class="iconbox-desc">
-								You see portions of prospects vs active customers 
+								in a Kanban style with sections and manual sorting 
 							</div>
 						</div>
 					</div>
@@ -237,9 +244,9 @@
 							<span class="icon-badge"></span>
 						</div>
 						<div class="iconbox-text">
-							<h3 class="iconbox-title">Evaluate</h3>
+							<h3 class="iconbox-title">Visualize</h3>
 							<div class="iconbox-desc">
-								The impact of your activities on prospects transformation
+								the time spent and work done vs to be done
 							</div>
 						</div>
 					</div>
@@ -253,9 +260,9 @@
 							<span class="icon-puzzle"></span>
 						</div>
 						<div class="iconbox-text">
-							<h3 class="iconbox-title">Grow</h3>
+							<h3 class="iconbox-title">Share</h3>
 							<div class="iconbox-desc">
-								You identify which customers you should pay attention to
+								actions with your peers and get notified when they're done
 							</div>
 						</div>
 					</div>
@@ -284,12 +291,12 @@
 				<div class="col-md-12 col-lg-12">
 					<h2 class="wow slideInRight" data-wow-delay=".1s">Eager TO START?</h2>
 					<div class="calltoaction-decription wow slideInRight" data-wow-delay=".2s">
-						Let's create your first Business, Customers and then Events.
+						Let's create your first Action, Theme and Sections (see <a href="/static/ZoomiHelpPage.pdf">help more details</a>).
 					</div>
 				</div>
 
 				<div class="col-md-12 col-lg-12 calltoaction-btn wow slideInRight" data-wow-delay=".3s">
-					<a href="/business/create" class="btn btn-lg">Create a Business</a>
+					<a href="/entrance/" class="btn btn-lg">Let me get it</a>
 				</div>
 
 			</div><!-- .row -->
