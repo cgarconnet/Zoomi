@@ -92,8 +92,9 @@ class Entry(models.Model):
 	done = models.BooleanField(default=False) # 0 = to do / 1 = completed
 	impediment = models.BooleanField(default=False) # 0 = No / 1 = Yes
 	transfered = models.BooleanField(default=False) # 0 = No / 1 = Yes = no longer in your List
+	recurrence_days = models.IntegerField(null=True, blank=True) # 0 = No / 1 = Yes
 	personal = models.BooleanField(default=False) # 0 = No / 1 = Yes
-	assignees = models.ManyToManyField(User, related_name='assignees',blank=True)	
+	assignees = models.ManyToManyField(User, related_name='assignees',blank=True)	# should be changed to OneToManyField
 	section = models.BooleanField(default=False) # 0 = No / 1 = Yes
 	created_at = models.DateTimeField(auto_now_add=True)
 	# new fields required
@@ -185,7 +186,7 @@ class EntryUpdateForm(ModelForm):
 
 	class Meta:
 		model = Entry
-		fields = ['name','theme','duedate','section','personal','transfered','assignees'] # the fields on the edit page
+		fields = ['name','theme','duedate','recurrence_days','section','personal','transfered','assignees'] # the fields on the edit page
 
 
 	def __init__(self, *args, **kwargs): # current_business, as parameter (cf Creeam)
@@ -195,6 +196,8 @@ class EntryUpdateForm(ModelForm):
 		super(EntryUpdateForm, self).__init__(*args, **kwargs)
 		self.fields['name'].label = "Action details"
 		self.fields['duedate'].label = "Due on?"
+#		self.fields['recurrence_days'].help_text = "It will be added to Due Date"
+		self.fields['recurrence_days'].label = "Repeat xx days after the due date"
 		self.fields['duedate'].widget.attrs['placeholder'] = "YYYY-MM-DD"
 		self.fields['duedate'].widget.attrs['onfocus'] = "return InitiateDate(this);"
 		self.fields['name'].widget.attrs['autofocus'] = "on"

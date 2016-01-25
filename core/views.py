@@ -25,6 +25,7 @@ from core.models import ListAppendView, ListCommentView, ListThemeView
 
 #import datetime
 from django.utils import timezone
+from datetime import timedelta
 
 # Create your views here.
 # v1 views
@@ -210,6 +211,8 @@ class EntryListAppendViewBS(ListAppendView):
 	template_name = 'entry/listBS.html'
 	context_object_name = 'entry'
 	hide_sortable = ""
+	hide_assignees = 'hide_entry'
+
 #	fields = ['name'] # "__all__" no longer required as defined in the models
 
 	def get_queryset(self):
@@ -232,6 +235,7 @@ class EntryListTransferredAppendView(ListAppendView):
 	template_name = 'entry/listBS.html'
 	context_object_name = 'entry'
 	hide_sortable = 'hide_entry' # this is a CSS to hide the move item
+	hide_sender = 'hide_entry'
 
 #	fields = ['name'] # "__all__" no longer required as defined in the models
 
@@ -374,16 +378,18 @@ def index(request):
 def EntryAjaxUpdateView(request, pk):
 	# source: http://stackoverflow.com/questions/25135155/how-to-change-model-variable-by-onclick-function-used-in-template-asynchronously?answertab=active#tab-top
 #    JSON_field=request.POST.get("field")
-    JSON_value=request.POST.get("value")
-    b=coremodels.Entry.objects.get(id=pk) #str(value))
-    #delete change statement
-    b.done = (False if b.done == 1 else True) # int(JSON_value) #10
-    b.completed_on = timezone.now() #datetime.datetime.now()
-    b.save()
-    # resp=json.dumps(b)
-#    return HttpResponse(resp, content_type="application/json")
-	# I should now refresh the value in the DOM
-    return HttpResponse(None, content_type="application/json")
+	JSON_value=request.POST.get("value")
+	b=coremodels.Entry.objects.get(id=pk) #str(value))
+	b.done = (False if b.done == 1 else True) # int(JSON_value) #10
+	b.completed_on = timezone.now() #datetime.datetime.now()
+	b.save()
+
+	if b.recurrence_days: # if this entry is recurrent, then we clone it
+		b.pk = None
+		b.duedate = b.duedate + timedelta(days=b.recurrence_days)
+		b.done = False
+		b.save()
+	return HttpResponse(None, content_type="application/json")
 
 
 # code for site authentification

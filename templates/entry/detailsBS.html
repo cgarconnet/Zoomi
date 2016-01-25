@@ -44,7 +44,8 @@
 								   				{% else %}
 									   				{{ objects|truncatewords:10 }}
 
-									   				{% if objects.transfered == 1 %}<span class="sender">(from {{ objects.user.get_full_name }})</span>{% endif %}
+									   				{% if objects.transfered == 1 %}<span class="sender {{ view.hide_sender }}">(from {{ objects.user.get_full_name }})</span>{% endif %}
+									   				{% if objects.transfered == 1 %}<span class="sender {{ view.hide_assignees }}">(to {{ objects.assignees.first.get_full_name }})</span>{% endif %}
 
 								   				{% endif %}
 
