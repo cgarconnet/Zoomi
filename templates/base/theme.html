@@ -87,10 +87,12 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
+			{% if user.is_authenticated %} <!-- Hide the plus if not connected -->
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#create-collapse">
 						<span class="sr-only">Toggle form</span>
 						<span class="glyphicon glyphicon-plus">
 					</button>
+			{% endif %}
 					<a class="navbar-brand" href="/">Zoomi</a>
 				</div>
 
