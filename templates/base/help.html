@@ -8,7 +8,7 @@
 
 {% block page_sub_title %}
 
-Please find the list of future releases and details on previous releases
+Please find some documentation and FAQs<p>
 
 {% endblock %}
 
@@ -25,31 +25,32 @@ Please find the list of future releases and details on previous releases
 
 		  <!-- Nav tabs -->
 		  <ul class="nav nav-tabs" role="tablist">
-		    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">First connection</a></li>
-		    <li role="presentation"><a href="#keyactions" aria-controls="profile" role="tab" data-toggle="tab">Key actions</a></li>
+		    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Welcome to zoomi</a></li>
+<!-- 		    <li role="presentation"><a href="#keyactions" aria-controls="profile" role="tab" data-toggle="tab">Key actions</a></li>
 		    <li role="presentation"><a href="#sections" aria-controls="messages" role="tab" data-toggle="tab">Sections</a></li>
-		    <li role="presentation"><a href="#faq" aria-controls="faq" role="tab" data-toggle="tab">FAQs</a></li>
+ -->		    <li role="presentation"><a href="#faq" aria-controls="faq" role="tab" data-toggle="tab">FAQs</a></li>
 		  </ul>
 
 		  <!-- Tab panes -->
 		  <div class="tab-content">
 		    <div role="tabpanel" class="tab-pane active" id="home">
-		    	Welcome to Zoomi<p>
-
-		    	One your account is created, go to the Profile Page to:<br>
-					1) Set your first name and last name (so people show your name in transfer section)<br>
+				<p>
+		    	Once your account is created, go to the <a href="/user/details">Profile Page</a> to:<br>
+					1) Set your first name and last name (so people show your name in transfer section)<br> Please note that your email will never be visible to other users.
 					2) Give a name at your company/organization (so in future release, you will see by defaut only people in your structure)<br>
 
 				<p>
-				Optionnaly, but recommended, go to Themes page to<br>
+				Optionnaly, but recommended, go to <a href="/themes">Themes page</a> to<br>
 				- Create categories of actions. You can also see them as sub-Business or Problems<br>
 					○ This will allow you to categorize and better visualize your items (done or to be done)<p>
+				<p>
+				Please then read our <a href="/static/ZoomiHelpPage.pdf">user guide</a>.
 
 		    </div>
-		    <div role="tabpanel" class="tab-pane" id="keyactions">...</div>
-		    /images/Zoomi_help_mainfeatures.png
-		    <div role="tabpanel" class="tab-pane" id="sections">...</div>
+<!-- 		    <div role="tabpanel" class="tab-pane" id="keyactions">...</div>
 
+		    <div role="tabpanel" class="tab-pane" id="sections">...</div>
+ -->
 		    <div role="tabpanel" class="tab-pane" id="faq">
 
 				<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -78,7 +79,7 @@ Please find the list of future releases and details on previous releases
 				    </div>
 				    <div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
 				      <div class="panel-body">
-				        We use Heroku which is a Platform As A Service, hsoted itself in Amazon Cloud in Europe.
+				        We use Heroku which is a Platform As A Service, hosted itself in Amazon Cloud in Europe.
 				      </div>
 				    </div>
 				  </div>
@@ -87,13 +88,15 @@ Please find the list of future releases and details on previous releases
 				    <div class="panel-heading" role="tab" id="heading3">
 				      <h4 class="panel-title">
 				        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="false" aria-controls="collapse3">
-				          Do you have a CNIL declaration?
+				          Did you register this service to local data privacy?
 				        </a>
 				      </h4>
 				    </div>
 				    <div id="collapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading3">
 				      <div class="panel-body">
-				        That's under progress
+				        Yes, we registered the application to the French Data Privacy Office (CNIL) and it is currently under review.<p><br>
+				        In compliance with the law of January 6th 1978, you have the right to access, modify, rectify or delete all your personal data on file.<br>
+				        If you wish to do so, <a href="mailto:cgarconnet@gmail.com">please contact us</a> and we will revise or cancel such information from our files within a reasonable period of time. For your safety, please ensure you backup any information related to your usage of this service as no backup will be provided to you.
 				      </div>
 				    </div>
 				  </div>
@@ -106,7 +109,7 @@ Please find the list of future releases and details on previous releases
 				        </a>
 				      </h4>
 				    </div>
-				    <div id="collapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
+				    <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
 				      <div class="panel-body">
 				        They are under writing.
 				      </div>
